@@ -22,9 +22,9 @@ void saxpy_gpu(const float a, const std::vector<float> x, const std::vector<floa
     int blockSize = 256;
     int numBlocks = (n + blockSize - 1) / blockSize;
 
-    HOTLOOPSTART;
+    GPU_HOTLOOPSTART;
     saxpy<<<numBlocks, blockSize>>>(a, d_x, d_y, d_y_out, n);
-    HOTLOOPEND;
+    GPU_HOTLOOPEND;
 
     y_out.resize(n);
     cudaMemcpy(y_out.data(), d_y_out, n * sizeof(float), cudaMemcpyDeviceToHost);
