@@ -2,22 +2,22 @@
 
 Copyright 2025 | Leong Fan FUNG | funglf | stanleyfunglf@gmail.com
 
-Permission is hereby granted, free of charge, to any person obtaining a copy 
-of this software and associated documentation files (the “Software”), to deal 
-in the Software without restriction, including without limitation the rights 
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-copies of the Software, and to permit persons to whom the Software is 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in 
+The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
@@ -114,7 +114,7 @@ namespace comppare::plugin::google_benchmark
 
     private:
         int gbench_argc;
-        char** gbench_argv;
+        char **gbench_argv;
         comppare::plugin::PluginArgParser gbench_parser_{"--gbench"};
 
         void print_benchmark_header()
@@ -206,9 +206,10 @@ namespace comppare::plugin::google_benchmark
         hotloop_body();                                                            \
     }
 
-#define GPU_COMPPARE_HOTLOOP_BENCH(prefix)                                         \
-    prefix##Event_t __LINE__stop;                                                  \
-    prefix##EventCreate(&__LINE__stop);                                            \
+#if defined(__CUDACC__)
+#define GPU_PLUGIN_HOTLOOP_BENCH                                                   \
+    cudaEvent_t __LINE__stop;                                                      \
+    cudaEventCreate(&__LINE__stop);                                                \
     benchmark::State &st = comppare::plugin::google_benchmark::state::get_state(); \
     for (auto _ : st)                                                              \
     {                                                                              \
@@ -216,9 +217,24 @@ namespace comppare::plugin::google_benchmark
         /* Syncronise every time to record GPU time */                             \
         /* Google Benchmark records extra overhead of EventSynchronization */      \
         /* Google Benchmark not recommended for GPU code anyways. */               \
-        prefix##EventRecord(__LINE__stop);                                         \
-        prefix##EventSynchronize(__LINE__stop);                                    \
+        cudaEventRecord(__LINE__stop);                                             \
+        cudaEventSynchronize(__LINE__stop);                                        \
     }
+#elif defined(__HIPCC__)
+#define GPU_PLUGIN_HOTLOOP_BENCH                                                   \
+    hipEvent_t __LINE__stop;                                                       \
+    hipEventCreate(&__LINE__stop);                                                 \
+    benchmark::State &st = comppare::plugin::google_benchmark::state::get_state(); \
+    for (auto _ : st)                                                              \
+    {                                                                              \
+        hotloop_body();                                                            \
+        /* Syncronise every time to record GPU time */                             \
+        /* Google Benchmark records extra overhead of EventSynchronization */      \
+        /* Google Benchmark not recommended for GPU code anyways. */               \
+        hipEventRecord(__LINE__stop);                                              \
+        hipEventSynchronize(__LINE__stop);                                         \
+    }
+#endif
 
 #define PLUGIN_SET_ITERATION_TIME(TIME) \
     comppare::plugin::google_benchmark::SetIterationTime(TIME);

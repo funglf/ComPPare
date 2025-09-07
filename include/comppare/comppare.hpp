@@ -934,6 +934,10 @@ namespace comppare
 #if defined(HAVE_GOOGLE_BENCHMARK)
 #warning "Not Recommended to use Google Benchmark with GPU_HOTLOOPEND macro. Use SET_ITERATION_TIME and manual timing instead."
 #endif
+
+#define CONCAT_IMPL(x, y) x##y
+#define CONCAT(x, y) CONCAT_IMPL(x, y)
+
 /**
  * @brief Macro to mark the start of a GPU hot loop for benchmarking.
  * This macro defines a lambda function `hotloop_body` that encapsulates the code to be benchmarked.
@@ -947,31 +951,31 @@ namespace comppare
  */
 #define GPU_COMPPARE_HOTLOOP_BENCH                                     \
     /* Warm-up */                                                      \
-    GPU_PREFIX##Event_t start_, stop_;                                 \
-    GPU_PREFIX##EventCreate(&start_);                                  \
-    GPU_PREFIX##EventCreate(&stop_);                                   \
-    GPU_PREFIX##EventRecord(start_);                                   \
+    CONCAT(GPU_PREFIX, Event_t) start_, stop_;                                 \
+    CONCAT(GPU_PREFIX, EventCreate)(&start_);                                  \
+    CONCAT(GPU_PREFIX, EventCreate)(&stop_);                                   \
+    CONCAT(GPU_PREFIX, EventRecord)(start_);                                   \
     for (std::size_t i = 0; i < comppare::config::warmup_iters(); ++i) \
         hotloop_body();                                                \
-    GPU_PREFIX##EventRecord(stop_);                                    \
-    GPU_PREFIX##EventSynchronize(stop_);                               \
+    CONCAT(GPU_PREFIX, EventRecord)(stop_);                                    \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                               \
     float ms_warmup_;                                                  \
-    GPU_PREFIX##EventElapsedTime(&ms_warmup_, start_, stop_);          \
+    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_warmup_, start_, stop_);          \
     comppare::config::set_warmup_us(1e3 * ms_warmup_);                 \
                                                                        \
     /* Timed */                                                        \
     comppare::config::reset_roi_us();                                  \
-    GPU_PREFIX##EventRecord(start_);                                   \
+    CONCAT(GPU_PREFIX, EventRecord)(start_);                                   \
     for (std::size_t i = 0; i < comppare::config::bench_iters(); ++i)  \
         hotloop_body();                                                \
-    GPU_PREFIX##EventRecord(stop_);                                    \
-    GPU_PREFIX##EventSynchronize(stop_);                               \
+    CONCAT(GPU_PREFIX, EventRecord)(stop_);                                    \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                               \
     float ms_;                                                         \
-    GPU_PREFIX##EventElapsedTime(&ms_, start_, stop_);                 \
+    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_, start_, stop_);                 \
     if (comppare::config::get_roi_us() == double(0.0))                 \
         comppare::config::set_roi_us(1e3 * ms_);                       \
-    GPU_PREFIX##EventDestroy(start_);                                  \
-    GPU_PREFIX##EventDestroy(stop_);
+    CONCAT(GPU_PREFIX, EventDestroy)(start_);                                  \
+    CONCAT(GPU_PREFIX, EventDestroy)(stop_);
 
 #if defined(GPU_PLUGIN_HOTLOOP_BENCH)
 
@@ -1000,22 +1004,22 @@ namespace comppare
  * This macro initializes GPU events and records the start time.
  */
 #define GPU_MANUAL_TIMER_START                                 \
-    GPU_PREFIX##Event_t start_manual_timer, stop_manual_timer; \
-    GPU_PREFIX##EventCreate(&start_manual_timer);              \
-    GPU_PREFIX##EventCreate(&stop_manual_timer);               \
-    GPU_PREFIX##EventRecord(start_manual_timer);
+    CONCAT(GPU_PREFIX, Event_t) start_manual_timer, stop_manual_timer; \
+    CONCAT(GPU_PREFIX, EventCreate)(&start_manual_timer);              \
+    CONCAT(GPU_PREFIX, EventCreate)(&stop_manual_timer);               \
+    CONCAT(GPU_PREFIX, EventRecord)(start_manual_timer);
 
 /**
  * @brief Macro to stop a manual timer for benchmarking.
  * This macro records the stop time and synchronizes the GPU events.
  */
 #define GPU_MANUAL_TIMER_END                                                         \
-    GPU_PREFIX##EventRecord(stop_manual_timer);                                      \
-    GPU_PREFIX##EventSynchronize(stop_manual_timer);                                 \
+    CONCAT(GPU_PREFIX, EventRecord)(stop_manual_timer);                                      \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_manual_timer);                               \
     float ms_manual;                                                                 \
-    GPU_PREFIX##EventElapsedTime(&ms_manual, start_manual_timer, stop_manual_timer); \
+    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_manual, start_manual_timer, stop_manual_timer); \
     SET_ITERATION_TIME(1e3 * ms_manual);                                             \
-    GPU_PREFIX##EventDestroy(start_manual_timer);                                    \
-    GPU_PREFIX##EventDestroy(stop_manual_timer);
+    CONCAT(GPU_PREFIX, EventDestroy)(start_manual_timer);                                    \
+    CONCAT(GPU_PREFIX, EventDestroy)(stop_manual_timer);
 
 #endif
