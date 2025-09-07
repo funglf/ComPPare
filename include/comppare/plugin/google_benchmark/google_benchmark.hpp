@@ -206,6 +206,20 @@ namespace comppare::plugin::google_benchmark
         hotloop_body();                                                            \
     }
 
+#define GPU_COMPPARE_HOTLOOP_BENCH(prefix)                                         \
+    prefix##Event_t __LINE__stop;                                                  \
+    prefix##EventCreate(&__LINE__stop);                                            \
+    benchmark::State &st = comppare::plugin::google_benchmark::state::get_state(); \
+    for (auto _ : st)                                                              \
+    {                                                                              \
+        hotloop_body();                                                            \
+        /* Syncronise every time to record GPU time */                             \
+        /* Google Benchmark records extra overhead of EventSynchronization */      \
+        /* Google Benchmark not recommended for GPU code anyways. */               \
+        prefix##EventRecord(__LINE__stop);                                         \
+        prefix##EventSynchronize(__LINE__stop);                                    \
+    }
+
 #define PLUGIN_SET_ITERATION_TIME(TIME) \
     comppare::plugin::google_benchmark::SetIterationTime(TIME);
 

@@ -209,8 +209,6 @@ namespace comppare::plugin::nvbenchplugin
     auto state_ = comppare::plugin::nvbenchplugin::state::get_state(); \
     state_->exec([&](nvbench::launch &launch) { hotloop_body(); });
 
-#define GPU_PLUGIN_HOTLOOP_BENCH                                       \
-    auto state_ = comppare::plugin::nvbenchplugin::state::get_state(); \
-    state_->exec([&](nvbench::launch &launch) { hotloop_body(); });
+#define GPU_PLUGIN_HOTLOOP_BENCH PLUGIN_HOTLOOP_BENCH
 
 #endif

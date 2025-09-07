@@ -923,6 +923,17 @@ namespace comppare
     comppare::config::increment_roi_us(TIME);
 #endif
 
+#if defined(__CUDACC__)
+    #define GPU_PREFIX cuda
+#elif defined(__HIPCC__)
+    #define GPU_PREFIX hip
+#endif
+
+#if defined(GPU_PREFIX)
+
+#if defined(HAVE_GOOGLE_BENCHMARK)
+#warning "Not Recommended to use Google Benchmark with GPU_HOTLOOPEND macro. Use SET_ITERATION_TIME and manual timing instead."
+#endif
 /**
  * @brief Macro to mark the start of a GPU hot loop for benchmarking.
  * This macro defines a lambda function `hotloop_body` that encapsulates the code to be benchmarked.
@@ -934,99 +945,77 @@ namespace comppare
  * @brief Internal macro to perform the warm-up and timed benchmarking loops.
  * This macro is used within the `GPU_HOTLOOPEND` macro to execute the benchmarking process.
  */
-#if defined(__CUDACC__)
-#define GPU_HOTLOOPEND                                                 \
-    }                                                                  \
-    ; /* end lambda */                                                 \
+#define GPU_COMPPARE_HOTLOOP_BENCH                                     \
     /* Warm-up */                                                      \
-    cudaEvent_t start_, stop_;                                         \
-    cudaEventCreate(&start_);                                          \
-    cudaEventCreate(&stop_);                                           \
-    cudaEventRecord(start_);                                           \
+    GPU_PREFIX##Event_t start_, stop_;                                 \
+    GPU_PREFIX##EventCreate(&start_);                                  \
+    GPU_PREFIX##EventCreate(&stop_);                                   \
+    GPU_PREFIX##EventRecord(start_);                                   \
     for (std::size_t i = 0; i < comppare::config::warmup_iters(); ++i) \
         hotloop_body();                                                \
-    cudaEventRecord(stop_);                                            \
-    cudaEventSynchronize(stop_);                                       \
+    GPU_PREFIX##EventRecord(stop_);                                    \
+    GPU_PREFIX##EventSynchronize(stop_);                               \
     float ms_warmup_;                                                  \
-    cudaEventElapsedTime(&ms_warmup_, start_, stop_);                  \
+    GPU_PREFIX##EventElapsedTime(&ms_warmup_, start_, stop_);          \
     comppare::config::set_warmup_us(1e3 * ms_warmup_);                 \
                                                                        \
     /* Timed */                                                        \
     comppare::config::reset_roi_us();                                  \
-    cudaEventRecord(start_);                                           \
+    GPU_PREFIX##EventRecord(start_);                                   \
     for (std::size_t i = 0; i < comppare::config::bench_iters(); ++i)  \
         hotloop_body();                                                \
-    cudaEventRecord(stop_);                                            \
-    cudaEventSynchronize(stop_);                                       \
+    GPU_PREFIX##EventRecord(stop_);                                    \
+    GPU_PREFIX##EventSynchronize(stop_);                               \
     float ms_;                                                         \
-    cudaEventElapsedTime(&ms_, start_, stop_);                         \
+    GPU_PREFIX##EventElapsedTime(&ms_, start_, stop_);                 \
     if (comppare::config::get_roi_us() == double(0.0))                 \
         comppare::config::set_roi_us(1e3 * ms_);                       \
-    cudaEventDestroy(start_);                                          \
-    cudaEventDestroy(stop_);
+    GPU_PREFIX##EventDestroy(start_);                                  \
+    GPU_PREFIX##EventDestroy(stop_);
 
-#elif defined(__HIPCC__)
-#define GPU_HOTLOOPEND                                                 \
-    }                                                                  \
-    ; /* end lambda */                                                 \
-    /* Warm-up */                                                      \
-    hipEvent_t start_, stop_;                                          \
-    hipEventCreate(&start_);                                           \
-    hipEventCreate(&stop_);                                            \
-    hipEventRecord(start_);                                            \
-    for (std::size_t i = 0; i < comppare::config::warmup_iters(); ++i) \
-        hotloop_body();                                                \
-    hipEventRecord(stop_);                                             \
-    hipEventSynchronize(stop_);                                        \
-    float ms_warmup_;                                                  \
-    hipEventElapsedTime(&ms_warmup_, start_, stop_);                   \
-    comppare::config::set_warmup_us(1e3 * ms_warmup_);                 \
-                                                                       \
-    /* Timed */                                                        \
-    comppare::config::reset_roi_us();                                  \
-    hipEventRecord(start_);                                            \
-    for (std::size_t i = 0; i < comppare::config::bench_iters(); ++i)  \
-        hotloop_body();                                                \
-    hipEventRecord(stop_);                                             \
-    hipEventSynchronize(stop_);                                        \
-    float ms_;                                                         \
-    hipEventElapsedTime(&ms_, start_, stop_);                          \
-    if (comppare::config::get_roi_us() == double(0.0))                 \
-        comppare::config::set_roi_us(1e3 * ms_);                       \
-    hipEventDestroy(start_);                                           \
-    hipEventDestroy(stop_);
+#if defined(GPU_PLUGIN_HOTLOOP_BENCH)
+
+#define GPU_HOTLOOPEND                           \
+    }                                            \
+    ; /* end lambda */                           \
+    if (comppare::current_state::using_plugin()) \
+    {                                            \
+        GPU_PLUGIN_HOTLOOP_BENCH;                \
+    }                                            \
+    else                                         \
+    {                                            \
+        GPU_COMPPARE_HOTLOOP_BENCH;              \
+    }
+#else
+
+#define GPU_HOTLOOPEND \
+    }                  \
+    ; /* end lambda */ \
+    GPU_COMPPARE_HOTLOOP_BENCH;
+
 #endif
 
-#if defined(__CUDACC__)
-#define GPU_MANUAL_TIMER_START                         \
-    cudaEvent_t start_manual_timer, stop_manual_timer; \
-    cudaEventCreate(&start_manual_timer);              \
-    cudaEventCreate(&stop_manual_timer);               \
-    cudaEventRecord(start_manual_timer);
+/**
+ * @brief Macro to start a manual timer for benchmarking.
+ * This macro initializes GPU events and records the start time.
+ */
+#define GPU_MANUAL_TIMER_START                                 \
+    GPU_PREFIX##Event_t start_manual_timer, stop_manual_timer; \
+    GPU_PREFIX##EventCreate(&start_manual_timer);              \
+    GPU_PREFIX##EventCreate(&stop_manual_timer);               \
+    GPU_PREFIX##EventRecord(start_manual_timer);
 
-#define GPU_MANUAL_TIMER_END                                                 \
-    cudaEventRecord(stop_manual_timer);                                      \
-    cudaEventSynchronize(stop_manual_timer);                                 \
-    float ms_manual;                                                         \
-    cudaEventElapsedTime(&ms_manual, start_manual_timer, stop_manual_timer); \
-    SET_ITERATION_TIME(1e3 * ms_manual);                                     \
-    cudaEventDestroy(start_manual_timer);                                    \
-    cudaEventDestroy(stop_manual_timer);
-
-#elif defined(__HIPCC__)
-#define GPU_MANUAL_TIMER_START                        \
-    hipEvent_t start_manual_timer, stop_manual_timer; \
-    hipEventCreate(&start_manual_timer);              \
-    hipEventCreate(&stop_manual_timer);               \
-    hipEventRecord(start_manual_timer);
-
-#define GPU_MANUAL_TIMER_END                                                \
-    hipEventRecord(stop_manual_timer);                                      \
-    hipEventSynchronize(stop_manual_timer);                                 \
-    float ms_manual;                                                        \
-    hipEventElapsedTime(&ms_manual, start_manual_timer, stop_manual_timer); \
-    SET_ITERATION_TIME(1e3 * ms_manual);                                    \
-    hipEventDestroy(start_manual_timer);                                    \
-    hipEventDestroy(stop_manual_timer);
+/**
+ * @brief Macro to stop a manual timer for benchmarking.
+ * This macro records the stop time and synchronizes the GPU events.
+ */
+#define GPU_MANUAL_TIMER_END                                                         \
+    GPU_PREFIX##EventRecord(stop_manual_timer);                                      \
+    GPU_PREFIX##EventSynchronize(stop_manual_timer);                                 \
+    float ms_manual;                                                                 \
+    GPU_PREFIX##EventElapsedTime(&ms_manual, start_manual_timer, stop_manual_timer); \
+    SET_ITERATION_TIME(1e3 * ms_manual);                                             \
+    GPU_PREFIX##EventDestroy(start_manual_timer);                                    \
+    GPU_PREFIX##EventDestroy(stop_manual_timer);
 
 #endif
