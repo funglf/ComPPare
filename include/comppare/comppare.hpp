@@ -21,6 +21,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+
+/**
+ * @file comppare.hpp
+ * @brief This file is the main include file for the ComPPare framework.
+ *
+ */
+
 #pragma once
 #include <chrono>
 #include <cmath>
@@ -42,15 +49,21 @@ SOFTWARE.
 #include <comppare/plugin/plugin.hpp>
 
 #if defined(HAVE_GOOGLE_BENCHMARK) && defined(HAVE_NV_BENCH)
-#error "Please only use one Plugin." 
+#warning "Please only use one Plugin."
 #endif
 
 #if defined(HAVE_GOOGLE_BENCHMARK)
 #include "comppare/plugin/google_benchmark/google_benchmark.hpp"
-#elif defined(HAVE_NV_BENCH)
+#endif 
+
+#if defined(HAVE_NV_BENCH)
 #include "comppare/plugin/nvbench/nvbench.hpp"
 #endif
 
+/**
+ * @brief ComPPare framework main namespace.
+ * \namespace comppare
+ */
 namespace comppare
 {
     /*
@@ -75,16 +88,28 @@ namespace comppare
     // See the License for the specific language governing permissions and
     // limitations under the License.
 
-    // This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(),
-    // licensed under Apache 2.0. No changes have been made.
+    /**
+     * @brief Prevents the compiler from optimizing away the given value.
+     *
+     * @tparam T The type of the value to protect from optimization.
+     * @param value The value to protect from optimization.
+     *
+     * This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(), licensed under Apache 2.0. No changes have been made.
+     */
     template <typename T>
     inline __attribute__((always_inline)) void DoNotOptimize(T const &value)
     {
         asm volatile("" : : "r,m"(value) : "memory");
     }
 
-    // This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(),
-    // licensed under Apache 2.0. No changes have been made.
+    /**
+     * @brief Prevents the compiler from optimizing away the given value.
+     *
+     * @tparam T The type of the value to protect from optimization.
+     * @param value The value to protect from optimization.
+     *
+     * This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(), licensed under Apache 2.0. No changes have been made.
+     */
     template <typename T>
     inline __attribute__((always_inline)) void DoNotOptimize(T &value)
     {
@@ -95,8 +120,14 @@ namespace comppare
 #endif
     }
 
-    // This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(),
-    // licensed under Apache 2.0. No changes have been made.
+    /**
+     * @brief Prevents the compiler from optimizing away the given value.
+     *
+     * @tparam T The type of the value to protect from optimization.
+     * @param value The value to protect from optimization.
+     *
+     * This implementation is verbatim from Google Benchmark’s benchmark::DoNotOptimize(), licensed under Apache 2.0. No changes have been made.
+     */
     template <typename T>
     inline __attribute__((always_inline)) void DoNotOptimize(T &&value)
     {
@@ -117,19 +148,19 @@ namespace comppare
     template <typename Value, typename Policy = void>
     struct spec;
 
-    template <typename Value, typename Policy>
-    struct spec<spec<Value, Policy>, void>
-    {
-        using value_t = Value;
-        using policy_t = Policy;
-    };
-
     template <typename Value>
         requires internal::policy::autopolicy::SupportedByAutoPolicy<Value>
     struct spec<Value, void>
     {
         using value_t = Value;
         using policy_t = internal::policy::autopolicy::AutoPolicy_t<Value>;
+    };
+
+    template <typename Value, typename Policy>
+    struct spec<spec<Value, Policy>, void>
+    {
+        using value_t = Value;
+        using policy_t = Policy;
     };
 
     template <typename Value, typename Policy>
@@ -149,67 +180,172 @@ namespace comppare
             typename spec<T>::value_t,
             typename spec<T>::policy_t>;
 
-    /*
-    InputContext class template to hold input parameters for the comparison framework.
-    */
+    /**
+     * @brief InputContext class template to hold input parameters for the comparison framework.
+     *
+     * @tparam Inputs
+     */
     template <typename... Inputs>
     class InputContext
     {
     public:
+        /**
+         * @brief OutputContext class template to hold output parameters and manage implementations.
+         *
+         * @tparam Specs
+         */
         template <OutSpec... Specs>
         class OutputContext
         {
         private:
+            /**
+             * @tparam S The output spec type.
+             * @brief Extracts the value type from a spec.
+             */
             template <typename S>
             using val_t = typename spec<S>::value_t;
+            /**
+             * @tparam S The output spec type.
+             * @brief Extracts the policy type from a spec.
+             */
             template <typename S>
             using pol_t = typename spec<S>::policy_t;
 
-            // using Outputs = typename Specs::value_t;
-            // Alias for the user-provided function signature:
-            // (const Inputs&..., Outputs&..., size_t iterations, double& roi_us)
+            /**
+             * @brief Alias for the function signature of a user-provided implementation.
+             *
+             * The function must take all input arguments by const reference, and
+             * all output arguments by non-const reference. The framework invokes
+             * this function to compare multiple implementations on the same input.
+             *
+             * Example signature:
+             * @code
+             * void f(const In1&, const In2&, ..., Out1&, Out2&...);
+             * @endcode
+             */
             using Func = std::function<void(const Inputs &..., val_t<Specs> &...)>;
 
-            // Holds each input and output type in a tuple
+            /**
+             * @brief Tuple type holding all input arguments.
+             */
             using InTup = std::tuple<Inputs...>;
+            /**
+             * @brief Tuple type holding all output values (one element per spec).
+             */
             using OutTup = std::tuple<val_t<Specs>...>;
+            /**
+             * @brief Tuple type holding the error/policy object associated with each output spec.
+             */
             using PolicyTup = std::tuple<pol_t<Specs>...>;
 
-            // reference to output parameter/data
+            /**
+             * @brief Shared pointer to an output tuple.
+             *
+             * Used to manage lifetime of output results across multiple implementations.
+             */
             using OutPtr = std::shared_ptr<OutTup>;
-            using OutVec = std::vector<OutPtr>;
 
-            // Tuple to hold all input parameters/data
+            /**
+             * @brief Tuple instance storing all current input arguments.
+             */
             InTup inputs_;
-            // Reference output tuple to hold the outputs of the first implementation
-            OutVec outputs_;
+            /**
+             * @brief Storage for reference and comparison outputs.
+             *
+             * Each implementation’s outputs are stored here as shared pointer to tuples.
+             * The first implementation is treated as the reference.
+             */
+            std::vector<OutPtr> outputs_;
+            /**
+             * @brief Tuple of policy objects for the reference outputs.
+             *
+             * Each policy governs how the corresponding output is validated
+             */
             PolicyTup policies_ref_;
 
             // Number of output arguments -- sizeof... is used to get the number of elements in a pack
             // https://en.cppreference.com/w/cpp/language/sizeof....html
             static constexpr size_t NUM_OUT = sizeof...(Specs);
 
-            std::shared_ptr<plugin::Plugin<InTup, OutTup>> plugins_;
+            /**
+             * @brief Shared pointer to the plugin instance.
+             *
+             * This pointer is used to store the plugin instance and ensure only one plugin is registered.
+             * It is shared across all implementations within the output context.
+             */
+            std::shared_ptr<plugin::Plugin<InTup, OutTup>> plugin_;
 
+            /**
+             * @brief Register a plugin for the output context.
+             *
+             * @param p The shared pointer to the plugin to register.
+             */
             void register_plugin(const std::shared_ptr<plugin::Plugin<InTup, OutTup>> &p)
             {
-                if (!plugins_)
-                    plugins_ = p;
-                else if (plugins_ != p)
+                if (!plugin_)
+                    plugin_ = p;
+                else if (plugin_ != p)
                     throw std::logic_error("Multiple plugins are not supported");
             }
 
+            /**
+             * \struct Impl
+             * @brief Internal container representing one registered implementation.
+             *
+             * Each `Impl` bundles together:
+             *   - the *user function* (`fn`) under a given name,
+             *   - a pointer to the input tuple,
+             *   - a back-reference to the owning `OutputContext`,
+             *   - and optionally, plugin-managed output storage.
+             *
+             * This allows the framework to keep track of multiple competing
+             * implementations of the same operation (e.g. reference vs optimized),
+             * and to attach correctness/performance plugins such as Google Benchmark
+             * or NVBench.
+             *
+             */
             struct Impl
             {
+                /**
+                 * @brief Name of the implementation.
+                 *
+                 * This is used to identify the implementation in logs and reports.
+                 */
                 std::string name;
+                /**
+                 * @brief The user-provided function implementing the operation.
+                 *
+                 * This function must match the signature defined by `Func`, taking
+                 * all input arguments by const reference, and all output arguments
+                 * by non-const reference.
+                 */
                 Func fn;
 
+                /**
+                 * @brief Pointer to the input tuple `inputs_`.
+                 */
                 InTup *inputs_ptr;
+                /**
+                 * @brief Reference to the owning `OutputContext`.
+                 * This allows the implementation to register plugins.
+                 */
                 OutputContext *parent_ctx;
 
-                std::unique_ptr<OutTup> plugin_output = nullptr; // output for plugin runs
+                /**
+                 * @brief Unique pointer to the output tuple for plugin runs.
+                 *
+                 * This allows the implementation to provide a separate output
+                 * instance for plugins, avoiding interference with the main
+                 * output.
+                 */
+                std::unique_ptr<OutTup> plugin_output = nullptr;
 
 #ifdef HAVE_GOOGLE_BENCHMARK
+                /**
+                 * @brief Attach the Google Benchmark plugin.
+                 *
+                 * This function adds the Google Benchmark plugin for the current implementation.
+                 */
                 decltype(auto) google_benchmark()
                 {
                     return attach<plugin::google_benchmark::GoogleBenchmarkPlugin>();
@@ -217,12 +353,23 @@ namespace comppare
 #endif
 
 #ifdef HAVE_NV_BENCH
+                /**
+                 * @brief Attach the nvbench plugin.
+                 *
+                 * This function adds the nvbench plugin for the current implementation.
+                 */
                 decltype(auto) nvbench()
                 {
                     return attach<plugin::nvbenchplugin::nvbenchPlugin>();
                 }
 #endif
 
+                /**
+                 * @brief Attach a plugin to the output context.
+                 *
+                 * @tparam Plugin The plugin type to attach.
+                 * @return The return of the plugin's `register_impl` method.
+                 */
                 template <template <class, class> class Plugin>
                     requires comppare::plugin::ValidPlugin<Plugin, InTup, OutTup, Func>
                 decltype(auto) attach()
@@ -237,18 +384,49 @@ namespace comppare
                 }
             };
 
-            // Vector to hold all implementations
+            /**
+             * @brief Vector to hold all implementations.
+             *
+             * This vector is used to store all the different implementations
+             * of the operation being benchmarked.
+             */
             std::vector<Impl> impls_;
 
             // helpers -----------------------------------------------------------
+            /**
+             * @brief Get the implementation details for a specific implementation index.
+             *
+             * @tparam I The implementation index.
+             * @return std::size_t The number of metrics for the implementation.
+             */
             template <std::size_t I>
-            static constexpr auto spec_metric_count() { return std::tuple_element_t<I, PolicyTup>::metric_count(); }
-            template <std::size_t I>
-            static constexpr auto spec_metric_name(std::size_t m) { return std::tuple_element_t<I, PolicyTup>::metric_name(m); }
+            static constexpr std::size_t spec_metric_count() { return std::tuple_element_t<I, PolicyTup>::metric_count(); }
 
+            /**
+             * @brief Get the name of a specific metric for a specific implementation index.
+             *
+             * @tparam I The implementation index.
+             * @param m The metric index of the output policy.
+             * @return std::string_view The name of the metric.
+             */
+            template <std::size_t I>
+            static constexpr std::string_view spec_metric_name(std::size_t m) { return std::tuple_element_t<I, PolicyTup>::metric_name(m); }
+
+            /**
+             * @brief Set the width of the print columns.
+             */
             static constexpr int PRINT_COL_WIDTH = 20;
 
-            void print_header() const {
+            /**
+             * @brief Print the header for the output table.
+             * 
+             * This includes the framework title, number of implementations,
+             * warmup iterations, and benchmark iterations.
+             * It also prints the column headers for the output table.
+             * The metric headers are printed dynamically based on the number of output specs.
+             */
+            void print_header() const
+            {
                 std::cout << std::left << comppare::internal::ansi::BOLD
                           << "*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=\n============ "
                           << comppare::internal::ansi::ITALIC("ComPPare Framework")
@@ -272,61 +450,91 @@ namespace comppare
                           << std::setw(PRINT_COL_WIDTH) << "Func µs"
                           << std::setw(PRINT_COL_WIDTH) << "Ovhd µs";
 
-                // prints metric header 
-                auto&& _print_metric_header = [this]<std::size_t I>() {
-                    for (std::size_t m = 0; m < this->template spec_metric_count<I>(); ++m) {
+                // prints metric header
+                auto &&_print_metric_header = [this]<std::size_t I>()
+                {
+                    for (std::size_t m = 0; m < this->template spec_metric_count<I>(); ++m)
+                    {
                         std::cout << std::setw(PRINT_COL_WIDTH)
-                                << comppare::internal::ansi::UNDERLINE(
-                                    comppare::internal::ansi::BOLD(
-                                        std::string(this->template spec_metric_name<I>(m))
-                                        + "[" + std::to_string(I) + "]"));
+                                  << comppare::internal::ansi::UNDERLINE(
+                                         comppare::internal::ansi::BOLD(
+                                             std::string(this->template spec_metric_name<I>(m)) + "[" + std::to_string(I) + "]"));
                     }
                 };
                 // lambda to call print metric header across each metric by unpacking I
-                [&]<std::size_t... I>(std::index_sequence<I...>) {
-                    ( _print_metric_header.template operator()<I>(), ... );
+                [&]<std::size_t... I>(std::index_sequence<I...>)
+                {
+                    (_print_metric_header.template operator()<I>(), ...);
                 }(std::make_index_sequence<NUM_OUT>{});
-                
+
                 std::cout << std::endl;
             }
 
-
+            /**
+             * @brief Compute the error metrics for each output specification.
+             *
+             *
+             * @param errs The tuple of error policies.
+             * @param test The test output.
+             * @param ref The reference output.
+             */
             void compute_errors(PolicyTup &errs, const OutTup &test, const OutTup &ref)
             {
-                auto && _compute_errors = [&]<std::size_t I>()
-                {comppare::internal::policy::compute_error(std::get<I>(errs), std::get<I>(test), std::get<I>(ref));};
+                auto &&_compute_errors = [&]<std::size_t I>()
+                { comppare::internal::policy::compute_error(std::get<I>(errs), std::get<I>(test), std::get<I>(ref)); };
 
-                [&]<std::size_t... I>(std::index_sequence<I...>) {
+                [&]<std::size_t... I>(std::index_sequence<I...>)
+                {
                     (_compute_errors.template operator()<I>(), ...);
                 }(std::make_index_sequence<NUM_OUT>{});
             }
 
+            /**
+             * @brief Check if any of the error policies indicate a failure.
+             *
+             * @param errs The tuple of error policies to check.
+             * @return true if any policy indicates a failure, false otherwise.
+             */
             bool any_fail(const PolicyTup &errs) const
             {
-                auto && _any_fail = [&]<std::size_t I>()->bool{
+                auto &&_any_fail = [&]<std::size_t I>() -> bool
+                {
                     return comppare::internal::policy::is_fail(std::get<I>(errs));
                 };
 
-                return [&]<std::size_t... I>(std::index_sequence<I...>)->bool{
+                return [&]<std::size_t... I>(std::index_sequence<I...>) -> bool
+                {
                     bool fail = false;
                     ((fail |= _any_fail.template operator()<I>()), ...);
                     return fail;
                 }(std::make_index_sequence<NUM_OUT>{});
             }
 
+            /**
+             * @brief Print the metrics for each output specification.
+             *
+             * @param errs The tuple of error policies containing the metrics to print.
+             */
             void print_metrics(const PolicyTup &errs) const
             {
-                auto&& _print_metrics = [this, &errs]<std::size_t I>(){
-                      for (std::size_t m = 0; m < spec_metric_count<I>(); ++m)
-                       std::cout << std::setw(PRINT_COL_WIDTH) << std::scientific << std::get<I>(errs).metric(m);
-                    };
+                auto &&_print_metrics = [&errs]<std::size_t I>()
+                {
+                    for (std::size_t m = 0; m < spec_metric_count<I>(); ++m)
+                        std::cout << std::setw(PRINT_COL_WIDTH) << std::scientific << std::get<I>(errs).metric(m);
+                };
 
-                [&]<std::size_t... I>(std::index_sequence<I...>){
-                    (_print_metrics.template operator()<I>(),...);
+                [&]<std::size_t... I>(std::index_sequence<I...>)
+                {
+                    (_print_metrics.template operator()<I>(), ...);
                 }(std::make_index_sequence<NUM_OUT>{});
-                
             }
 
+            /**
+             * @brief Get the output by index.
+             *
+             * @param idx The index of the output.
+             * @return Shared pointer to the output tuple.
+             */
             inline OutPtr get_output_by_index_(const size_t idx) const
             {
                 if (outputs_.empty())
@@ -337,6 +545,12 @@ namespace comppare
                 return outputs_[idx];
             }
 
+            /**
+             * @brief Get the output by implementation name.
+             *
+             * @param name The name of the implementation.
+             * @return Shared pointer to the output tuple.
+             */
             inline OutPtr get_output_by_name_(const std::string_view name) const
             {
                 if (outputs_.empty())
@@ -351,6 +565,12 @@ namespace comppare
                 throw std::invalid_argument(os.str());
             }
 
+            /**
+             * @brief Unpack the output tuple into the provided output pointers.
+             *
+             * @param outtup The output tuple to unpack.
+             * @param outs The output pointers to fill.
+             */
             void unpack_output_(const OutTup &outtup, val_t<Specs> *...outs) const
             {
                 std::apply(
@@ -365,16 +585,40 @@ namespace comppare
             // Constructor to initialize the OutputContext with inputs
             // This is used to hold and pass the same input arguments/data for all implementations
             // The inputs are perfectly forwarded -- for instance taking ownership when moving
+
+            /**
+             * @brief Construct a new OutputContext
+             *
+             * @tparam Ins The types of the input arguments
+             * @param ins The input arguments
+             *
+             * This constructor initializes the OutputContext with the provided input arguments.
+             * The inputs are perfectly forwarded to allow for move and copy semantics.
+             */
             template <typename... Ins>
             explicit OutputContext(Ins &&...ins)
                 : inputs_(std::forward<Ins>(ins)...) {}
 
+            /** @brief Deleted copy constructor */
             OutputContext(const OutputContext &other) = delete;
+            /** @brief Deleted copy assignment operator */
             OutputContext &operator=(const OutputContext &other) = delete;
+            /** @brief Deleted move constructor */
             OutputContext(OutputContext &&other) = delete;
+            /** @brief Deleted move assignment operator */
             OutputContext &operator=(OutputContext &&other) = delete;
 
-            // Function to set a reference implementation
+            /**
+             * @brief Set a reference implementation
+             *
+             * @tparam F The type of the function
+             * @param name The name of the implementation
+             * @param f The function to execute
+             * @return The implementation instance
+             *
+             * This function sets a reference implementation to the comparison framework.
+             * The reference implementation is always the first one added and is used as the baseline for comparison.
+             */
             template <typename F>
                 requires std::invocable<F, const Inputs &..., val_t<Specs> &...>
             Impl &set_reference(std::string name, F &&f)
@@ -383,7 +627,17 @@ namespace comppare
                 return impls_.front();
             }
 
-            // Function to add an implementation to the comparison
+            /**
+             * @brief Add a new implementation to the comparison framework
+             *
+             * @tparam F The type of the function
+             * @param name The name of the implementation
+             * @param f The function to execute
+             * @return The implementation instance
+             *
+             * This function adds a new implementation to the comparison framework.
+             * The function will be run and compared against the reference implementation.
+             */
             template <typename F>
                 requires std::invocable<F, const Inputs &..., val_t<Specs> &...>
             Impl &add(std::string name, F &&f)
@@ -398,53 +652,108 @@ namespace comppare
 
             // returns a shared pointer to the reference output
             // std::shared_ptr<std::tuple<Outputs...>>
+
+            /**
+             * @brief Get the reference output by pointer
+             *
+             * @return A shared pointer to the reference output tuple
+             *
+             * This function returns a shared pointer to the output of the reference implementation.
+             */
             const OutPtr get_reference_output() const
             {
                 return get_output_by_index_(0);
             }
 
+            /**
+             * @brief Get the output for a specific implementation by pointer
+             *
+             * @param idx The index of the implementation
+             * @return A shared pointer to the output of the implementation
+             *
+             * This function returns a shared pointer to the output of the implementation at the specified index.
+             */
             const OutPtr get_output(const size_t idx) const
             {
                 return get_output_by_index_(idx);
             }
 
+            /**
+             * @brief Get the output for a specific implementation by name
+             *
+             * @param name The name of the implementation
+             * @return A shared pointer to the output of the implementation
+             *
+             * This function returns a shared pointer to the output of the implementation with the specified name.
+             */
             const OutPtr get_output(const std::string_view name) const
             {
                 return get_output_by_name_(name);
             }
 
-            // Unpack the outputs into the provided pointers
-            template <typename U = void>
-                requires(sizeof...(Specs) > 0)
+            /**
+             * @brief Copies the reference output into provided pointer to variables.
+             *
+             *
+             * @param outs One pointer per output element. Each pointer must point
+             *             to writable storage of the corresponding output type.
+             *
+             * @details
+             * Internally, this looks up the output tuple at index 0 (the reference),
+             * and unpacks its elements into the provided pointers. This allows
+             * callers to access values without dealing with `std::tuple` directly.
+             */
             void get_reference_output(val_t<Specs> *...outs) const
+                requires(sizeof...(Specs) > 0)
             {
                 const auto &outtup = *get_output_by_index_(0);
                 unpack_output_(outtup, outs...);
             }
 
-            template <typename U = void>
-                requires(sizeof...(Specs) > 0)
+            /**
+             * @brief Copies the outputs of a specific implementation by index into provided pointer to variables.
+             *
+             *
+             * @param outs One pointer per output element. Each pointer must point
+             *             to writable storage of the corresponding output type.
+             *
+             * @details
+             * Internally, this looks up the output tuple at the specified index,
+             * and unpacks its elements into the provided pointers. This allows
+             * callers to access values without dealing with `std::tuple` directly.
+             */
             void get_output(const size_t idx, val_t<Specs> *...outs) const
+                requires(sizeof...(Specs) > 0)
             {
                 const auto &outtup = *get_output_by_index_(idx);
                 unpack_output_(outtup, outs...);
             }
 
-            template <typename U = void>
-                requires(sizeof...(Specs) > 0)
+            /**
+             * @brief Copies the outputs of a specific implementation by name into provided pointer to variables.
+             *
+             *
+             * @param outs One pointer per output element. Each pointer must point
+             *             to writable storage of the corresponding output type.
+             *
+             * @details
+             * Internally, this looks up the output tuple at the specified name,
+             * and unpacks its elements into the provided pointers. This allows
+             * callers to access values without dealing with `std::tuple` directly.
+             */
             void get_output(const std::string_view name, val_t<Specs> *...outs) const
+                requires(sizeof...(Specs) > 0)
             {
                 const auto &outtup = *get_output_by_name_(name);
                 unpack_output_(outtup, outs...);
             }
 
-            /*
-            Runs the comparison for all added implementations.
-            Optional Arguments:
-            - argc: Number of command line arguments
-            - argv: Array of command line arguments
-            This function will parse the command line arguments to set warmup, benchmark iterations and tolerance for floating point errors.
-            */
+            /**
+             * @brief Runs the comparison for all added implementations.
+             *
+             * @param argc Number of command line arguments
+             * @param argv Array of command line arguments
+             */
             void run(int argc = 0,
                      char **argv = nullptr)
             {
@@ -519,10 +828,10 @@ namespace comppare
                 } /* for impls */
 
                 comppare::current_state::set_using_plugin(true);
-                if (plugins_)
+                if (plugin_)
                 {
-                    plugins_->initialize(argc, argv);
-                    plugins_->run();
+                    plugin_->initialize(argc, argv);
+                    plugin_->run();
                 }
                 comppare::current_state::set_using_plugin(false);
             } /* run */
@@ -530,9 +839,17 @@ namespace comppare
     }; /* InputContext */
 } // namespace comppare
 
+/**
+ * @brief Macro to mark the start of a hot loop for benchmarking.
+ * This macro defines a lambda function `hotloop_body` that encapsulates the code to be benchmarked.
+ */
 #define HOTLOOPSTART \
     auto &&hotloop_body = [&]() { /* start of lambda */
 
+/**
+ * @brief Internal macro to perform the warm-up and timed benchmarking loops.
+ * This macro is used within the `HOTLOOPEND` macro to execute the benchmarking process.
+ */
 #define COMPPARE_HOTLOOP_BENCH                                         \
     /* Warm-up */                                                      \
     auto warmup_t0 = comppare::config::clock_t::now();                 \
@@ -572,12 +889,21 @@ namespace comppare
     COMPPARE_HOTLOOP_BENCH;
 #endif
 
+/**
+ * @brief Macro to wrap a code block for benchmarking.
+ */
 #define HOTLOOP(LOOP_BODY) \
     HOTLOOPSTART LOOP_BODY HOTLOOPEND
 
+/**
+ * @brief Macro to mark the start of a manual timer for benchmarking.
+ */
 #define MANUAL_TIMER_START \
     auto t_manual_start = comppare::config::clock_t::now();
 
+/**
+ * @brief Macro to mark the end of a manual timer for benchmarking.
+ */
 #define MANUAL_TIMER_END                                   \
     auto t_manual_stop = comppare::config::clock_t::now(); \
     SET_ITERATION_TIME(t_manual_stop - t_manual_start);
@@ -597,9 +923,17 @@ namespace comppare
     comppare::config::increment_roi_us(TIME);
 #endif
 
+/**
+ * @brief Macro to mark the start of a GPU hot loop for benchmarking.
+ * This macro defines a lambda function `hotloop_body` that encapsulates the code to be benchmarked.
+ */
 #define GPU_HOTLOOPSTART \
     auto &&hotloop_body = [&]() { /* start of lambda */
 
+/** 
+ * @brief Internal macro to perform the warm-up and timed benchmarking loops.
+ * This macro is used within the `GPU_HOTLOOPEND` macro to execute the benchmarking process.
+ */
 #if defined(__CUDACC__)
 #define GPU_HOTLOOPEND                                                 \
     }                                                                  \
