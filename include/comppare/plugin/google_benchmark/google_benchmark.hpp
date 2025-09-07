@@ -30,7 +30,6 @@ SOFTWARE.
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <vector>
 #include <algorithm>
 #include <cstring>
 #include <benchmark/benchmark.h>
