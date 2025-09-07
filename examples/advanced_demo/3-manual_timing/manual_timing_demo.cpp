@@ -12,7 +12,7 @@ Helper Functions
 static void random_fill(std::vector<int> &v)
 {
     std::mt19937 gen(123);
-    std::uniform_real_distribution<float> dist(0.0f, 1e5f);
+    std::uniform_real_distribution<float> dist(0.0f, 1e3f);
     for (size_t i = 0; i < v.size(); ++i)
         v[i] = static_cast<int>(dist(gen));
 }
