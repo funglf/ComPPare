@@ -14,3 +14,6 @@ How to ignore operations within the hotloop. For instance each loop requires a n
 
 ## [4. DoNotOptimize](4-DoNotOptimize/README.md)
 Deep Dive into the working principles of DoNotOptimize function and how you can use it for your benchmarks.
+
+## [5. nvbench](5-nvbench/README.md)
+How to add nvbench on top of ComPPare.
