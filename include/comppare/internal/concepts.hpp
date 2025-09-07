@@ -21,6 +21,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+
+/**
+ * @file concepts.hpp
+ * @brief This file contains commonly used concepts internally within the ComPPare library.
+ */
+
 #pragma once
 #include <concepts>
 #include <type_traits>
@@ -28,32 +34,68 @@ SOFTWARE.
 #include <string>
 #include <ostream>
 
+/**
+ * @namespace comppare::internal::concepts
+ * @brief Contains commonly used concepts internally within the ComPPare library.
+ */
 namespace comppare::internal::concepts
 {
-    /*
-    Concept for valid type that can be streamed to an output stream.
-    For example, std::string, int, double, etc; NOT std::vector<int>, std::map<int, int>, etc.
-    */
+    /**
+     * @brief Concept for a type that can be streamed to an output stream.
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept Streamable =
         requires(std::ostream &os, T v) { { os << v } -> std::same_as<std::ostream&>; };
 
+    /**
+     * @brief Concept for a floating-point type.
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept FloatingPoint = std::floating_point<std::remove_cvref_t<T>>;
 
+    /**
+     * @brief Concept for an integral type.
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept Integral = std::integral<std::remove_cvref_t<T>>;
 
+
+    /**
+     * @brief Concept for an arithmetic type (either floating-point or integral).
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept Arithmetic = FloatingPoint<T> || Integral<T>;
 
+
+    /**
+     * @brief Concept for a string type.
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept String = std::same_as<std::remove_cvref_t<T>, std::string>;
 
+    /**
+     * @brief Concept for a void type.
+     * 
+     * @tparam T 
+     */
     template <typename T>
     concept Void = std::is_void_v<std::remove_cvref_t<T>>;
 
-    // Concept for a range of arithmetic types, excluding strings
+    /**
+     * @brief Concept for a range of arithmetic types, excluding strings.
+     * 
+     * @tparam R 
+     */
     template <typename R>
     concept RangeOfArithmetic =
         std::ranges::forward_range<std::remove_cvref_t<R>> && Arithmetic<std::remove_cvref_t<std::ranges::range_value_t<std::remove_cvref_t<R>>>> && (!String<std::remove_cvref_t<R>>);
