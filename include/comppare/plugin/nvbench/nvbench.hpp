@@ -29,6 +29,7 @@ SOFTWARE.
 #include <memory>
 #include <functional>
 #include <sstream>
+#include <string>
 
 namespace comppare::plugin::nvbenchplugin
 {
@@ -204,7 +205,11 @@ namespace comppare::plugin::nvbenchplugin
     };
 }
 
-#define PLUGIN_HOTLOOP_BENCH          \
+#define PLUGIN_HOTLOOP_BENCH                                           \
+    auto state_ = comppare::plugin::nvbenchplugin::state::get_state(); \
+    state_->exec([&](nvbench::launch &launch) { hotloop_body(); });
+
+#define GPU_PLUGIN_HOTLOOP_BENCH                                       \
     auto state_ = comppare::plugin::nvbenchplugin::state::get_state(); \
     state_->exec([&](nvbench::launch &launch) { hotloop_body(); });
 
