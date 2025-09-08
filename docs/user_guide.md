@@ -8,6 +8,7 @@
   - [2.2. ComPPare `main()`](#22-comppare-main)
   - [2.3. Google Benchmark Plugin](#23-google-benchmark-plugin)
   - [2.4. `DoNotOptimize()`](#24-donotoptimize)
+  - [Code Documentation](#code-documentation)
   
 # 1. Getting Started
 ## 1.1. Install
@@ -812,3 +813,14 @@ impl(...)
 }
 
 ```
+
+## Code Documentation
+To Generate code documentation, use doxygen:
+```bash
+cd docs/
+doxygen
+```
+
+it should create a directory `docs/html`
+
+Find `docs/html/index.html` and you will be able to view the documentation in your own web browser.
