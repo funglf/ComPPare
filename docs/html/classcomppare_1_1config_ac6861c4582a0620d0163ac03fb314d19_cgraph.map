@@ -1,5 +1,0 @@
-<map id="comppare::config::set_all_fp_tolerance" name="comppare::config::set_all_fp_tolerance">
-<area shape="rect" id="Node000001" title="Set the floating&#45;point tolerance for all supported types." alt="" coords="5,5,153,46"/>
-<area shape="rect" id="Node000002" href="$classcomppare_1_1config.html#a91e094e77d9468f8361f2b9b99aff3c2" title="Get the floating&#45;point tolerance for a specific floating&#45;point type." alt="" coords="201,5,341,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,23,185,23,185,28,153,28"/>
-</map>

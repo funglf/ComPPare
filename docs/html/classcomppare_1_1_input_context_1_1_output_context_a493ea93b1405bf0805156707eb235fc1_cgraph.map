@@ -1,7 +1,0 @@
-<map id="comppare::InputContext::OutputContext::get_output" name="comppare::InputContext::OutputContext::get_output">
-<area shape="rect" id="Node000001" title="Copies the outputs of a specific implementation by index into provided pointer to variables." alt="" coords="5,53,189,94"/>
-<area shape="rect" id="Node000002" href="$classcomppare_1_1_input_context_1_1_output_context.html#a2b223da0accd2e5946d983bd70049a2a" title="Get the output by index." alt="" coords="237,5,420,61"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,55,221,49,222,54,189,60"/>
-<area shape="rect" id="Node000003" href="$classcomppare_1_1_input_context_1_1_output_context.html#a3ef55c765cda265d00f75dc1736f2001" title="Unpack the output tuple into the provided output pointers." alt="" coords="246,85,410,141"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,86,231,94,230,99,188,92"/>
-</map>

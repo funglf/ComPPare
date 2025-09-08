@@ -1,5 +1,0 @@
-<map id="comppare::InputContext::OutputContext::get_reference_output" name="comppare::InputContext::OutputContext::get_reference_output">
-<area shape="rect" id="Node000001" title="Get the reference output by pointer." alt="" coords="5,5,207,61"/>
-<area shape="rect" id="Node000002" href="$classcomppare_1_1_input_context_1_1_output_context.html#a2b223da0accd2e5946d983bd70049a2a" title="Get the output by index." alt="" coords="255,5,438,61"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,30,239,30,239,36,207,36"/>
-</map>

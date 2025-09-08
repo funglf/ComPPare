@@ -1,7 +1,0 @@
-<map id="examples/saxpy_googlebench/saxpy_cpu.hpp" name="examples/saxpy_googlebench/saxpy_cpu.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="115,5,311,46"/>
-<area shape="rect" id="Node000002" href="$saxpy__googlebench_2main_8cpp.html" title=" " alt="" coords="5,94,202,135"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,58,130,96,127,91,174,54"/>
-<area shape="rect" id="Node000003" href="$saxpy__googlebench_2saxpy__cpu_8cpp.html" title=" " alt="" coords="225,94,422,135"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,54,300,91,297,96,248,58"/>
-</map>
