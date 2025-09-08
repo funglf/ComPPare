@@ -21,10 +21,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
-
 /**
  * @file concepts.hpp
+ * @author Leong Fan FUNG (funglf) <stanleyfunglf@gmail.com>
  * @brief This file contains commonly used concepts internally within the ComPPare library.
+ * @date 2025
+ * @copyright MIT License
+ * @see LICENSE For full license text.
  */
 
 #pragma once

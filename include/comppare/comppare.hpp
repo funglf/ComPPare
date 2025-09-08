@@ -24,8 +24,11 @@ SOFTWARE.
 
 /**
  * @file comppare.hpp
+ * @author Leong Fan FUNG (funglf) <stanleyfunglf@gmail.com>
  * @brief This file is the main include file for the ComPPare framework.
- *
+ * @date 2025
+ * @copyright MIT License
+ * @see LICENSE For full license text.
  */
 
 #pragma once
@@ -62,7 +65,7 @@ SOFTWARE.
 
 /**
  * @brief ComPPare framework main namespace.
- * \namespace comppare
+ * @namespace comppare
  */
 namespace comppare
 {
@@ -72,21 +75,21 @@ namespace comppare
     Reference:
     CppCon 2015: Chandler Carruth "Tuning C++: Benchmarks, and CPUs, and Compilers! Oh My!"
     Google Benchmark: https://github.com/google/benchmark
+    
+    Copyright 2015 Google Inc. All rights reserved.
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+        http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
     */
-
-    // Copyright 2015 Google Inc. All rights reserved.
-    //
-    // Licensed under the Apache License, Version 2.0 (the "License");
-    // you may not use this file except in compliance with the License.
-    // You may obtain a copy of the License at
-    //
-    //     http://www.apache.org/licenses/LICENSE-2.0
-    //
-    // Unless required by applicable law or agreed to in writing, software
-    // distributed under the License is distributed on an "AS IS" BASIS,
-    // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    // See the License for the specific language governing permissions and
-    // limitations under the License.
 
     /**
      * @brief Prevents the compiler from optimizing away the given value.
@@ -263,8 +266,13 @@ namespace comppare
              */
             PolicyTup policies_ref_;
 
-            // Number of output arguments -- sizeof... is used to get the number of elements in a pack
-            // https://en.cppreference.com/w/cpp/language/sizeof....html
+            /**
+             * @brief Number of output specifications.
+             *
+             * This is equal to the number of outputs of a function.
+             * 
+             * @see https://en.cppreference.com/w/cpp/language/sizeof....html
+             */
             static constexpr size_t NUM_OUT = sizeof...(Specs);
 
             /**
@@ -289,7 +297,7 @@ namespace comppare
             }
 
             /**
-             * \struct Impl
+             * @struct Impl
              * @brief Internal container representing one registered implementation.
              *
              * Each `Impl` bundles together:
@@ -369,6 +377,10 @@ namespace comppare
                  *
                  * @tparam Plugin The plugin type to attach.
                  * @return The return of the plugin's `register_impl` method.
+                 * 
+                 * @note decltype(auto) is used to preserve the return type of the plugin's register_impl method.
+                 * When using `auto`, the return type would remove its reference-ness and const-ness; while decltype(auto) preserves it.
+                 * Reference: Effective Modern C++ Item 3: Understand decltype
                  */
                 template <template <class, class> class Plugin>
                     requires comppare::plugin::ValidPlugin<Plugin, InTup, OutTup, Func>
@@ -461,9 +473,13 @@ namespace comppare
                                              std::string(this->template spec_metric_name<I>(m)) + "[" + std::to_string(I) + "]"));
                     }
                 };
+
                 // lambda to call print metric header across each metric by unpacking I
                 [&]<std::size_t... I>(std::index_sequence<I...>)
                 {
+                    // .template is a disambiguator as 
+                    // if using _print_metric_header<I>(),
+                    // the compiler will treat `<` as an operator
                     (_print_metric_header.template operator()<I>(), ...);
                 }(std::make_index_sequence<NUM_OUT>{});
 
@@ -649,10 +665,6 @@ namespace comppare
             /*
             Getter for the output results
             */
-
-            // returns a shared pointer to the reference output
-            // std::shared_ptr<std::tuple<Outputs...>>
-
             /**
              * @brief Get the reference output by pointer
              *

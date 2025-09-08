@@ -21,6 +21,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+
+/**
+ * @file config.hpp
+ * @author Leong Fan FUNG (funglf) <stanleyfunglf@gmail.com>
+ * @brief This file contains configuration settings for the ComPPare library.
+ * @date 2025
+ * @copyright MIT License
+ * @see LICENSE For full license text.
+ */
+
 #pragma once
 #include <chrono>
 #include <utility>
@@ -30,6 +40,9 @@ namespace comppare
 {
     /**
      * @brief Configuration singleton for the ComPPare library.
+     * 
+     * @note Singleton is chosen as this is a header only library, 
+     * using global variables will require user to declare them in a .cpp file.
      */
     class config
     {
@@ -223,6 +236,8 @@ namespace comppare
      *
      * This singleton class holds the current state of the benchmarking process.
      * It tracks whether a plugin is being used and the name of the current implementation.
+     * @note Singleton is chosen as this is a header only library, 
+     * using global variables will require user to declare them in a .cpp file.
      */
     class current_state
     {
