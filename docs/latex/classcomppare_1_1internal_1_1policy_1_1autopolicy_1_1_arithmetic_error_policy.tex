@@ -1,0 +1,184 @@
+\doxysection{comppare\+::internal\+::policy\+::autopolicy\+::Arithmetic\+Error\+Policy\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{}\label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+
+
+Concept for types supported by automatic error policy selection.  
+
+
+
+
+{\ttfamily \#include $<$policy.\+hpp$>$}
+
+
+
+Collaboration diagram for comppare\+::internal\+::policy\+::autopolicy\+::Arithmetic\+Error\+Policy\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a6da9b6dca169eb3be15ce01da3edd4b7}{Arithmetic\+Error\+Policy}} ()
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_ad6f28eec51970e35e91890fc272eb38a}{\texorpdfstring{$\sim$}{\string~}\+Arithmetic\+Error\+Policy}} ()=default
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ T $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a277360f87da9588867f561368334d51f}{metric}} (std\+::size\+\_\+t) const
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a3468314dc161e6f765c0beec0a2a4cd3}{is\+\_\+fail}} () const
+\item 
+void \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9bb57d41f27b1d0a061feff1d15bf3a3}{compute\+\_\+error}} (const T \&a, const T \&b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a90d923a6261fe4b75de10d7d60b241f2}{metric\+\_\+count}} ()
+\item 
+static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_afc750d176d1a6b26f835a298f04d2155}{metric\+\_\+name}} (std\+::size\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}{error\+\_\+}} = T(0)
+\item 
+std\+::string \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f}{err\+\_\+msg\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794}{fail\+\_\+}} \{false\}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273}{valid\+\_\+}} \{true\}
+\item 
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}{tolerance\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::array \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9f02f53eb7225c4db09ce8495c0edb7d}{names}} \{"{}Total\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+requires \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_arithmetic}{comppare\+::internal\+::concepts\+::\+Arithmetic}}$<$T$>$\newline
+class comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy$<$ T $>$}
+Concept for types supported by automatic error policy selection. 
+
+Error policy for arithmetic types (e.\+g., int, float, double). Computes the absolute error between two values and checks if it exceeds a configurable tolerance.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a6da9b6dca169eb3be15ce01da3edd4b7}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!ArithmeticErrorPolicy@{ArithmeticErrorPolicy}}
+\index{ArithmeticErrorPolicy@{ArithmeticErrorPolicy}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ArithmeticErrorPolicy()}{ArithmeticErrorPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a6da9b6dca169eb3be15ce01da3edd4b7} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::\+Arithmetic\+Error\+Policy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_ad6f28eec51970e35e91890fc272eb38a}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!````~ArithmeticErrorPolicy@{\texorpdfstring{$\sim$}{\string~}ArithmeticErrorPolicy}}
+\index{````~ArithmeticErrorPolicy@{\texorpdfstring{$\sim$}{\string~}ArithmeticErrorPolicy}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ArithmeticErrorPolicy()}{\string~ArithmeticErrorPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_ad6f28eec51970e35e91890fc272eb38a} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{Arithmetic\+Error\+Policy}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9bb57d41f27b1d0a061feff1d15bf3a3}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!compute\_error@{compute\_error}}
+\index{compute\_error@{compute\_error}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{compute\_error()}{compute\_error()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9bb57d41f27b1d0a061feff1d15bf3a3} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{const T \&}]{a}{, }\item[{const T \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a3468314dc161e6f765c0beec0a2a4cd3}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!is\_fail@{is\_fail}}
+\index{is\_fail@{is\_fail}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{is\_fail()}{is\_fail()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a3468314dc161e6f765c0beec0a2a4cd3} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::is\+\_\+fail (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a277360f87da9588867f561368334d51f}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!metric@{metric}}
+\index{metric@{metric}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{metric()}{metric()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a277360f87da9588867f561368334d51f} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ T $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::metric (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a90d923a6261fe4b75de10d7d60b241f2}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!metric\_count@{metric\_count}}
+\index{metric\_count@{metric\_count}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_count()}{metric\_count()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a90d923a6261fe4b75de10d7d60b241f2} 
+template$<$typename T$>$ \\
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::metric\+\_\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_afc750d176d1a6b26f835a298f04d2155}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!metric\_name@{metric\_name}}
+\index{metric\_name@{metric\_name}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_name()}{metric\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_afc750d176d1a6b26f835a298f04d2155} 
+template$<$typename T$>$ \\
+constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::metric\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!err\_msg\_@{err\_msg\_}}
+\index{err\_msg\_@{err\_msg\_}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{err\_msg\_}{err\_msg\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f} 
+template$<$typename T$>$ \\
+std\+::string \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::err\+\_\+msg\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!error\_@{error\_}}
+\index{error\_@{error\_}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{error\_}{error\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f} 
+template$<$typename T$>$ \\
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::error\+\_\+ = T(0)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!fail\_@{fail\_}}
+\index{fail\_@{fail\_}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{fail\_}{fail\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::fail\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9f02f53eb7225c4db09ce8495c0edb7d}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!names@{names}}
+\index{names@{names}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9f02f53eb7225c4db09ce8495c0edb7d} 
+template$<$typename T$>$ \\
+std\+::array \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::names \{"{}Total\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!tolerance\_@{tolerance\_}}
+\index{tolerance\_@{tolerance\_}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{tolerance\_}{tolerance\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed} 
+template$<$typename T$>$ \\
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::tolerance\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273}\index{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}!valid\_@{valid\_}}
+\index{valid\_@{valid\_}!comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$@{comppare::internal::policy::autopolicy::ArithmeticErrorPolicy$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{valid\_}{valid\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy}}$<$ T $>$\+::valid\+\_\+ \{true\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{policy_8hpp}{policy.\+hpp}}\end{DoxyCompactItemize}

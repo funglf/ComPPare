@@ -1,0 +1,959 @@
+\doxysection{examples/advanced\+\_\+demo/4-\/\+Do\+Not\+Optimize Directory Reference}
+\hypertarget{dir_14e75ca7720201dcafdfda602efa671a}{}\label{dir_14e75ca7720201dcafdfda602efa671a}\index{examples/advanced\_demo/4-\/DoNotOptimize Directory Reference@{examples/advanced\_demo/4-\/DoNotOptimize Directory Reference}}
+
+
+Full AArch64 Assembly code of {\ttfamily \doxylink{_do_not_optimize__demo_8cpp_a0b3e578501d76859fa31815d0c3b9ef9}{SAXPY\+\_\+\+DONOTOPTIMIZE()}} with {\ttfamily -\/O3} optimization.  
+
+
+Directory dependency graph for 4-\/Do\+Not\+Optimize\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{dir_14e75ca7720201dcafdfda602efa671a_dep}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_d16ef018ff3f349186211457310dba0f}{build}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{_do_not_optimize__demo_8cpp}{Do\+Not\+Optimize\+\_\+demo.\+cpp}}
+\item 
+file \mbox{\hyperlink{saxpy_8cpp}{saxpy.\+cpp}}
+\item 
+file \mbox{\hyperlink{saxpy___do_not_optimize_8cpp}{saxpy\+\_\+\+Do\+Not\+Optimize.\+cpp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Full AArch64 Assembly code of {\ttfamily \doxylink{_do_not_optimize__demo_8cpp_a0b3e578501d76859fa31815d0c3b9ef9}{SAXPY\+\_\+\+DONOTOPTIMIZE()}} with {\ttfamily -\/O3} optimization. 
+
+$<$style$>$ details summary \{ list-\/style\+: none; margin\+: 1em 0 0.\+5em; font-\/size\+: 1.\+125em; font-\/weight\+: bold; cursor\+: pointer; \}
+
+details summary\+:\+:-\/webkit-\/details-\/marker \{ display\+: none; \}
+
+details summary\+::before \{ content\+: "{}▶"{}; display\+: inline-\/block; font-\/size\+: 1.\+5em; line-\/height\+: 1; margin-\/right\+: 0.\+5em; transition\+: transform 0.\+2s ease; \}
+
+details\mbox{[}open\mbox{]} summary\+::before \{ content\+: "{}▼"{}; \} $<$/style$>$
+
+\doxysubsection*{Advanced Demo 4 — {\bfseries{Do\+Not\+Optimize}} }
+
+
+\begin{DoxyItemize}
+\item 1. Introduction
+\item 2. Quick Start
+\begin{DoxyItemize}
+\item 2.1. Build
+\item 2.2. Run
+\item 2.3. Results
+\begin{DoxyItemize}
+\item 2.3.1. Interpreting Results
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item 3. Problem of Optimization
+\begin{DoxyItemize}
+\item 3.0.1. On AArch64 (Apple M2)
+\item 3.0.2. On x86\textbackslash{}\+\_\+64
+\end{DoxyItemize}
+\item 4. “\+Just don’t optimize”…?
+\begin{DoxyItemize}
+\item 4.0.1. On AArch64 (Apple M2)
+\item 4.0.2. On x86\textbackslash{}\+\_\+64
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+4.1. Why Optimize?
+\begin{DoxyItemize}
+\item 5. Google Benchmark\textquotesingle{}s Solution
+\begin{DoxyItemize}
+\item 5.1. On AArch64 (Apple M2)
+\item 5.2. On x86\textbackslash{}\+\_\+64
+\begin{DoxyItemize}
+\item 5.2.1. Conclusion -\/-\/ \`{}\+Do\+Not\+Optimize()\`{} works!
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item 6. Inspecting \`{}\+Do\+Not\+Optimize()\`{}
+\begin{DoxyItemize}
+\item 6.1. Breakdown 1\+: Assembly
+\item 6.2. Breakdown 2\+: Meaning of this asm code
+\item 6.3. Breakdown 3\+: \`{}volatile\`{}
+\item 6.4. Conclusion
+\item 6.5. \`{}\+Do\+Not\+Optimize()\`{} in practice
+\end{DoxyItemize}
+\item 7. Example Case
+\begin{DoxyItemize}
+\item 7.1. Example Source Code
+\item 7.2. "{}Performance"{} difference
+\item 7.3. Compiler Warning
+\item 7.4. Inspection of the full asm code
+\begin{DoxyItemize}
+\item 7.4.1. On AArch64 (Apple M2)
+\item 7.4.2. On x86\textbackslash{}\+\_\+64
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsubsection*{1. Introduction}
+
+This example is used to demonstrate the functionality of {\ttfamily \doxylink{namespacecomppare_a047cefc5aebc47d079d502c2d189fe12}{comppare\+::\+Do\+Not\+Optimize()}}. This function is an {\bfseries{EXACT COPY of Google Benchmark\textquotesingle{}s \href{https://github.com/google/benchmark}{\texttt{(github link)}} {\ttfamily benchmark\+::\+Do\+Not\+Optimize()}}}
+
+This document will provide the explanation of the purpose, and mechanism of the function {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}}.
+
+\doxysubsubsubsection*{References\+: }
+
+
+\begin{DoxyEnumerate}
+\item \href{https://www.youtube.com/watch?v=nXaxk27zwlk&t=3319s}{\texttt{Cpp\+Con 2015\+: Chandler Carruth "{}\+Tuning C++\+: Benchmarks, and CPUs, and Compilers! Oh My!"{}}} ~\newline
+
+\item \href{https://github.com/google/benchmark}{\texttt{Google Benchmark Github Repository}} ~\newline
+
+\item \href{https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html\#Clobbers-and-Scratch-Registers}{\texttt{GNU Extended ASM Documentation}} ~\newline
+
+\end{DoxyEnumerate}
+
+\doxysubsubsubsection*{Disclaimer }
+
+I, LF Fung, am not the author of {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}}. The implementation of {\ttfamily \doxylink{namespacecomppare_a047cefc5aebc47d079d502c2d189fe12}{comppare\+::\+Do\+Not\+Optimize()}} is a verbatim of Google Benchmark\textquotesingle{}s {\ttfamily benchmark\+::\+Do\+Not\+Optimize()}.
+
+\doxysubsubsection*{2. Quick Start}
+
+\doxysubsubsubsection*{2.\+1. Build}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ }
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{make\ }
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsubsection*{1.\+1.\+1.\+1. (Optional) Build with Google Benchmark }
+
+At the CMake step\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DUSE\_GOOGLE\_BENCHMARK=ON}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{2.\+2. Run}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./DoNotOptimize\_demo\ -\/-\/warmup\ 10000\ -\/-\/iters\ 10000}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{2.\+3. Results}
+
+{\bfseries{On AArch64 Apple M2}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=}
+\DoxyCodeLine{============\ ComPPare\ Framework\ ============}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Number\ of\ implementations:\ \ \ \ \ \ \ \ \ \ \ \ \ 2}
+\DoxyCodeLine{Warmup\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 10000}
+\DoxyCodeLine{Benchmark\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10000}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ Func\ µs/Iter\ \ \ \ \ \ \ \ ROI\ µs/Iter\ \ \ \ \ \ \ Ovhd\ µs/Iter}
+\DoxyCodeLine{SAXPY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00}
+\DoxyCodeLine{SAXPY\_DONOTOPTIMIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 57.14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 28.60\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 28.54}
+
+\end{DoxyCode}
+
+
+{\bfseries{Additional Results from Google Benchmark}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{Benchmark\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Time\ \ \ \ \ \ \ \ \ \ \ \ \ CPU\ \ \ Iterations}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{SAXPY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.000\ ns\ \ \ \ \ \ \ \ 0.000\ ns\ \ \ 1000000000000}
+\DoxyCodeLine{SAXPY\_DONOTOPTIMIZE\ \ \ \ \ \ 28594\ ns\ \ \ \ \ \ \ \ 28427\ ns\ \ \ \ \ \ \ \ 25001}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \doxysubsubsubsubsection*{2.\+3.\+1. Interpreting Results}
+
+If you inspect {\ttfamily \doxylink{_do_not_optimize__demo_8cpp}{Do\+Not\+Optimize\+\_\+demo.\+cpp}}, both functions are practically the same, with the exception of an addition of {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}}. Read below to breakdown the reason to this performance difference.
+
+\doxysubsubsection*{3. Problem of Optimization}
+
+Compiler optimization can sometimes remove operations and variables completely.
+
+In {\ttfamily \doxylink{saxpy_8cpp}{saxpy.\+cpp}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_do_not_optimize__demo_8cpp_aa5b565b3eee10d362eab37bebfbd199e}{SAXPY}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ y)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ yout;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}};\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ yout\ =\ a\ *\ x[i]\ +\ y[i];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+When compiling at high optimization, the compiler realizes {\ttfamily yout} is just a temporary that’s never used elsewhere. As a result, {\ttfamily yout} is optimized out, and thus the whole saxpy operation would be optimized out.
+
+To verify that it’s been optimized away, compile to assembly and inspect the output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ CXX=g++\ \#or\ your\ choice\ of\ compiler}
+\DoxyCodeLine{\$\{CXX\}\ -\/O3\ -\/std=c++20\ -\/S\ -\/o\ saxpy.s\ saxpy.cpp}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsubsection*{3.\+0.\+1. On AArch64 (Apple M2)}
+
+{\ttfamily saxpy.\+s} compiled with {\ttfamily Apple clang version 15.\+0.\+0 (clang-\/1500.\+3.\+9.\+4)} on {\ttfamily arm64-\/apple-\/darwin23.\+1.\+0} (Apple M2 chip)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_Z5SAXPYfPKfS0\_:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ;\ @\_Z5SAXPYfPKfS0\_}
+\DoxyCodeLine{\ \ \ \ .cfi\_startproc}
+\DoxyCodeLine{;\ \%bb.0:}
+\DoxyCodeLine{\ \ \ \ ret}
+\DoxyCodeLine{\ \ \ \ .cfi\_endproc}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ;\ -\/-\/\ End\ function}
+
+\end{DoxyCode}
+
+
+The function body is practically empty\+: a single {\ttfamily ret} which is “return from subroutine” \href{https://developer.arm.com/documentation/dui0802/b/A64-General-Instructions/RET}{\texttt{Arm A64 Instruction Set\+: {\bfseries{RET}}}}. In simple terms, it just returns — nothing happens.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsubsection*{3.\+0.\+2. On x86\+\_\+64}
+
+The same phenomenon appears on x86 as well.
+
+{\ttfamily saxpy.\+s} compiled with {\ttfamily g++ (GCC) 15.\+1.\+0} on {\ttfamily x86\+\_\+64 Intel(\+R) Xeon(\+R) Platinum 8468}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_Z5SAXPYfPKfS0\_:}
+\DoxyCodeLine{.LFB0:}
+\DoxyCodeLine{\ \ \ \ .cfi\_startproc}
+\DoxyCodeLine{\ \ \ \ ret}
+\DoxyCodeLine{\ \ \ \ .cfi\_endproc}
+
+\end{DoxyCode}
+
+
+Intel® 64 and IA-\/32 Architectures Software Developer’s Manual Volume 2 (2A, 2B, 2C, \& 2D)\+: Instruction Set Reference, A–Z\+: Vol. 2B, 4-\/560, {\bfseries{RET — Return from Procedure}}.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsection*{4. “\+Just don’t optimize”…?}
+
+Compiling with {\ttfamily -\/O0} should prevent the loop from being optimized away. For the sake of verifying the effects of no optimisation, we can again compile to assembly. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ CXX=g++\ \#or\ your\ choice\ of\ compiler}
+\DoxyCodeLine{\$\{CXX\}\ -\/O0\ -\/std=c++20\ -\/S\ -\/o\ saxpy.s\ saxpy.cpp}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsubsection*{4.\+0.\+1. On AArch64 (Apple M2)}
+
+{\ttfamily saxpy.\+s} compiled with {\ttfamily Apple clang version 15.\+0.\+0 (clang-\/1500.\+3.\+9.\+4)} on {\ttfamily arm64-\/apple-\/darwin23.\+1.\+0} (Apple M2 chip)\+:
+
+
+
+{\bfseries{Full AArch64 Assembly code of {\ttfamily SAXPY()} with NO optimization }}\begin{adjustwidth}{1em}{0em}
+
+\begin{DoxyPre}{\ttfamily 
+5 \_\_Z5SAXPYfPKfS0\_:                       ; @\_Z5SAXPYfPKfS0\_
+6       .cfi\_startproc
+7 ; bb.0:
+8       sub     sp, sp, \#32
+9       .cfi\_def\_cfa\_offset 32
+10      str     s0, [sp, \#28]
+11      str     x0, [sp, \#16]
+12      str     x1, [sp, \#8]
+13      str     wzr, [sp]
+14      b       LBB0\_1
+15 LBB0\_1:                                 ; =>This Inner Loop Header: Depth=1
+16      ldr     w8, [sp]
+17      mov     w9, \#16960
+18      movk    w9, \#15, lsl \#16
+19      subs    w8, w8, w9
+20      cset    w8, ge
+21      tbnz    w8, \#0, LBB0\_4
+22      b       LBB0\_2
+23 LBB0\_2:                                 ;   in Loop: Header=BB0\_1 Depth=1
+24      ldr     s0, [sp, \#28]
+25      ldr     x8, [sp, \#16]
+26      ldrsw   x9, [sp]
+27      ldr     s1, [x8, x9, lsl \#2]
+28      ldr     x8, [sp, \#8]
+29      ldrsw   x9, [sp]
+30      ldr     s2, [x8, x9, lsl \#2]
+31      fmadd   s0, s0, s1, s2
+32      str     s0, [sp, \#4]
+33      b       LBB0\_3
+34 LBB0\_3:                                 ;   in Loop: Header=BB0\_1 Depth=1
+35      ldr     w8, [sp]
+36      add     w8, w8, \#1
+37      str     w8, [sp]
+38      b       LBB0\_1
+39 LBB0\_4:
+40      add     sp, sp, \#32
+41      ret
+42      .cfi\_endproc
+42                                        ; -\/-\/ End function
+}\end{DoxyPre}
+ \end{adjustwidth}
+
+
+~\newline
+
+
+\label{README.md_saxpyappleM2isa}%
+\Hypertarget{README.md_saxpyappleM2isa}%
+ The SAXPY operation can be found as Fused-\/\+Multiply-\/\+Add instruction on line 31\+: 
+\begin{DoxyPre}{\ttfamily 
+31      fmadd   s0, s0, s1, s2
+}\end{DoxyPre}
+
+
+\href{https://developer.arm.com/documentation/ddi0602/2025-06/SIMD-FP-Instructions/FMADD--Floating-point-fused-multiply-add--scalar--}{\texttt{Reference to Arm A64 Instruction Set\+: {\bfseries{FMADD}}}}
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsubsection*{4.\+0.\+2. On x86\+\_\+64}
+
+{\ttfamily saxpy.\+s} compiled with {\ttfamily g++ (GCC) 15.\+1.\+0} on {\ttfamily x86\+\_\+64 Intel(\+R) Xeon(\+R) Platinum 8468}
+
+
+
+{\bfseries{Full x86\+\_\+64 Assembly code of {\ttfamily SAXPY()} with NO optimization }}\begin{adjustwidth}{1em}{0em}
+
+\begin{DoxyPre}{\ttfamily 
+5 \_Z5SAXPYfPKfS0\_:
+6 .LFB0:
+7       .cfi\_startproc
+8       pushq   rbp
+9       .cfi\_def\_cfa\_offset 16
+10      .cfi\_offset 6, -\/16
+11      movq    rsp, rbp
+12      .cfi\_def\_cfa\_register 6
+13      movss   xmm0, -\/20(rbp)
+14      movq    rdi, -\/32(rbp)
+15      movq    rsi, -\/40(rbp)
+16      movl    \$0, -\/4(rbp)
+17      jmp     .L2
+18 .L3:
+19      movl    -\/4(rbp), eax
+20      cltq
+21      leaq    0(,rax,4), rdx
+22      movq    -\/32(rbp), rax
+23      addq    rdx, rax
+24      movss   (rax), xmm0
+25      movaps  xmm0, xmm1
+26      mulss   -\/20(rbp), xmm1
+27      movl    -\/4(rbp), eax
+28      cltq
+29      leaq    0(,rax,4), rdx
+30      movq    -\/40(rbp), rax
+31      addq    rdx, rax
+32      movss   (rax), xmm0
+33      addss   xmm1, xmm0
+34      movss   xmm0, -\/8(rbp)
+35      addl    \$1, -\/4(rbp)
+36 .L2:
+37      cmpl    \$999999, -\/4(rbp)
+38      jle     .L3
+39      nop
+40      nop
+41      popq    rbp
+42      .cfi\_def\_cfa 7, 8
+43      ret
+}\end{DoxyPre}
+ \end{adjustwidth}
+
+
+~\newline
+
+
+\label{README.md_saxpy_x86_isa}%
+\Hypertarget{README.md_saxpy_x86_isa}%
+ The SAXPY operation can also be found as separate multiply and addition scalar operations\+: 
+\begin{DoxyPre}{\ttfamily 
+26      mulss   -\/20(rbp), xmm1 
+33      addss   xmm1, xmm0
+}\end{DoxyPre}
+
+
+Intel® 64 and IA-\/32 Architectures Software Developer’s Manual Volume 2 (2A, 2B, 2C, \& 2D)\+: Instruction Set Reference, A–Z\+: Vol. 2B, 4-\/151, {\bfseries{MULSS — Multiply Scalar Single Precision Floating-\/\+Point Values}}. Vol. 2A, 3-\/24 , {\bfseries{ADDSS—\+Add Scalar Single Precision Floating-\/\+Point Values}}.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsection*{4.\+1. Why Optimize?}
+
+From these results, it shows that to avoid compiler optimizing away the operation is to simply turn off optimization completely. However, benchmarking the operations without optimisation may not be relavant to real-\/world performance as often production code are optimized. Therefore, we still need optimization, at the same time not optimize away the operation completely.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsection*{5. Google Benchmark\textquotesingle{}s Solution}
+
+Optimization is important to understand the performance of particular operations in production builds. This creates the conflicting ideas of {\ttfamily optimize} but {\ttfamily do not optimize away}. This was solved by Google in their \href{https://github.com/google/benchmark}{\texttt{benchmark}} -- a microbenchmarking library. Google Benchmark provides {\ttfamily benchmark\+::\+Do\+Not\+Optimize()} to prevent variables from being optimized away.
+
+With the same SAXPY function, we simply add \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()} around the temporary variable {\ttfamily yout} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_do_not_optimize__demo_8cpp_a0b3e578501d76859fa31815d0c3b9ef9}{SAXPY\_DONOTOPTIMIZE}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ y)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ yout;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}};\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ yout\ =\ a\ *\ x[i]\ +\ y[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{DoNotOptimize}}(yout);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+This {\ttfamily Do\+Not\+Optimize} call tells the compiler not to eliminate the temporary variable, so the operation itself won’t be optimized away.
+
+\DoxyHorRuler{0}
+ Compile with aggressive optimization and inspect the assembly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ CXX=g++\ \#\ or\ your\ choice\ of\ compiler}
+\DoxyCodeLine{\$\{CXX\}\ -\/O3\ -\/std=c++20\ -\/S\ -\/o\ saxpy\_DoNotOptimize.s\ saxpy\_DoNotOptimize.cpp}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{5.\+1. On AArch64 (Apple M2)}
+
+Compiled with {\ttfamily Apple clang version 15.\+0.\+0 (clang-\/1500.\+3.\+9.\+4)} on {\ttfamily arm64-\/apple-\/darwin23.\+1.\+0}\+:
+
+
+\begin{DoxyPre}{\ttfamily 
+   5 \_\_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_:        ; @\_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_
+6       .cfi\_startproc
+7 ; bb.0:
+8       sub     sp, sp, \#16
+9       .cfi\_def\_cfa\_offset 16
+10      mov     w8, \#16960
+11      movk    w8, \#15, lsl \#16
+12      add     x9, sp, \#4
+13      add     x10, sp, \#8
+14 LBB0\_1:                                 ; =>This Inner Loop Header: Depth=1
+15      ldr     s1, [x0], \#4
+16      ldr     s2, [x1], \#4
+17      fmadd   s1, s0, s1, s2
+18      str     s1, [sp, \#4]
+19      str     x9, [sp, \#8]
+20      ; InlineAsm Start
+21      ; InlineAsm End
+22      subs    x8, x8, \#1
+23      b.ne    LBB0\_1
+24 ; bb.2:
+25      add     sp, sp, \#16
+26      ret
+27      .cfi\_endproc
+28                                         ; -\/-\/ End function
+}\end{DoxyPre}
+
+
+~\newline
+
+
+Further inspection reveals the Fused-\/\+Multiply-\/\+Add instruction -- indicating that SAXPY operation was not optimized away. 
+\begin{DoxyPre}{\ttfamily 
+17      fmadd   s0, s0, s1, s2
+}\end{DoxyPre}
+
+
+\href{https://developer.arm.com/documentation/ddi0602/2025-06/SIMD-FP-Instructions/FMADD--Floating-point-fused-multiply-add--scalar--}{\texttt{Reference to Arm A64 Instruction Set\+: {\bfseries{FMADD}}}}
+
+\doxysubsubsubsection*{5.\+2. On x86\+\_\+64}
+
+Compiled with {\ttfamily g++ (GCC) 15.\+1.\+0} on {\ttfamily x86\+\_\+64 Intel(\+R) Xeon(\+R) Platinum 8468}                  
+
+Full x86\+\_\+64 Assembly code of {\ttfamily \doxylink{_do_not_optimize__demo_8cpp_a0b3e578501d76859fa31815d0c3b9ef9}{SAXPY\+\_\+\+DONOTOPTIMIZE()}} with {\ttfamily -\/O3} optimization 
+\begin{DoxyPre}{\ttfamily 
+    6 \_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_:
+7 .LFB1:
+8       .cfi\_startproc
+9       movaps  xmm0, xmm1
+10      xorl    eax, eax
+11      .p2align 4
+12      .p2align 3
+13 .L2:
+14      movss   (rdi,rax), xmm0
+15      leaq    -\/4(rsp), rdx
+16      movq    rdx, -\/24(rsp)
+17      mulss   xmm1, xmm0
+18      addss   (rsi,rax), xmm0
+19      movss   xmm0, -\/4(rsp)
+20      addq    \$4, rax
+21      cmpq    \$4000000, rax
+22      jne     .L2
+23      ret
+24      .cfi\_endproc
+   
+}\end{DoxyPre}
+
+
+Again, further inspection shows that SAXPY operation is not optimized out. 
+\begin{DoxyPre}{\ttfamily 
+17      mulss   -\/20(rbp), xmm1 
+18      addss   xmm1, xmm0
+}\end{DoxyPre}
+
+
+Intel® 64 and IA-\/32 Architectures Software Developer’s Manual Volume 2 (2A, 2B, 2C, \& 2D)\+: Instruction Set Reference, A–Z\+: Vol. 2B, 4-\/151, {\bfseries{MULSS — Multiply Scalar Single Precision Floating-\/\+Point Values}}. Vol. 2A, 3-\/24 , {\bfseries{ADDSS—\+Add Scalar Single Precision Floating-\/\+Point Values}}.
+
+\DoxyHorRuler{0}
+ \doxysubsubsubsubsection*{5.\+2.\+1. Conclusion -- {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}} works!}
+
+Code can still be optimized while keeping the operation. Next section will examine how does it work.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsection*{6. Inspecting {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}}}
+
+We can define Do\+Not\+Optimize minimally as\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{DoNotOptimize}}(\textcolor{keywordtype}{void}\ *\ p)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{stringliteral}{"{}+m,r"{}}(p)\ :\ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \DoxyHorRuler{0}
+ \doxysubsubsubsection*{6.\+1. Breakdown 1\+: Assembly}
+
+{\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}} is an extended assembly code, the GNU documentation on \href{https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html}{\texttt{{\itshape Extended asm}}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{asm\ asm-\/qualifiers\ (\ AssemblerTemplate\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ OutputOperands\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ :\ InputOperands}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\ :\ Clobbers\ ]\ ])}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Assembler\+Template}} is the assembly code/instructions.
+\item {\bfseries{Output\+Operands}} are the outputs back into C/\+C++.
+\item {\bfseries{Input\+Operands}} are the inputs from C/\+C++.
+\item {\bfseries{Clobbers}} list what this asm code modifies.
+\end{DoxyItemize}
+
+\doxysubsubsubsection*{6.\+2. Breakdown 2\+: Meaning of this asm code}
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Assembler\+Template}} is empty\+: {\ttfamily "{}"{}} — no actual instructions execute.
+\item {\bfseries{Output\+Operands}}\+:
+\begin{DoxyItemize}
+\item {\ttfamily "{}+"{}} is a \href{https://gcc.gnu.org/onlinedocs/gcc/Modifiers.html\#Constraint-Modifier-Characters}{\texttt{Constraint Modifier Character}} indicating read {\itshape and} write by the asm.
+\item {\ttfamily "{}m"{}} is a \href{https://gcc.gnu.org/onlinedocs/gcc/Simple-Constraints.html\#Simple-Constraints-1}{\texttt{Simple Constraint}} meaning the operand can be in main memory.
+\item {\ttfamily "{}r"{}} is also a \href{https://gcc.gnu.org/onlinedocs/gcc/Simple-Constraints.html\#Simple-Constraints-1}{\texttt{Simple Constraint}} meaning the operand can be in register memory.
+\item {\ttfamily "{}m,r"{}} provides \href{https://gcc.gnu.org/onlinedocs/gcc/Multi-Alternative.html\#Multiple-Alternative-Constraints}{\texttt{Multiple Alternatives}}\+: the operand may be in main memory {\bfseries{or}} register memory.
+\end{DoxyItemize}
+
+{\bfseries{Combined\+:}} {\ttfamily "{}+m,r"{}} means “treat {\ttfamily p} as read and written ("{}+"{}), where {\ttfamily p} is located either in main memory ("{}m"{}) or a register("{}r"{}).”
+\item {\bfseries{Input\+Operands}}\+: none (the read/write behavior is implied by the output constraint).
+\item {\bfseries{Clobbers}}\+: {\ttfamily "{}memory"{}} — indicates the asm may change memory, acting as a read/write memory barrier.
+\end{DoxyItemize}
+
+Putting it together\+: \texorpdfstring{$>$}{>}“\+Read and write the memory location {\ttfamily p} (Output\+Operands "{}+m,r"{}), with possible memory effects (Clobbers "{}memory"{}), with no actual operation (Assembler\+Template "{}"{})”
+
+\doxysubsubsubsection*{6.\+3. Breakdown 3\+: {\ttfamily volatile}}
+
+The {\ttfamily volatile} asm-\/qualifier (see \href{https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html\#Volatile-1}{\texttt{GNU Extended Asm — Volatile}}) tells the compiler this asm block has important side effects. Without it, an optimizer could decide the output is unused and delete the asm — and, transitively, the memory location {\ttfamily p}. With {\ttfamily volatile}, the compiler must preserve the asm and thus the memory location {\ttfamily p}.
+
+\doxysubsubsubsection*{6.\+4. Conclusion}
+
+This asm line means\+:
+
+\begin{quote}
+“\+This memory location {\ttfamily p} is read and written ({\ttfamily +m,r}), with observable effects on memory ({\ttfamily "{}memory"{}} clobber). Because the asm is {\ttfamily volatile}, you must not optimize away the variable or this operation.\+” \end{quote}
+
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsection*{6.\+5. {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}} in practice}
+
+In practice, {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}} accepts any object type; the idea is the same\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \_\_attribute\_\_((always\_inline))\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{DoNotOptimize}}(T\ \textcolor{keyword}{const}\ \&value)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}"{}}\ :\ :\ \textcolor{stringliteral}{"{}r,m"{}}(value)\ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \_\_attribute\_\_((always\_inline))\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{DoNotOptimize}}(T\ \&value)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{stringliteral}{"{}+m,r"{}}(value)\ :\ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \_\_attribute\_\_((always\_inline))\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{DoNotOptimize}}(T\ \&\&value)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{asm}\ \textcolor{keyword}{volatile}(\textcolor{stringliteral}{"{}"{}}\ :\ \textcolor{stringliteral}{"{}+m,r"{}}(value)\ :\ :\ \textcolor{stringliteral}{"{}memory"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{7. Example Case}
+
+Referring back to the example case, some behaviours can be observed.
+
+\doxysubsubsubsection*{7.\+1. Example Source Code}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_do_not_optimize__demo_8cpp_aa5b565b3eee10d362eab37bebfbd199e}{SAXPY}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ y)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ yout;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}};\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ yout\ =\ a\ *\ x[i]\ +\ y[i];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_do_not_optimize__demo_8cpp_a0b3e578501d76859fa31815d0c3b9ef9}{SAXPY\_DONOTOPTIMIZE}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}*\ y)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ yout;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}};\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ yout\ =\ a\ *\ x[i]\ +\ y[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacecomppare_a047cefc5aebc47d079d502c2d189fe12}{comppare::DoNotOptimize}}(yout);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{7.\+2. "{}\+Performance"{} difference}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ Func\ µs/Iter\ \ \ \ \ \ \ \ ROI\ µs/Iter\ \ \ \ \ \ \ Ovhd\ µs/Iter}
+\DoxyCodeLine{SAXPY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.00}
+\DoxyCodeLine{SAXPY\_DONOTOPTIMIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 57.14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 28.60\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 28.54}
+
+\end{DoxyCode}
+ From the discussion above, the performance difference is actually due to {\ttfamily SAXPY} being an empty function, while {\ttfamily SAXPY\+\_\+\+DONOTOPTIMIZE} actually computes the operation.
+
+\doxysubsubsubsection*{7.\+3. Compiler Warning}
+
+The build step also compiles {\ttfamily \doxylink{saxpy_8cpp}{saxpy.\+cpp}} and {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp}{saxpy\+\_\+\+Do\+Not\+Optimize.\+cpp}} into their respected assembly codes in {\ttfamily build/asm/}.
+
+\DoxyHorRuler{0}
+
+
+There is a compiler warning for {\ttfamily \doxylink{saxpy_8cpp}{saxpy.\+cpp}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/path/to/ComPPare/examples/advanced\_demo/4-\/DoNotOptimize/saxpy.cpp:\ In\ function\ ‘void\ SAXPY(float,\ const\ float*,\ const\ float*)’:}
+\DoxyCodeLine{/path/to/ComPPare/examples/advanced\_demo/4-\/DoNotOptimize/saxpy.cpp:5:11:\ warning:\ variable\ ‘yout’\ set\ but\ not\ used\ [-\/Wunused-\/but-\/set-\/variable]}
+\DoxyCodeLine{\ \ \ \ 5\ |\ \ \ \ \ float\ yout;}
+\DoxyCodeLine{\ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \string^\string~\string~\string~}
+
+\end{DoxyCode}
+ Which shows that the compiler identifies {\ttfamily yout} as a variable that is not needed, thus optimized away.
+
+\DoxyHorRuler{0}
+
+
+For {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp}{saxpy\+\_\+\+Do\+Not\+Optimize.\+cpp}}, there is no such warning, which shows that the compiler is being tricked by {\ttfamily \doxylink{saxpy___do_not_optimize_8cpp_a4800adc1dfab08974da980d447c594ea}{Do\+Not\+Optimize()}} that {\ttfamily yout} is being used and thus not optimized away.
+
+\doxysubsubsubsection*{7.\+4. Inspection of the full asm code}
+
+{\ttfamily build/asm/\+Do\+Not\+Optimize\+\_\+demo.\+s} is the full asm code of the benchmark
+
+\doxysubsubsubsubsection*{7.\+4.\+1. On AArch64 (Apple M2)}
+
+To look for SAXPY operations, based on findings in \doxylink{README.md_saxpyappleM2isa}{Just don\textquotesingle{}t Optimize -\/-\/ ARM FMADD}, we can find whether {\ttfamily fmadd} exists by\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grep\ -\/rnw\ fmadd\ build/asm/DoNotOptimize\_demo.s\ }
+
+\end{DoxyCode}
+
+
+{\bfseries{Results in\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:86:\ \ \ \ \ \ fmadd\ \ \ s0,\ s8,\ s0,\ s1}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:116:\ \ \ \ \ fmadd\ \ \ s0,\ s8,\ s0,\ s1}
+
+\end{DoxyCode}
+
+
+It resulted in 2 {\ttfamily fmadd}, this is due to extra code being "{}injected"{} via the Com\+PPare framework. The first {\ttfamily fmadd} at line 86 is the warmup runs, while line 116 is the actual benchmark runs.
+
+It can be further validated when inspecting the function SAXPY\+\_\+\+DONOTOPTIMIZE in asm
+
+
+
+{\bfseries{AArch64 Assembly of {\ttfamily SAXPY\+\_\+\+DONOTOPTIMIZE()} function within the benchmark }}\begin{adjustwidth}{1em}{0em}
+
+\begin{DoxyPre}{\ttfamily 
+45 \_\_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_:        ; @\_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_
+46      .cfi\_startproc
+47 ; bb.0:
+48      sub     sp, sp, \#80
+49      .cfi\_def\_cfa\_offset 80
+50      stp     d9, d8, [sp, \#16]               ; 16-\/byte Folded Spill
+51      stp     x22, x21, [sp, \#32]             ; 16-\/byte Folded Spill
+52      stp     x20, x19, [sp, \#48]             ; 16-\/byte Folded Spill
+53      stp     x29, x30, [sp, \#64]             ; 16-\/byte Folded Spill
+54      add     x29, sp, \#64
+55      .cfi\_def\_cfa w29, 16
+56      .cfi\_offset w30, -\/8
+57      .cfi\_offset w29, -\/16
+58      .cfi\_offset w19, -\/24
+59      .cfi\_offset w20, -\/32
+60      .cfi\_offset w21, -\/40
+61      .cfi\_offset w22, -\/48
+62      .cfi\_offset b8, -\/56
+63      .cfi\_offset b9, -\/64
+64      mov     x19, x1
+65      mov     x20, x0
+66      fmov    s8, s0
+67 Lloh2:
+68      adrp    x22, \_\_ZZN8comppare6config8instanceEvE4inst@GOTPAGE
+69 Lloh3:
+70      ldr     x22, [x22, \_\_ZZN8comppare6config8instanceEvE4inst@GOTPAGEOFF]
+71      ldr     x8, [x22, \#8]
+72      cbz     x8, LBB1\_5
+73 ; bb.1:
+74      mov     x8, \#0
+75      add     x9, sp, \#12
+76 LBB1\_2:                                 ; =>This Loop Header: Depth=1
+77                                         ;     Child Loop BB1\_3 Depth 2
+78      mov     x10, x20
+79      mov     x11, x19
+80      mov     w12, \#34464
+81      movk    w12, \#1, lsl \#16
+82 LBB1\_3:                                 ;   Parent Loop BB1\_2 Depth=1
+83                                         ; =>  This Inner Loop Header: Depth=2
+84      ldr     s0, [x10], \#4
+85      ldr     s1, [x11], \#4
+86      fmadd   s0, s8, s0, s1
+87      str     s0, [sp, \#12]
+88      ; InlineAsm Start
+89      ; InlineAsm End
+90      subs    x12, x12, \#1
+91      b.ne    LBB1\_3
+92 ; bb.4:                                ;   in Loop: Header=BB1\_2 Depth=1
+93      add     x8, x8, \#1
+94      ldr     x10, [x22, \#8]
+95      cmp     x8, x10
+96      b.lo    LBB1\_2
+97 LBB1\_5:
+98      str     xzr, [x22]
+99      bl      \_\_ZNSt3\_\_16chrono12steady\_clock3nowEv
+100     mov     x21, x0
+101     ldr     x8, [x22, \#16]
+102     cbz     x8, LBB1\_10
+103 ; bb.6:
+104     mov     x8, \#0
+105     add     x9, sp, \#12
+106 LBB1\_7:                                 ; =>This Loop Header: Depth=1
+107                                         ;     Child Loop BB1\_8 Depth 2
+108     mov     x10, x20
+109     mov     x11, x19
+110     mov     w12, \#34464
+111     movk    w12, \#1, lsl \#16
+112 LBB1\_8:                                 ;   Parent Loop BB1\_7 Depth=1
+113                                         ; =>  This Inner Loop Header: Depth=2
+114     ldr     s0, [x10], \#4
+115     ldr     s1, [x11], \#4
+116     fmadd   s0, s8, s0, s1
+117     str     s0, [sp, \#12]
+118     ; InlineAsm Start
+119     ; InlineAsm End
+120     subs    x12, x12, \#1
+121     b.ne    LBB1\_8
+122 ; bb.9:                                ;   in Loop: Header=BB1\_7 Depth=1
+123     add     x8, x8, \#1
+124     ldr     x10, [x22, \#16]
+125     cmp     x8, x10
+126     b.lo    LBB1\_7
+127 LBB1\_10:
+128     bl      \_\_ZNSt3\_\_16chrono12steady\_clock3nowEv
+129     ldr     d0, [x22]
+130     fcmp    d0, \#0.0
+131     b.ne    LBB1\_12
+132 ; bb.11:
+133     sub     x8, x0, x21
+134     scvtf   d0, x8
+135     mov     x8, \#70368744177664
+136     movk    x8, \#16527, lsl \#48
+137     fmov    d1, x8
+138     fdiv    d0, d0, d1
+139     str     d0, [x22]
+140 LBB1\_12:
+141     ldp     x29, x30, [sp, \#64]             ; 16-\/byte Folded Reload
+142     ldp     x20, x19, [sp, \#48]             ; 16-\/byte Folded Reload
+143     ldp     x22, x21, [sp, \#32]             ; 16-\/byte Folded Reload
+144     ldp     d9, d8, [sp, \#16]               ; 16-\/byte Folded Reload
+145     add     sp, sp, \#80
+146     ret
+147     .loh AdrpLdrGot Lloh2, Lloh3
+148     .cfi\_endproc
+149                                         ; -\/-\/ End function
+150     .globl  \_main                           ; -\/-\/ Begin function main
+}\end{DoxyPre}
+ \end{adjustwidth}
+
+
+\doxysubsubsubsubsection*{7.\+4.\+2. On x86\+\_\+64}
+
+To look for SAXPY operations, based on findings in \doxylink{README.md_saxpy_x86_isa}{Just don\textquotesingle{}t Optimize -\/-\/ x86 MULSS ADDSS}, we can find whether {\ttfamily mulss} and {\ttfamily addss} exists by\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grep\ -\/rnw\ mulss\ build/asm/DoNotOptimize\_demo.s}
+\DoxyCodeLine{grep\ -\/rnw\ addss\ build/asm/DoNotOptimize\_demo.s}
+
+\end{DoxyCode}
+
+
+{\bfseries{Results in\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:258:\ \ \ \ mulss\ \ \ \%xmm0,\ \%xmm1}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:282:\ \ \ \ mulss\ \ \ \%xmm0,\ \%xmm1}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:259:\ \ \ \ addss\ \ \ (\%r12,\%rax),\ \%xmm1}
+\DoxyCodeLine{build/asm/DoNotOptimize\_demo.s:283:\ \ \ \ addss\ \ \ (\%r12,\%rax),\ \%xmm1}
+
+\end{DoxyCode}
+
+
+Again, the doubling of both {\ttfamily mulss} and {\ttfamily addss} is due to warmup runs and benchmark runs.
+
+
+
+{\bfseries{x86\+\_\+64 Assembly of {\ttfamily SAXPY\+\_\+\+DONOTOPTIMIZE()} function within the benchmark }}\begin{adjustwidth}{1em}{0em}
+
+\begin{DoxyPre}{\ttfamily 
+232 \_Z19SAXPY\_DONOTOPTIMIZEfPKfS0\_:
+233 .LFB7449:
+234     .cfi\_startproc
+235     pushq   rbp
+236     .cfi\_def\_cfa\_offset 16
+237     .cfi\_offset 6, -\/16
+238     xorl    ecx, ecx
+239     movq    rsp, rbp
+240     .cfi\_def\_cfa\_register 6
+241     pushq   r13
+242     pushq   r12
+243     .cfi\_offset 13, -\/24
+244     .cfi\_offset 12, -\/32
+245     movq    rsi, r12
+246     pushq   rbx
+247     .cfi\_offset 3, -\/40
+248     movq    rdi, rbx
+249     subq    \$24, rsp
+250     cmpq    \$0, \_ZZN8comppare6config8instanceEvE4inst+8(rip)
+251     je      .L36
+252 .L35:
+253     xorl    eax, eax
+254     .p2align 4,,10
+255     .p2align 3
+256 .L37:
+257     movss   (rbx,rax), xmm1
+258     mulss   xmm0, xmm1
+259     addss   (r12,rax), xmm1
+260     movd    xmm1, edx
+261     addq    \$4, rax
+262     cmpq    \$400000, rax
+263     jne     .L37
+264     addq    \$1, rcx
+265     cmpq    \_ZZN8comppare6config8instanceEvE4inst+8(rip), rcx
+266     jb      .L35
+267 .L36:
+268     movss   xmm0, -\/36(rbp)
+269     movq    \$0x000000000, \_ZZN8comppare6config8instanceEvE4inst(rip)
+270     call    \_ZNSt6chrono3\_V212steady\_clock3nowEv
+271     xorl    ecx, ecx
+272     cmpq    \$0, \_ZZN8comppare6config8instanceEvE4inst+16(rip)
+273     movss   -\/36(rbp), xmm0
+274     movq    rax, r13
+275     je      .L39
+276 .L38:
+277     xorl    eax, eax
+278     .p2align 4,,10
+279     .p2align 3
+280 .L40:
+281     movss   (rbx,rax), xmm1
+282     mulss   xmm0, xmm1
+283     addss   (r12,rax), xmm1
+284     movd    xmm1, edx
+285     addq    \$4, rax
+286     cmpq    \$400000, rax
+287     jne     .L40
+288     addq    \$1, rcx
+289     cmpq    \_ZZN8comppare6config8instanceEvE4inst+16(rip), rcx
+290     jb      .L38
+291 .L39:
+292     call    \_ZNSt6chrono3\_V212steady\_clock3nowEv
+293     pxor    xmm0, xmm0
+294     ucomisd \_ZZN8comppare6config8instanceEvE4inst(rip), xmm0
+295     jp      .L34
+296     jne     .L34
+297     subq    r13, rax
+298     pxor    xmm0, xmm0
+299     cvtsi2sdq       rax, xmm0
+300     divsd   .LC1(rip), xmm0
+301     movsd   xmm0, \_ZZN8comppare6config8instanceEvE4inst(rip)
+302 .L34:
+303     addq    \$24, rsp
+304     popq    rbx
+305     popq    r12
+306     popq    r13
+307     popq    rbp
+308     .cfi\_def\_cfa 7, 8
+309     ret
+}\end{DoxyPre}
+ \end{adjustwidth}

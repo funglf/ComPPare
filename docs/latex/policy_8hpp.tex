@@ -1,0 +1,94 @@
+\doxysection{include/comppare/internal/policy.hpp File Reference}
+\hypertarget{policy_8hpp}{}\label{policy_8hpp}\index{include/comppare/internal/policy.hpp@{include/comppare/internal/policy.hpp}}
+
+
+This file contains error policies for comparing values in the Com\+PPare library.  
+
+
+Include dependency graph for policy.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{policy_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{policy_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Wrapper for a value that can be streamed to an output stream. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value}{comppare\+::internal\+::policy\+::is\+\_\+metric\+\_\+value$<$ typename $>$}}
+\begin{DoxyCompactList}\small\item\em Partial specialisation for not a \doxylink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value_3_01_metric_value_3_01_u_01_4_01_4}{comppare\+::internal\+::policy\+::is\+\_\+metric\+\_\+value$<$ Metric\+Value$<$ U $>$ $>$}}
+\begin{DoxyCompactList}\small\item\em Partial specialisation for any \doxylink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}\uline{ and returns true. }\end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Arithmetic\+Error\+Policy$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Concept for types supported by automatic error policy selection. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy}}
+\begin{DoxyCompactList}\small\item\em Error policy for std\+::string. Compares two strings for equality. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy$<$ R $>$}}
+\begin{DoxyCompactList}\small\item\em Error policy for ranges of arithmetic types. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy_3_01_t_01_4}{comppare\+::internal\+::policy\+::autopolicy\+::\+Auto\+Policy$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Partial specialization for types supported by automatic error policy selection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare}{comppare}}
+\begin{DoxyCompactList}\small\item\em Com\+PPare framework main namespace. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1internal}{comppare\+::internal}}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy}{comppare\+::internal\+::policy}}
+\item 
+namespace \mbox{\hyperlink{namespace_namespace}{Namespace}}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_1_1autopolicy}{comppare\+::internal\+::policy\+::autopolicy}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1_is_metric_value}{comppare\+::internal\+::policy\+::\+Is\+Metric\+Value}}
+\begin{DoxyCompactList}\small\item\em Concept for a Metric\+Value. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1_error_policy}{comppare\+::internal\+::policy\+::\+Error\+Policy}}
+\begin{DoxyCompactList}\small\item\em Concept for a valid Error Policy. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_supported_by_auto_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Supported\+By\+Auto\+Policy}}
+\begin{DoxyCompactList}\small\item\em Concept for types supported by automatic error policy selection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\using \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_1_1autopolicy_a947342d478b2a264feefe51135fd91a4}{comppare\+::internal\+::policy\+::autopolicy\+::\+Auto\+Policy\+\_\+t}} = typename \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{Auto\+Policy}}$<$T$>$\+::type
+\begin{DoxyCompactList}\small\item\em Helper alias to get the automatic error policy type for a given type T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class EP, class V$>$ }\\void \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_ae294ad374430c59c18320e5e52f36c5f}{comppare\+::internal\+::policy\+::compute\+\_\+error}} (EP \&ep, const V \&a, const V \&b)
+\begin{DoxyCompactList}\small\item\em Wrapper function to compute the error using the given instance of the error policy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class EP$>$ }\\bool \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{comppare\+::internal\+::policy\+::is\+\_\+fail}} (const EP \&ep)
+\begin{DoxyCompactList}\small\item\em Wrapper function to check if the error policy indicates a failure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename M$>$ }\\constexpr bool \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a240fe5f8d269cee700ef3913ea17b010}{comppare\+::internal\+::policy\+::is\+\_\+metric\+\_\+value\+\_\+v}} = \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value}{is\+\_\+metric\+\_\+value}}$<$std\+::remove\+\_\+cvref\+\_\+t$<$M$>$$>$\+::value
+\begin{DoxyCompactList}\small\item\em Checks if a type is a \doxylink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains error policies for comparing values in the Com\+PPare library. 
+
+\begin{DoxyAuthor}{Author}
+Leong Fan FUNG (funglf) \href{mailto:stanleyfunglf@gmail.com}{\texttt{stanleyfunglf@gmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+MIT License 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+LICENSE For full license text. 
+\end{DoxySeeAlso}

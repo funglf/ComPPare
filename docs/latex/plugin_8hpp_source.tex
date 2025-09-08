@@ -1,0 +1,155 @@
+\doxysection{plugin.\+hpp}
+\hypertarget{plugin_8hpp_source}{}\label{plugin_8hpp_source}\index{include/comppare/plugin/plugin.hpp@{include/comppare/plugin/plugin.hpp}}
+\mbox{\hyperlink{plugin_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Copyright\ 2025\ |\ Leong\ Fan\ FUNG\ |\ funglf\ |\ stanleyfunglf@gmail.com}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00006\ \textcolor{comment}{of\ this\ software\ and\ associated\ documentation\ files\ (the\ “Software”),\ to\ deal}}
+\DoxyCodeLine{00007\ \textcolor{comment}{in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00008\ \textcolor{comment}{to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00009\ \textcolor{comment}{copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00010\ \textcolor{comment}{furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00013\ \textcolor{comment}{all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ “AS\ IS”,\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00016\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00018\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00021\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecomppare_1_1plugin}{comppare::plugin}}}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ InTup,\ \textcolor{keyword}{class}\ OutTup>}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{Plugin}}}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_a36038ae271fc3311a06d4f0739250f76}{\string~Plugin}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_aa7de4bedaeeebbf555fcf046449e9b76}{initialize}}(\textcolor{keywordtype}{int}\ \&\ \textcolor{comment}{/*argc*/},\ \textcolor{keywordtype}{char}\ **\ \textcolor{comment}{/*argv*/})\ \{\}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_a332297b131932f054e0f812ebe164a65}{run}}()\ \{\}}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{template}\ <\textcolor{keyword}{class},\ \textcolor{keyword}{class}>\ \textcolor{keyword}{class\ }P,\ \textcolor{keyword}{class\ }InTup,\ \textcolor{keyword}{class\ }OutTup,\ \textcolor{keyword}{class\ }Func>}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1plugin_1_1_valid_plugin}{ValidPlugin}}\ =}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \{\ \{\ P<InTup,\ OutTup>::instance()\ \}\ -\/>\ std::same\_as<std::shared\_ptr<P<InTup,\ OutTup>>>;\ \}\ \&\&}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ std::string\ \&name,\ Func\ \&\&user\_fn,\ \textcolor{keyword}{const}\ InTup\ \&inputs,\ OutTup\ \&outputs)\ \{\ std::declval<P<InTup,\ OutTup>\ \&>().register\_impl(name,\ user\_fn,\ inputs,\ outputs);\ \}\ \&\&}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::derived\_from<P<InTup,\ OutTup>,\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{plugin::Plugin<InTup,\ OutTup>}}>;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}(std::string\ header,\ \textcolor{keywordtype}{bool}\ strict\_missing\_value\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}}(std::move(header)),\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a838f39c3b43170d5b230c370669ee6d7}{strict\_}}(strict\_missing\_value)\ \{\}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ade42d2fd43b37d811e0fc3bd894b16ef}{PluginArgParser}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a291ffe4334516c54e376d15c9689fd62}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a2d01b926254e09f873aa50fca9306da0}{PluginArgParser}}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a8732020d686438048df1ed60185c5e94}{operator=}}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a070fe4a706fc8b608f6868c6e47f8428}{PluginArgParser}}\ \&\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a4dde0e9214a1b7ea355eb24fed076ffb}{\string~PluginArgParser}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::pair<int,\ char\ **>\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa98170421a7204222715b85ceab81d95}{parse}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa1c8675579ad344eeb3dceedc77fbad5}{argc}},\ \textcolor{keywordtype}{char}\ **\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}})}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.clear();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.clear();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa1c8675579ad344eeb3dceedc77fbad5}{argc}}\ <=\ 0\ ||\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}\ ==\ \textcolor{keyword}{nullptr}\ ||\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[0]\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.push\_back(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}}.empty()\ ?\ \textcolor{stringliteral}{"{}program"{}}\ :\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.emplace\_back(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[0]);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ eq\_prefix\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}}\ +\ \textcolor{stringliteral}{"{}="{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ tokens;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa1c8675579ad344eeb3dceedc77fbad5}{argc}};\ ++i)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}\ ||\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[i]\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ cur(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[i]);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adcf9be6492858457365e39d50397d453}{starts\_with}}(cur,\ eq\_prefix))}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ value\ =\ cur.substr(eq\_prefix.size());}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac4d576ed649ceb865441422497a332e0}{append\_tokens}}(tokens,\ value);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (cur\ ==\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}})}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 1\ <\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa1c8675579ad344eeb3dceedc77fbad5}{argc}}\ \&\&\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[i\ +\ 1]\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ value(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}[++i]);\ \textcolor{comment}{//\ consume\ value}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac4d576ed649ceb865441422497a332e0}{append\_tokens}}(tokens,\ value);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a838f39c3b43170d5b230c370669ee6d7}{strict\_}})}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}}\ +\ \textcolor{stringliteral}{"{}\ requires\ a\ value"{}});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&t\ :\ tokens)}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.push\_back(t);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.reserve(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.size()\ +\ 1);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&s\ :\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}})}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.push\_back(\textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(s.c\_str()));}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.push\_back(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.size()),\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.data()\};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_aa1c8675579ad344eeb3dceedc77fbad5}{argc}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}}.size());\ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{char}\ **\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adec4bd65d3a0324485f12ceb5614f8f1}{argv}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}}.data();\ \}\ \textcolor{comment}{//\ valid\ after\ parse()}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a0e9be191b9c728e46e24e4d473f8eb5c}{args}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}};\ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a200fedefd17b75ee636a400213e21f2a}{header\_}};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a838f39c3b43170d5b230c370669ee6d7}{strict\_}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac94519506ccd238bff7054f630a9a466}{args\_}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ std::vector<char\ *>\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a1fa795d4f7f3d23ffa697a7a132a9aa0}{cargv\_}};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_adcf9be6492858457365e39d50397d453}{starts\_with}}(\textcolor{keyword}{const}\ std::string\ \&s,\ \textcolor{keyword}{const}\ std::string\ \&prefix)}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ s.size()\ >=\ prefix.size()\ \&\&\ s.compare(0,\ prefix.size(),\ prefix)\ ==\ 0;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ shell-\/like\ split\ that\ respects\ quotes:\ R"{}(-\/-\/x\ "{}a\ b"{}\ c)"{}\ -\/>\ \{"{}-\/-\/x"{},"{}a\ b"{},"{}c"{}\}}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a28090ed3bedb94b598048ea997283c9f}{split\_shell\_like}}(\textcolor{keyword}{const}\ std::string\ \&s)}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ out;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ std::istringstream\ iss(s);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ tok;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (iss\ >>\ std::quoted(tok))}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(tok);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_ac4d576ed649ceb865441422497a332e0}{append\_tokens}}(std::vector<std::string>\ \&dst,\ \textcolor{keyword}{const}\ std::string\ \&value)}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ toks\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser_a28090ed3bedb94b598048ea997283c9f}{split\_shell\_like}}(value);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ dst.insert(dst.end(),\ toks.begin(),\ toks.end());}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00202\ \ \ \ \ \};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \}\ \textcolor{comment}{//\ namespace\ comppare::plugin}}
+
+\end{DoxyCode}

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['s_20donotoptimize_0',['2.4.2. Solution &amp;ndash; Google Benchmark&apos;s DoNotOptimize() ',['../md_docs_2user__guide.html#autotoc_md108',1,'']]],
+  ['sample_20report_3a_1',['Sample report:',['../index.html#autotoc_md27',1,'']]],
+  ['saxpy_2',['Complete example with SAXPY',['../index.html#autotoc_md28',1,'']]],
+  ['saxpy_20function_20example_20signatures_3',['SAXPY function example signatures',['../index.html#autotoc_md23',1,'']]],
+  ['saxpy_20in_20assembly_4',['SAXPY() in Assembly ',['../md_docs_2user__guide.html#autotoc_md107',1,'']]],
+  ['saxpy_5fdonotoptimize_20in_20assembly_5',['SAXPY_DONOTOPTIMIZE() in Assembly ',['../md_docs_2user__guide.html#autotoc_md109',1,'']]],
+  ['scoped_20wrappers_6',['2. Scoped wrappers',['../ansi_8hpp.html#autotoc_md2',1,'']]],
+  ['set_5fiteration_5ftime_20us_7',['&lt;span class=&quot;tt&quot;&gt;SET_ITERATION_TIME(us)&lt;/span&gt; ',['../md_docs_2user__guide.html#autotoc_md70',1,'']]],
+  ['set_5freference_8',['&lt;span class=&quot;tt&quot;&gt;set_reference&lt;/span&gt; ',['../md_docs_2user__guide.html#autotoc_md74',1,'']]],
+  ['setting_20implementations_20for_20framework_9',['### 2.2.2. Setting Implementations for Framework ',['../md_docs_2user__guide.html#autotoc_md73',1,'']]],
+  ['setting_20up_20comparison_20in_20main_10',['1.2.3. Setting up Comparison in &lt;span class=&quot;tt&quot;&gt;main()&lt;/span&gt; ',['../md_docs_2user__guide.html#autotoc_md42',1,'']]],
+  ['signature_11',['Signature',['../md_docs_2user__guide.html#autotoc_md76',1,'Signature '],['../md_docs_2user__guide.html#autotoc_md83',1,'Signature '],['../md_docs_2user__guide.html#autotoc_md90',1,'Signature '],['../md_docs_2user__guide.html#autotoc_md98',1,'Signature ']]],
+  ['signature_12',['signature',['../index.html#autotoc_md22',1,'1. Adopt the required function signature'],['../md_docs_2user__guide.html#autotoc_md38',1,'1.2.1. Adopt the required function signature ']]],
+  ['signatures_13',['SAXPY function example signatures',['../index.html#autotoc_md23',1,'']]],
+  ['solution_20ndash_20google_20benchmark_20s_20donotoptimize_14',['2.4.2. Solution &amp;ndash; Google Benchmark&apos;s DoNotOptimize() ',['../md_docs_2user__guide.html#autotoc_md108',1,'']]],
+  ['start_15',['Quick Start',['../index.html#autotoc_md21',1,'']]],
+  ['started_16',['1. Getting Started',['../md_docs_2user__guide.html#autotoc_md31',1,'']]],
+  ['step_201_3a_20initialize_20input_20data_17',['Step 1: Initialize Input data ',['../md_docs_2user__guide.html#autotoc_md44',1,'']]],
+  ['step_202_3a_20create_20a_20comparison_20object_18',['Step 2: Create a Comparison Object ',['../md_docs_2user__guide.html#autotoc_md46',1,'']]],
+  ['step_203_3a_20register_20add_20functions_20into_20framework_19',['Step 3: Register/Add Functions into framework ',['../md_docs_2user__guide.html#autotoc_md50',1,'']]],
+  ['step_204_3a_20run_20the_20benchmarks_20',['Step 4: Run the Benchmarks ',['../md_docs_2user__guide.html#autotoc_md51',1,'']]],
+  ['step_205_3a_20results_21',['Step 5: Results ',['../md_docs_2user__guide.html#autotoc_md52',1,'']]],
+  ['submodules_20like_20google_20benchmark_20nvbench_20is_20not_20needed_3a_22',['submodules like google benchmark nvbench is not needed:',['../index.html#autotoc_md17',1,'If submodules like google benchmark/ nvbench is not needed:'],['../md_docs_2user__guide.html#autotoc_md34',1,'If submodules like google benchmark/ nvbench is not needed: ']]],
+  ['summary_20of_20main_23',['2.2.4. Summary of &lt;span class=&quot;tt&quot;&gt;main()&lt;/span&gt; ',['../md_docs_2user__guide.html#autotoc_md93',1,'']]]
+];

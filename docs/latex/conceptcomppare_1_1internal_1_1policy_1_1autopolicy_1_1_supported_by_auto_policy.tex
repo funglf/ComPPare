@@ -1,0 +1,37 @@
+\doxysection{comppare\+::internal\+::policy\+::autopolicy\+::Supported\+By\+Auto\+Policy Concept Reference}
+\hypertarget{conceptcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_supported_by_auto_policy}{}\label{conceptcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_supported_by_auto_policy}\index{comppare::internal::policy::autopolicy::SupportedByAutoPolicy@{comppare::internal::policy::autopolicy::SupportedByAutoPolicy}}
+
+
+Concept for types supported by automatic error policy selection.  
+
+
+
+
+{\ttfamily \#include $<$policy.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_supported_by_auto_policy}{comppare::internal::policy::autopolicy::SupportedByAutoPolicy}}\ =\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_arithmetic}{comppare::internal::concepts::Arithmetic<T>}}\ ||}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_string}{comppare::internal::concepts::String<T>}}\ ||}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_range_of_arithmetic}{comppare::internal::concepts::RangeOfArithmetic<T>}}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for types supported by automatic error policy selection. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Value type\\
+\hline
+\end{DoxyTemplParams}
+Supported types include\+:
+\begin{DoxyItemize}
+\item Arithmetic types (e.\+g., int, float, double)
+\item std\+::string
+\item Ranges of arithmetic types (e.\+g., std\+::vector$<$int$>$, std\+::deque$<$float$>$) 
+\end{DoxyItemize}

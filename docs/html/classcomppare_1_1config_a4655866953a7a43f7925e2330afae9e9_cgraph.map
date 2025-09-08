@@ -1,0 +1,8 @@
+<map id="comppare::config::increment_roi_us" name="comppare::config::increment_roi_us">
+<area shape="rect" id="Node000001" title="Increment the roi us value using float." alt="" coords="5,22,192,62"/>
+<area shape="rect" id="Node000002" href="$classcomppare_1_1config.html#a2913df9eb204fa9839adb38858d6cfd2" title="Get the singleton instance of the config class." alt="" coords="240,29,418,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,40,224,40,224,45,192,45"/>
+<area shape="rect" id="Node000003" href="$classcomppare_1_1config.html#a3b3362c3001d7972c21a9be1f1744ff5" title="Deleted copy constructor." alt="" coords="466,29,630,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="418,40,450,40,450,45,418,45"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="512,31,505,21,509,11,524,5,548,3,575,5,589,12,586,17,574,10,548,8,525,10,512,15,510,20,516,27"/>
+</map>

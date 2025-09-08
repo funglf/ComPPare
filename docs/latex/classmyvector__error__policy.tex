@@ -1,0 +1,136 @@
+\doxysection{myvector\+\_\+error\+\_\+policy\texorpdfstring{$<$}{<} R \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classmyvector__error__policy}{}\label{classmyvector__error__policy}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy_a7b574e0f3369934962c43b450c8b0f7f}{get\+\_\+mean}} () const
+\item 
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy_a9c6b0679a7d87c38cfb0ba10e3f803c4}{metric}} (std\+::size\+\_\+t i) const
+\item 
+bool \mbox{\hyperlink{classmyvector__error__policy_a0b4e9d95534b03deddb8acce54194c76}{is\+\_\+fail}} (\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} tol=std\+::numeric\+\_\+limits$<$ \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} $>$\+::epsilon()) const
+\item 
+void \mbox{\hyperlink{classmyvector__error__policy_aed380f31b90e428f1636e94bdd35808e}{compute\+\_\+error}} (const R \&a, const R \&b, \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} tol=std\+::numeric\+\_\+limits$<$ \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} $>$\+::epsilon())
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classmyvector__error__policy_aaab790991882a024e3c0f35f505489d4}{metric\+\_\+count}} ()
+\item 
+static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classmyvector__error__policy_a8896a2dfd338f4efde9de6d0ac46b651}{metric\+\_\+name}} (std\+::size\+\_\+t i)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} = std\+::remove\+\_\+cvref\+\_\+t$<$std\+::remove\+\_\+const\+\_\+t$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$R$>$$>$$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy_a2fa089ace212e23d99e0ff41234c2828}{max\+\_\+error\+\_\+}} = \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}(0)
+\item 
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy_acd3307ea4ce4bfc41039bdd0dcea7de6}{total\+\_\+error\+\_\+}} = \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}(0)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classmyvector__error__policy_ab554d914e5a3a9664043c99af402feb3}{elem\+\_\+cnt\+\_\+}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::array \mbox{\hyperlink{classmyvector__error__policy_a9b43cd3336c254d73526e0e379b9429d}{names}} \{"{}Max\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Mean\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Total squared"{}\}
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classmyvector__error__policy_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!T@{T}}
+\index{T@{T}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{T}{T}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+using \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::T = std\+::remove\+\_\+cvref\+\_\+t$<$std\+::remove\+\_\+const\+\_\+t$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$R$>$$>$$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmyvector__error__policy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmyvector__error__policy_aed380f31b90e428f1636e94bdd35808e}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!compute\_error@{compute\_error}}
+\index{compute\_error@{compute\_error}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{compute\_error()}{compute\_error()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_aed380f31b90e428f1636e94bdd35808e} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+void \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{const R \&}]{a}{, }\item[{const R \&}]{b}{, }\item[{\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}}]{tol}{ = {\ttfamily std\+:\+:numeric\+\_\+limits$<$\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}$>$\+:\+:epsilon()}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classmyvector__error__policy_a7b574e0f3369934962c43b450c8b0f7f}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!get\_mean@{get\_mean}}
+\index{get\_mean@{get\_mean}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{get\_mean()}{get\_mean()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a7b574e0f3369934962c43b450c8b0f7f} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::get\+\_\+mean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classmyvector__error__policy_a0b4e9d95534b03deddb8acce54194c76}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!is\_fail@{is\_fail}}
+\index{is\_fail@{is\_fail}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{is\_fail()}{is\_fail()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a0b4e9d95534b03deddb8acce54194c76} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+bool \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::is\+\_\+fail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}}]{tol}{ = {\ttfamily std\+:\+:numeric\+\_\+limits$<$\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}$>$\+:\+:epsilon()}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classmyvector__error__policy_a9c6b0679a7d87c38cfb0ba10e3f803c4}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!metric@{metric}}
+\index{metric@{metric}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric()}{metric()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a9c6b0679a7d87c38cfb0ba10e3f803c4} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::metric (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classmyvector__error__policy_aaab790991882a024e3c0f35f505489d4}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!metric\_count@{metric\_count}}
+\index{metric\_count@{metric\_count}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_count()}{metric\_count()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_aaab790991882a024e3c0f35f505489d4} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::metric\+\_\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classmyvector__error__policy_a8896a2dfd338f4efde9de6d0ac46b651}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!metric\_name@{metric\_name}}
+\index{metric\_name@{metric\_name}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_name()}{metric\_name()}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a8896a2dfd338f4efde9de6d0ac46b651} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+constexpr std\+::string\+\_\+view \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::metric\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmyvector__error__policy_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmyvector__error__policy_ab554d914e5a3a9664043c99af402feb3}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!elem\_cnt\_@{elem\_cnt\_}}
+\index{elem\_cnt\_@{elem\_cnt\_}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{elem\_cnt\_}{elem\_cnt\_}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_ab554d914e5a3a9664043c99af402feb3} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::elem\+\_\+cnt\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmyvector__error__policy_a2fa089ace212e23d99e0ff41234c2828}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!max\_error\_@{max\_error\_}}
+\index{max\_error\_@{max\_error\_}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{max\_error\_}{max\_error\_}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a2fa089ace212e23d99e0ff41234c2828} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::max\+\_\+error\+\_\+ = \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}(0)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classmyvector__error__policy_a9b43cd3336c254d73526e0e379b9429d}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!names@{names}}
+\index{names@{names}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_a9b43cd3336c254d73526e0e379b9429d} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+std\+::array \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::names \{"{}Max\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Mean\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Total squared"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classmyvector__error__policy_acd3307ea4ce4bfc41039bdd0dcea7de6}\index{myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}!total\_error\_@{total\_error\_}}
+\index{total\_error\_@{total\_error\_}!myvector\_error\_policy$<$ R $>$@{myvector\_error\_policy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{total\_error\_}{total\_error\_}}
+{\footnotesize\ttfamily \label{classmyvector__error__policy_acd3307ea4ce4bfc41039bdd0dcea7de6} 
+template$<$std\+::ranges\+::forward\+\_\+range R$>$ \\
+\mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}} \mbox{\hyperlink{classmyvector__error__policy}{myvector\+\_\+error\+\_\+policy}}$<$ R $>$\+::total\+\_\+error\+\_\+ = \mbox{\hyperlink{classmyvector__error__policy_ac0566f21ecc2a803539c7aadd8c6ae8f}{T}}(0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+examples/saxpy\+\_\+googlebench/\mbox{\hyperlink{saxpy__googlebench_2main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}

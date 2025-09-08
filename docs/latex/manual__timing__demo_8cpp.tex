@@ -1,0 +1,90 @@
+\doxysection{examples/advanced\+\_\+demo/3-\/manual\+\_\+timing/manual\+\_\+timing\+\_\+demo.cpp File Reference}
+\hypertarget{manual__timing__demo_8cpp}{}\label{manual__timing__demo_8cpp}\index{examples/advanced\_demo/3-\/manual\_timing/manual\_timing\_demo.cpp@{examples/advanced\_demo/3-\/manual\_timing/manual\_timing\_demo.cpp}}
+Include dependency graph for manual\+\_\+timing\+\_\+demo.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{manual__timing__demo_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}}~1024
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}{random\+\_\+fill}} (std\+::vector$<$ int $>$ \&v)
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}} (std\+::vector$<$ int $>$ \&v)
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_a84c044a888bd5c09e3778b5b46845256}{bench\+\_\+all}} (std\+::vector$<$ int $>$ \&v)
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_aab89992e7a5f0cf66eaaf80db861a3fc}{bench\+\_\+resize}} (std\+::vector$<$ int $>$ \&v)
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_a93bc94874852c9231a929ba154e80ce2}{bench\+\_\+randomfill}} (std\+::vector$<$ int $>$ \&v)
+\item 
+static void \mbox{\hyperlink{manual__timing__demo_8cpp_a81cd33a18993398c27c4cdafb9298c5b}{bench\+\_\+clear\+\_\+square}} (std\+::vector$<$ int $>$ \&v)
+\item 
+int \mbox{\hyperlink{manual__timing__demo_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{manual__timing__demo_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!N@{N}}
+\index{N@{N}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{N}{N}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4} 
+\#define N~1024}
+
+
+
+\label{doc-func-members}
+\Hypertarget{manual__timing__demo_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{manual__timing__demo_8cpp_a84c044a888bd5c09e3778b5b46845256}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!bench\_all@{bench\_all}}
+\index{bench\_all@{bench\_all}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{bench\_all()}{bench\_all()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a84c044a888bd5c09e3778b5b46845256} 
+void bench\+\_\+all (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{manual__timing__demo_8cpp_a81cd33a18993398c27c4cdafb9298c5b}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!bench\_clear\_square@{bench\_clear\_square}}
+\index{bench\_clear\_square@{bench\_clear\_square}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{bench\_clear\_square()}{bench\_clear\_square()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a81cd33a18993398c27c4cdafb9298c5b} 
+void bench\+\_\+clear\+\_\+square (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{manual__timing__demo_8cpp_a93bc94874852c9231a929ba154e80ce2}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!bench\_randomfill@{bench\_randomfill}}
+\index{bench\_randomfill@{bench\_randomfill}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{bench\_randomfill()}{bench\_randomfill()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a93bc94874852c9231a929ba154e80ce2} 
+void bench\+\_\+randomfill (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{manual__timing__demo_8cpp_aab89992e7a5f0cf66eaaf80db861a3fc}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!bench\_resize@{bench\_resize}}
+\index{bench\_resize@{bench\_resize}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{bench\_resize()}{bench\_resize()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_aab89992e7a5f0cf66eaaf80db861a3fc} 
+void bench\+\_\+resize (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{manual__timing__demo_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!main@{main}}
+\index{main@{main}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+\Hypertarget{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!random\_fill@{random\_fill}}
+\index{random\_fill@{random\_fill}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{random\_fill()}{random\_fill()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b} 
+void random\+\_\+fill (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}\index{manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}!square@{square}}
+\index{square@{square}!manual\_timing\_demo.cpp@{manual\_timing\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{square()}{square()}}
+{\footnotesize\ttfamily \label{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0} 
+void square (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

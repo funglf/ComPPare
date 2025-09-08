@@ -1,0 +1,168 @@
+\doxysection{comppare\+::internal\+::policy\+::Metric\+Value\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value}{}\label{classcomppare_1_1internal_1_1policy_1_1_metric_value}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+
+
+Wrapper for a value that can be streamed to an output stream.  
+
+
+
+
+{\ttfamily \#include $<$policy.\+hpp$>$}
+
+
+
+Collaboration diagram for comppare\+::internal\+::policy\+::Metric\+Value\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classcomppare_1_1internal_1_1policy_1_1_metric_value__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52}{Metric\+Value}} (T v)
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa7bdf0209b114d28321908066d5ff51a}{Metric\+Value}} (T v, bool \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\+\_\+fail}})
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a4b23eb0f651e6fc5c0f1b96173ace976}{Metric\+Value}} (T v, bool \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\+\_\+fail}}, bool valid, std\+::string\+\_\+view msg)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\+\_\+fail\+\_\+}} \{false\}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\+\_\+}} \{true\}
+\item 
+std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\+\_\+msg\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa91243339e9e2099d9d53308f785da05}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ T $>$ const \&mv)
+\begin{DoxyCompactList}\small\item\em Overloaded operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} to stream the value or error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$\newline
+class comppare\+::internal\+::policy\+::\+Metric\+Value$<$ T $>$}
+Wrapper for a value that can be streamed to an output stream. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the value to be wrapped. Must satisfy {\ttfamily Streamable} (i.\+e. it can be inserted into a {\ttfamily std\+::ostream}).\\
+\hline
+\end{DoxyTemplParams}
+Implementation Details\+:
+\begin{DoxyItemize}
+\item Private Data Members\+:
+\begin{DoxyEnumerate}
+\item {\ttfamily value\+\_\+} – the value of the metric
+\item {\ttfamily is\+\_\+fail\+\_\+} – indicates if the metric has failed
+\item {\ttfamily valid\+\_\+} – indicates if the metric is valid. (eg. invalid if size mismatch between 2 vectors)
+\item {\ttfamily err\+\_\+msg\+\_\+} – is an error message if the metric is invalid. (eg. outputs "{}size mismatch"{} if the size of 2 vectors is different)
+\end{DoxyEnumerate}
+\item {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}\+:
+\begin{DoxyEnumerate}
+\item Copies the current formatting state of the stream with copyfmt
+\item Streams the value {\ttfamily value\+\_\+} into a temporary {\ttfamily std\+::ostringstream}
+\item If the metric is valid and not failed, writes the value to the original stream. If the metric is valid but failed, writes the value in red color to the original stream. If the metric is invalid, writes the error message in red color to the original stream.
+\item Restores the saved formatting state 
+\end{DoxyEnumerate}
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!MetricValue@{MetricValue}}
+\index{MetricValue@{MetricValue}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MetricValue()}{MetricValue()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::\+Metric\+Value (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa7bdf0209b114d28321908066d5ff51a}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!MetricValue@{MetricValue}}
+\index{MetricValue@{MetricValue}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MetricValue()}{MetricValue()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa7bdf0209b114d28321908066d5ff51a} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::\+Metric\+Value (\begin{DoxyParamCaption}\item[{T}]{v}{, }\item[{bool}]{is\+\_\+fail}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_a4b23eb0f651e6fc5c0f1b96173ace976}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!MetricValue@{MetricValue}}
+\index{MetricValue@{MetricValue}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MetricValue()}{MetricValue()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_a4b23eb0f651e6fc5c0f1b96173ace976} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::\+Metric\+Value (\begin{DoxyParamCaption}\item[{T}]{v}{, }\item[{bool}]{is\+\_\+fail}{, }\item[{bool}]{valid}{, }\item[{std\+::string\+\_\+view}]{msg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-related-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa91243339e9e2099d9d53308f785da05}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa91243339e9e2099d9d53308f785da05} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ T $>$ const \&}]{mv}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloaded operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} to stream the value or error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream \\
+\hline
+{\em mv} & The \doxylink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value} to stream \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The modified output stream
+\end{DoxyReturn}
+Output Behavior\+:
+\begin{DoxyItemize}
+\item If the metric is valid and not failed, writes the value to the original stream.
+\item If the metric is valid but failed, writes the value in red color to the original stream.
+\item If the metric is invalid, writes the error message in red color to the original stream. 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!err\_msg\_@{err\_msg\_}}
+\index{err\_msg\_@{err\_msg\_}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{err\_msg\_}{err\_msg\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::err\+\_\+msg\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!is\_fail\_@{is\_fail\_}}
+\index{is\_fail\_@{is\_fail\_}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{is\_fail\_}{is\_fail\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::is\+\_\+fail\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!valid\_@{valid\_}}
+\index{valid\_@{valid\_}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{valid\_}{valid\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::valid\+\_\+ \{true\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}\index{comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}!value\_@{value\_}}
+\index{value\_@{value\_}!comppare::internal::policy::MetricValue$<$ T $>$@{comppare::internal::policy::MetricValue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_}{value\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e} 
+template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_streamable}{comppare\+::internal\+::concepts\+::\+Streamable}} T$>$ \\
+T \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}}$<$ T $>$\+::value\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{policy_8hpp}{policy.\+hpp}}\end{DoxyCompactItemize}

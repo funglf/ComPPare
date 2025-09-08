@@ -1,0 +1,112 @@
+\doxysection{custom\+\_\+policy.\+hpp}
+\hypertarget{custom__policy_8hpp_source}{}\label{custom__policy_8hpp_source}\index{examples/advanced\_demo/1-\/custom\_error\_policy/custom\_policy.hpp@{examples/advanced\_demo/1-\/custom\_error\_policy/custom\_policy.hpp}}
+\mbox{\hyperlink{custom__policy_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{data__structure_8hpp}{data\_structure.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{comppare_8hpp}{comppare/comppare.hpp}}>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{Concept\ for\ a\ valid\ Error\ Policy}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{It\ requires:}}
+\DoxyCodeLine{00014\ \textcolor{comment}{-\/\ metric\_count()\ to\ return\ the\ number\ of\ metrics}}
+\DoxyCodeLine{00015\ \textcolor{comment}{-\/\ metric\_name(std::size\_t\ i)\ to\ return\ the\ name\ of\ the\ metric\ at\ index\ i}}
+\DoxyCodeLine{00016\ \textcolor{comment}{-\/\ compute\_error(const\ Val\ \&a,\ const\ Val\ \&b,\ double\ tol)\ to\ compute\ the\ error}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ between\ two\ values\ a\ and\ b\ with\ a\ given\ tolerance\ tol\ -\/-\/\ or\ not}}
+\DoxyCodeLine{00018\ \textcolor{comment}{-\/\ metric(std::size\_t)\ to\ return\ the\ value\ of\ the\ metric}}
+\DoxyCodeLine{00019\ \textcolor{comment}{-\/\ is\_fail()\ to\ return\ true\ if\ the\ error\ exceeds\ the\ tolerance}}
+\DoxyCodeLine{00020\ \textcolor{comment}{}}
+\DoxyCodeLine{00021\ \textcolor{comment}{}}
+\DoxyCodeLine{00022\ \textcolor{comment}{template\ <typename\ Val,\ typename\ EP>}}
+\DoxyCodeLine{00023\ \textcolor{comment}{concept\ ErrorPolicy\ =\ requires}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ static\ members}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\{}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \{\ EP::metric\_count()\ \}\ -\/>\ std::convertible\_to<std::size\_t>;}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \{\ EP::metric\_name(std::size\_t\{\})\ \}\ -\/>\ std::convertible\_to<std::string\_view>;}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\}\ \&\&}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ compute\ error\ -\/-\/\ either\ with\ or\ without\ tolerance}}
+\DoxyCodeLine{00030\ \textcolor{comment}{(}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ \ requires(EP\ ep,\ const\ Val\ \&a,\ const\ Val\ \&b,\ double\ t)\ \{}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ \ \ \ \ ep.compute\_error(a,\ b,\ t);}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ \}\ ||}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ requires(EP\ ep,\ const\ Val\ \&a,\ const\ Val\ \&b)\ \{}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ \ \ \ \ ep.compute\_error(a,\ b);}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00037\ \textcolor{comment}{)\ \&\&}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ metric()\ returns\ value\ of\ the\ metric}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ \ requires(EP\ ep,\ std::size\_t\ i)\ \{}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \{\ ep.metric(i)\ \}\ -\/>\ std::convertible\_to<double>;}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \}\ \&\&}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ is\_fail()\ -\/-\/\ either\ with\ or\ without\ tolerance}}
+\DoxyCodeLine{00043\ \textcolor{comment}{(}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ requires(EP\ ep,\ double\ t)\ \{}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{\ ep.is\_fail(t)\ \}\ -\/>\ std::convertible\_to<bool>;}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ \}\ ||}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ requires(EP\ ep)\ \{}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{\ ep.is\_fail()\ \}\ -\/>\ std::convertible\_to<bool>;}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00050\ \textcolor{comment}{);}}
+\DoxyCodeLine{00051\ \textcolor{comment}{}}
+\DoxyCodeLine{00052\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_is_same_brand}{IsSameBrand}}}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_is_same_brand_aa36240d0908cdd6517af7117b4f4adfa}{same\_brand\_}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 1:\ metric\_count()\ function\ to\ return\ the\ number\ of\ metrics\ */}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{class_is_same_brand_a566bd44c0b7efee5db1ed3c1f632c898}{metric\_count}}()\ \{\ \textcolor{keywordflow}{return}\ 1;\ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 2:\ metric\_name(std::size\_t\ i)\ function\ to\ return\ the\ name\ of\ the\ metric\ at\ index\ i\ */}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ std::string\_view\ \mbox{\hyperlink{class_is_same_brand_a8dbd823a5dd0fd9f79e59294ca296260}{metric\_name}}(std::size\_t\ i)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SameBrand?"{}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ metric\ index"{}});}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 3:\ compute\_error(const\ T\&\&a,\ const\ T\&\&b)\ function\ to\ compute\ the\ error\ metrics\ */}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_same_brand_a85cfe3b2a3141833d2200e980bce8072}{compute\_error}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structcar}{car}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structcar}{car}}\ \&b)}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_same_brand_aa36240d0908cdd6517af7117b4f4adfa}{same\_brand\_}}\ =\ (a.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}}\ ==\ b.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}});}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 4:\ is\_fail()\ function\ to\ return\ true\ if\ the\ implementation\ did\ not\ pass\ */}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_is_same_brand_a2b070840e8ce175ab9e78c896ef683f0}{is\_fail}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{class_is_same_brand_aa36240d0908cdd6517af7117b4f4adfa}{same\_brand\_}};}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ USE\_METRIC\_VALUE}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#ifndef\ USE\_METRIC\_VALUE}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 5\ -\/-\/\ option\ 1:\ metric(std::size\_t)\ function\ to\ return\ the\ value\ of\ the\ metric\ */}}
+\DoxyCodeLine{00088\ \ \ \ \ std::string\ \mbox{\hyperlink{class_is_same_brand_ac7f13807b8d4f0958c925edaa0427834}{metric}}(std::size\_t\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_is_same_brand_aa36240d0908cdd6517af7117b4f4adfa}{same\_brand\_}}\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{/*\ Rule\ 5\ -\/-\/\ option\ 2:\ metric(std::size\_t)\ function\ to\ return\ the\ value\ of\ the\ metric\ within\ Wrapper\ class\ for\ aesthetics\ purpose*/}}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<std::string>}}\ \mbox{\hyperlink{class_is_same_brand_ac7f13807b8d4f0958c925edaa0427834}{metric}}(std::size\_t\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<std::string>}}(\mbox{\hyperlink{class_is_same_brand_aa36240d0908cdd6517af7117b4f4adfa}{same\_brand\_}}\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}},\ \mbox{\hyperlink{class_is_same_brand_a2b070840e8ce175ab9e78c896ef683f0}{is\_fail}}());}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ metric\ index"{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00106\ \};}
+
+\end{DoxyCode}

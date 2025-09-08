@@ -1,0 +1,28 @@
+\doxysection{comppare\+::internal\+::concepts\+::Void Concept Reference}
+\hypertarget{conceptcomppare_1_1internal_1_1concepts_1_1_void}{}\label{conceptcomppare_1_1internal_1_1concepts_1_1_void}\index{comppare::internal::concepts::Void@{comppare::internal::concepts::Void}}
+
+
+Concept for a void type.  
+
+
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_void}{comppare::internal::concepts::Void}}\ =\ \ std::is\_void\_v<std::remove\_cvref\_t<T>>}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for a void type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}

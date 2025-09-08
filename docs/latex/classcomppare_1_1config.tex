@@ -1,0 +1,596 @@
+\doxysection{comppare\+::config Class Reference}
+\hypertarget{classcomppare_1_1config}{}\label{classcomppare_1_1config}\index{comppare::config@{comppare::config}}
+
+
+Configuration singleton for the Com\+PPare library.  
+
+
+
+
+{\ttfamily \#include $<$config.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}{clock\+\_\+t}} = std\+::chrono\+::steady\+\_\+clock
+\begin{DoxyCompactList}\small\item\em Type alias for the clock used in timing operations. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} = std\+::chrono\+::time\+\_\+point$<$\mbox{\hyperlink{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}{clock\+\_\+t}}$>$
+\begin{DoxyCompactList}\small\item\em Type alias for the time point used in timing operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}} (const \mbox{\hyperlink{classcomppare_1_1config}{config}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1config_abef70f55e51c803ba9147f29ca538e41}{config}} (\mbox{\hyperlink{classcomppare_1_1config}{config}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1config}{config}} \& \mbox{\hyperlink{classcomppare_1_1config_a9bcefe16bddabcafe6d2993d26a1a067}{operator=}} (const \mbox{\hyperlink{classcomppare_1_1config}{config}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1config}{config}} \& \mbox{\hyperlink{classcomppare_1_1config_a35f6c1987b526bac915fc7e5d63f56ae}{operator=}} (\mbox{\hyperlink{classcomppare_1_1config}{config}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{classcomppare_1_1config_ab1490e36efe896d0124486f7b4254fc1}{warmup\+\_\+iters}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of warmup iterations. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a3f652923ccdafc020e3079c12fb777d8}{set\+\_\+warmup\+\_\+iters}} (uint64\+\_\+t v)
+\begin{DoxyCompactList}\small\item\em Set the number of warmup iterations. \end{DoxyCompactList}\item 
+static uint64\+\_\+t \mbox{\hyperlink{classcomppare_1_1config_a746ad50b12f724824b3b62f146968a8d}{bench\+\_\+iters}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of benchmark iterations. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_ad75d5706a66a2ef398540ef9cd1cfbab}{set\+\_\+bench\+\_\+iters}} (uint64\+\_\+t v)
+\begin{DoxyCompactList}\small\item\em Set the number of benchmark iterations. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a8e202a56443204447b75868c9e299c2f}{reset\+\_\+roi\+\_\+us}} ()
+\begin{DoxyCompactList}\small\item\em Reset the ROI time to zero. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_af2bd76b13c10a79aa5505d696740dc4a}{set\+\_\+roi\+\_\+us}} (const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&start, const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&end)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using time points. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a929f88a147976a5273182c6d9114d261}{set\+\_\+roi\+\_\+us}} (const float start, const float end)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using float. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_ac6f2a136dab67ed1998703a57fa52593}{set\+\_\+roi\+\_\+us}} (const double start, const double end)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using double. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Rep, typename Period$>$ }\\static void \mbox{\hyperlink{classcomppare_1_1config_a0ebd1d1ed37a9dccacf0aab4d7a24c7e}{set\+\_\+roi\+\_\+us}} (std\+::chrono\+::duration$<$ Rep, Period $>$ v)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using a {\ttfamily std\+::chrono\+::duration}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a544f14c20a980f3553b409fc804569d2}{set\+\_\+roi\+\_\+us}} (const double v)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using double. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a1d86e73fca082406554a4b975c80d84d}{set\+\_\+roi\+\_\+us}} (const float v)
+\begin{DoxyCompactList}\small\item\em Set the roi us value using float. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Rep, typename Period$>$ }\\static void \mbox{\hyperlink{classcomppare_1_1config_aa378bec0b47f8604b670e802d066ab83}{increment\+\_\+roi\+\_\+us}} (std\+::chrono\+::duration$<$ Rep, Period $>$ v)
+\begin{DoxyCompactList}\small\item\em Increment the roi us value using time points. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a4d081761ddd8afb5547af8092ee80434}{increment\+\_\+roi\+\_\+us}} (const double v)
+\begin{DoxyCompactList}\small\item\em Increment the roi us value using double. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a4655866953a7a43f7925e2330afae9e9}{increment\+\_\+roi\+\_\+us}} (const float v)
+\begin{DoxyCompactList}\small\item\em Increment the roi us value using float. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_ac23b48804e93f12fa28e9eebf041dc46}{set\+\_\+warmup\+\_\+us}} (const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&start, const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&end)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using time points. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_af6be797987c58fb1659c48aadbfdb6e0}{set\+\_\+warmup\+\_\+us}} (const float start, const float end)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using float. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a0aa1f2fe171fc3d9e0cb10d7b8c76b55}{set\+\_\+warmup\+\_\+us}} (const double start, const double end)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using double. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Rep, typename Period$>$ }\\static void \mbox{\hyperlink{classcomppare_1_1config_ac2b328d6fa3bef8ad4be1a56fc5ba879}{set\+\_\+warmup\+\_\+us}} (std\+::chrono\+::duration$<$ Rep, Period $>$ v)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using a {\ttfamily std\+::chrono\+::duration}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_a1fa133d5321fe720160ade909567f1d9}{set\+\_\+warmup\+\_\+us}} (const double v)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using double. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_abaca1f816192d209ab0dabf74872d503}{set\+\_\+warmup\+\_\+us}} (const float v)
+\begin{DoxyCompactList}\small\item\em Set the warmup us value using float. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classcomppare_1_1config_a700e53e6f60921f8a97fc64e422f1ec8}{get\+\_\+roi\+\_\+us}} ()
+\begin{DoxyCompactList}\small\item\em Get the current roi us value. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classcomppare_1_1config_a9fbdaaa78cbc7240f0f0b9987c51ce76}{get\+\_\+warmup\+\_\+us}} ()
+\begin{DoxyCompactList}\small\item\em Get the current warmup us value. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::floating\+\_\+point T = double$>$ }\\static T \& \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\+\_\+tolerance}} ()
+\begin{DoxyCompactList}\small\item\em Get the floating-\/point tolerance for a specific floating-\/point type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::floating\+\_\+point T = double$>$ }\\static void \mbox{\hyperlink{classcomppare_1_1config_abc73fde620203449ad4d8a3ea7b4a173}{set\+\_\+fp\+\_\+tolerance}} (T v)
+\begin{DoxyCompactList}\small\item\em Set the floating-\/point tolerance for a specific floating-\/point type. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1config_ac6861c4582a0620d0163ac03fb314d19}{set\+\_\+all\+\_\+fp\+\_\+tolerance}} (long double v)
+\begin{DoxyCompactList}\small\item\em Set the floating-\/point tolerance for all supported types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1config_a31fa621ef8904e5daa24ed0ea6d3e991}{config}} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a new config object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcomppare_1_1config}{config}} \& \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the singleton instance of the config class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\+\_\+}} \{0.\+0\}
+\begin{DoxyCompactList}\small\item\em The current roi us value. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\+\_\+}} \{0.\+0\}
+\begin{DoxyCompactList}\small\item\em The current warmup us value. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890}{warmup\+\_\+iters\+\_\+}} \{100\}
+\begin{DoxyCompactList}\small\item\em The number of warmup iterations. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee}{bench\+\_\+iters\+\_\+}} \{100\}
+\begin{DoxyCompactList}\small\item\em The number of benchmark iterations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration singleton for the Com\+PPare library. 
+
+\begin{DoxyNote}{Note}
+Singleton is chosen as this is a header only library, using global variables will require user to declare them in a .cpp file. 
+\end{DoxyNote}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classcomppare_1_1config_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}\index{comppare::config@{comppare::config}!clock\_t@{clock\_t}}
+\index{clock\_t@{clock\_t}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{clock\_t}{clock\_t}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9} 
+using \mbox{\hyperlink{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}{comppare\+::config\+::clock\+\_\+t}} = std\+::chrono\+::steady\+\_\+clock}
+
+
+
+Type alias for the clock used in timing operations. 
+
+\Hypertarget{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}\index{comppare::config@{comppare::config}!time\_point\_t@{time\_point\_t}}
+\index{time\_point\_t@{time\_point\_t}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{time\_point\_t}{time\_point\_t}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2} 
+using \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{comppare\+::config\+::time\+\_\+point\+\_\+t}} = std\+::chrono\+::time\+\_\+point$<$\mbox{\hyperlink{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}{clock\+\_\+t}}$>$}
+
+
+
+Type alias for the time point used in timing operations. 
+
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1config_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}\index{comppare::config@{comppare::config}!config@{config}}
+\index{config@{config}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5} 
+comppare\+::config\+::config (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1config}{config}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy constructor. 
+
+\Hypertarget{classcomppare_1_1config_abef70f55e51c803ba9147f29ca538e41}\index{comppare::config@{comppare::config}!config@{config}}
+\index{config@{config}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_abef70f55e51c803ba9147f29ca538e41} 
+comppare\+::config\+::config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1config}{config}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move constructor. 
+
+\Hypertarget{classcomppare_1_1config_a31fa621ef8904e5daa24ed0ea6d3e991}\index{comppare::config@{comppare::config}!config@{config}}
+\index{config@{config}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{config()}{config()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a31fa621ef8904e5daa24ed0ea6d3e991} 
+comppare\+::config\+::config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+Construct a new config object. 
+
+\begin{DoxyNote}{Note}
+This constructor is private to enforce the singleton pattern. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1config_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1config_a746ad50b12f724824b3b62f146968a8d}\index{comppare::config@{comppare::config}!bench\_iters@{bench\_iters}}
+\index{bench\_iters@{bench\_iters}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{bench\_iters()}{bench\_iters()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a746ad50b12f724824b3b62f146968a8d} 
+uint64\+\_\+t comppare\+::config\+::bench\+\_\+iters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the number of benchmark iterations. 
+
+\Hypertarget{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}\index{comppare::config@{comppare::config}!fp\_tolerance@{fp\_tolerance}}
+\index{fp\_tolerance@{fp\_tolerance}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{fp\_tolerance()}{fp\_tolerance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2} 
+template$<$std\+::floating\+\_\+point T = double$>$ \\
+T \& comppare\+::config\+::fp\+\_\+tolerance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the floating-\/point tolerance for a specific floating-\/point type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1config_a700e53e6f60921f8a97fc64e422f1ec8}\index{comppare::config@{comppare::config}!get\_roi\_us@{get\_roi\_us}}
+\index{get\_roi\_us@{get\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{get\_roi\_us()}{get\_roi\_us()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a700e53e6f60921f8a97fc64e422f1ec8} 
+double comppare\+::config\+::get\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the current roi us value. 
+
+\Hypertarget{classcomppare_1_1config_a9fbdaaa78cbc7240f0f0b9987c51ce76}\index{comppare::config@{comppare::config}!get\_warmup\_us@{get\_warmup\_us}}
+\index{get\_warmup\_us@{get\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{get\_warmup\_us()}{get\_warmup\_us()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a9fbdaaa78cbc7240f0f0b9987c51ce76} 
+double comppare\+::config\+::get\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the current warmup us value. 
+
+\Hypertarget{classcomppare_1_1config_a4d081761ddd8afb5547af8092ee80434}\index{comppare::config@{comppare::config}!increment\_roi\_us@{increment\_roi\_us}}
+\index{increment\_roi\_us@{increment\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{increment\_roi\_us()}{increment\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a4d081761ddd8afb5547af8092ee80434} 
+void comppare\+::config\+::increment\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const double}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Increment the roi us value using double. 
+
+\Hypertarget{classcomppare_1_1config_a4655866953a7a43f7925e2330afae9e9}\index{comppare::config@{comppare::config}!increment\_roi\_us@{increment\_roi\_us}}
+\index{increment\_roi\_us@{increment\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{increment\_roi\_us()}{increment\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a4655866953a7a43f7925e2330afae9e9} 
+void comppare\+::config\+::increment\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const float}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Increment the roi us value using float. 
+
+\Hypertarget{classcomppare_1_1config_aa378bec0b47f8604b670e802d066ab83}\index{comppare::config@{comppare::config}!increment\_roi\_us@{increment\_roi\_us}}
+\index{increment\_roi\_us@{increment\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{increment\_roi\_us()}{increment\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_aa378bec0b47f8604b670e802d066ab83} 
+template$<$typename Rep, typename Period$>$ \\
+void comppare\+::config\+::increment\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{std\+::chrono\+::duration$<$ Rep, Period $>$}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Increment the roi us value using time points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}\index{comppare::config@{comppare::config}!instance@{instance}}
+\index{instance@{instance}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2} 
+\mbox{\hyperlink{classcomppare_1_1config}{config}} \& comppare\+::config\+::instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Get the singleton instance of the config class. 
+
+\Hypertarget{classcomppare_1_1config_a35f6c1987b526bac915fc7e5d63f56ae}\index{comppare::config@{comppare::config}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a35f6c1987b526bac915fc7e5d63f56ae} 
+\mbox{\hyperlink{classcomppare_1_1config}{config}} \& comppare\+::config\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1config}{config}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move assignment operator. 
+
+\Hypertarget{classcomppare_1_1config_a9bcefe16bddabcafe6d2993d26a1a067}\index{comppare::config@{comppare::config}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a9bcefe16bddabcafe6d2993d26a1a067} 
+\mbox{\hyperlink{classcomppare_1_1config}{config}} \& comppare\+::config\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1config}{config}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy assignment operator. 
+
+\Hypertarget{classcomppare_1_1config_a8e202a56443204447b75868c9e299c2f}\index{comppare::config@{comppare::config}!reset\_roi\_us@{reset\_roi\_us}}
+\index{reset\_roi\_us@{reset\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{reset\_roi\_us()}{reset\_roi\_us()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a8e202a56443204447b75868c9e299c2f} 
+void comppare\+::config\+::reset\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Reset the ROI time to zero. 
+
+\Hypertarget{classcomppare_1_1config_ac6861c4582a0620d0163ac03fb314d19}\index{comppare::config@{comppare::config}!set\_all\_fp\_tolerance@{set\_all\_fp\_tolerance}}
+\index{set\_all\_fp\_tolerance@{set\_all\_fp\_tolerance}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_all\_fp\_tolerance()}{set\_all\_fp\_tolerance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ac6861c4582a0620d0163ac03fb314d19} 
+void comppare\+::config\+::set\+\_\+all\+\_\+fp\+\_\+tolerance (\begin{DoxyParamCaption}\item[{long double}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the floating-\/point tolerance for all supported types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The tolerance value to set for all floating-\/point types. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_ad75d5706a66a2ef398540ef9cd1cfbab}\index{comppare::config@{comppare::config}!set\_bench\_iters@{set\_bench\_iters}}
+\index{set\_bench\_iters@{set\_bench\_iters}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_bench\_iters()}{set\_bench\_iters()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ad75d5706a66a2ef398540ef9cd1cfbab} 
+void comppare\+::config\+::set\+\_\+bench\+\_\+iters (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the number of benchmark iterations. 
+
+\Hypertarget{classcomppare_1_1config_abc73fde620203449ad4d8a3ea7b4a173}\index{comppare::config@{comppare::config}!set\_fp\_tolerance@{set\_fp\_tolerance}}
+\index{set\_fp\_tolerance@{set\_fp\_tolerance}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_fp\_tolerance()}{set\_fp\_tolerance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_abc73fde620203449ad4d8a3ea7b4a173} 
+template$<$std\+::floating\+\_\+point T = double$>$ \\
+void comppare\+::config\+::set\+\_\+fp\+\_\+tolerance (\begin{DoxyParamCaption}\item[{T}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the floating-\/point tolerance for a specific floating-\/point type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The tolerance value to set. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_ac6f2a136dab67ed1998703a57fa52593}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ac6f2a136dab67ed1998703a57fa52593} 
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const double}]{start}{, }\item[{const double}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using double. 
+
+\Hypertarget{classcomppare_1_1config_a544f14c20a980f3553b409fc804569d2}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a544f14c20a980f3553b409fc804569d2} 
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const double}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using double. 
+
+\Hypertarget{classcomppare_1_1config_a929f88a147976a5273182c6d9114d261}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a929f88a147976a5273182c6d9114d261} 
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const float}]{start}{, }\item[{const float}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using float. 
+
+\Hypertarget{classcomppare_1_1config_a1d86e73fca082406554a4b975c80d84d}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a1d86e73fca082406554a4b975c80d84d} 
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const float}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using float. 
+
+\Hypertarget{classcomppare_1_1config_af2bd76b13c10a79aa5505d696740dc4a}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_af2bd76b13c10a79aa5505d696740dc4a} 
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&}]{start}{, }\item[{const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using time points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_a0ebd1d1ed37a9dccacf0aab4d7a24c7e}\index{comppare::config@{comppare::config}!set\_roi\_us@{set\_roi\_us}}
+\index{set\_roi\_us@{set\_roi\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_roi\_us()}{set\_roi\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a0ebd1d1ed37a9dccacf0aab4d7a24c7e} 
+template$<$typename Rep, typename Period$>$ \\
+void comppare\+::config\+::set\+\_\+roi\+\_\+us (\begin{DoxyParamCaption}\item[{std\+::chrono\+::duration$<$ Rep, Period $>$}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the roi us value using a {\ttfamily std\+::chrono\+::duration}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Rep} & \\
+\hline
+{\em Period} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_a3f652923ccdafc020e3079c12fb777d8}\index{comppare::config@{comppare::config}!set\_warmup\_iters@{set\_warmup\_iters}}
+\index{set\_warmup\_iters@{set\_warmup\_iters}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_iters()}{set\_warmup\_iters()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a3f652923ccdafc020e3079c12fb777d8} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+iters (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the number of warmup iterations. 
+
+\Hypertarget{classcomppare_1_1config_a0aa1f2fe171fc3d9e0cb10d7b8c76b55}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a0aa1f2fe171fc3d9e0cb10d7b8c76b55} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{const double}]{start}{, }\item[{const double}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_a1fa133d5321fe720160ade909567f1d9}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a1fa133d5321fe720160ade909567f1d9} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{const double}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using double. 
+
+\Hypertarget{classcomppare_1_1config_af6be797987c58fb1659c48aadbfdb6e0}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_af6be797987c58fb1659c48aadbfdb6e0} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{const float}]{start}{, }\item[{const float}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using float. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_abaca1f816192d209ab0dabf74872d503}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_abaca1f816192d209ab0dabf74872d503} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{const float}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using float. 
+
+\Hypertarget{classcomppare_1_1config_ac23b48804e93f12fa28e9eebf041dc46}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ac23b48804e93f12fa28e9eebf041dc46} 
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&}]{start}{, }\item[{const \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\+\_\+point\+\_\+t}} \&}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using time points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_ac2b328d6fa3bef8ad4be1a56fc5ba879}\index{comppare::config@{comppare::config}!set\_warmup\_us@{set\_warmup\_us}}
+\index{set\_warmup\_us@{set\_warmup\_us}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{set\_warmup\_us()}{set\_warmup\_us()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ac2b328d6fa3bef8ad4be1a56fc5ba879} 
+template$<$typename Rep, typename Period$>$ \\
+void comppare\+::config\+::set\+\_\+warmup\+\_\+us (\begin{DoxyParamCaption}\item[{std\+::chrono\+::duration$<$ Rep, Period $>$}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the warmup us value using a {\ttfamily std\+::chrono\+::duration}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Rep} & \\
+\hline
+{\em Period} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1config_ab1490e36efe896d0124486f7b4254fc1}\index{comppare::config@{comppare::config}!warmup\_iters@{warmup\_iters}}
+\index{warmup\_iters@{warmup\_iters}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{warmup\_iters()}{warmup\_iters()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_ab1490e36efe896d0124486f7b4254fc1} 
+uint64\+\_\+t comppare\+::config\+::warmup\+\_\+iters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the number of warmup iterations. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1config_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee}\index{comppare::config@{comppare::config}!bench\_iters\_@{bench\_iters\_}}
+\index{bench\_iters\_@{bench\_iters\_}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{bench\_iters\_}{bench\_iters\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee} 
+uint64\+\_\+t comppare\+::config\+::bench\+\_\+iters\+\_\+ \{100\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of benchmark iterations. 
+
+\Hypertarget{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}\index{comppare::config@{comppare::config}!roi\_@{roi\_}}
+\index{roi\_@{roi\_}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{roi\_}{roi\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0} 
+double comppare\+::config\+::roi\+\_\+ \{0.\+0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current roi us value. 
+
+\Hypertarget{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}\index{comppare::config@{comppare::config}!warmup\_@{warmup\_}}
+\index{warmup\_@{warmup\_}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{warmup\_}{warmup\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b} 
+double comppare\+::config\+::warmup\+\_\+ \{0.\+0\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current warmup us value. 
+
+\Hypertarget{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890}\index{comppare::config@{comppare::config}!warmup\_iters\_@{warmup\_iters\_}}
+\index{warmup\_iters\_@{warmup\_iters\_}!comppare::config@{comppare::config}}
+\doxysubsubsection{\texorpdfstring{warmup\_iters\_}{warmup\_iters\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890} 
+uint64\+\_\+t comppare\+::config\+::warmup\+\_\+iters\+\_\+ \{100\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of warmup iterations. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{config_8hpp}{config.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,240 @@
+\doxysection{comppare\+::internal\+::policy\+::autopolicy\+::Range\+Error\+Policy\texorpdfstring{$<$}{<} R \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{}\label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+
+
+Error policy for ranges of arithmetic types.  
+
+
+
+
+{\ttfamily \#include $<$policy.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9e075b5b65c5cc7fd33565fde0e75de9}{Range\+Error\+Policy}} ()
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae2130394152de7999233408493470835}{\texorpdfstring{$\sim$}{\string~}\+Range\+Error\+Policy}} ()=default
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a5f213e679b4eafbf68965919d41b6d55}{metric}} (std\+::size\+\_\+t i) const
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\+\_\+fail}} () const
+\item 
+void \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ac3c2cf48007c07e37e794ccb5bc906e5}{compute\+\_\+error}} (const R \&a, const R \&b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a6044adb0336edbf3d9de23c0c9b418cc}{metric\+\_\+count}} ()
+\item 
+static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae8a3d285a514aad383527f26da2dc140}{metric\+\_\+name}} (std\+::size\+\_\+t i)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} = std\+::remove\+\_\+cvref\+\_\+t$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$R$>$$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9c58459988ba45cb338f19191029cbc2}{get\+\_\+max}} () const
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a66cca7a02704c0dee4c7c57da81549d8}{get\+\_\+mean}} () const
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad435ecec171e1d3f8f34dde50482acbe}{get\+\_\+total}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\+\_\+error\+\_\+}} = \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0)
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\+\_\+error\+\_\+}} = \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\+\_\+cnt\+\_\+}} = 0
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93}{fail\+\_\+}} \{false\}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\+\_\+}} \{true\}
+\item 
+std\+::string \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\+\_\+msg\+\_\+}}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}{tolerance\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::array \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03}{names}} \{"{}Max\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Mean\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Total\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename R$>$\newline
+requires \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_range_of_arithmetic}{comppare\+::internal\+::concepts\+::\+Range\+Of\+Arithmetic}}$<$R$>$\newline
+class comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy$<$ R $>$}
+Error policy for ranges of arithmetic types. 
+
+Compares two ranges element-\/wise and computes metrics such as maximum error, mean error, and total error.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em R} & Range type (e.\+g., std\+::vector$<$int$>$, std\+::deque$<$float$>$) \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!T@{T}}
+\index{T@{T}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{T}{T}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d} 
+template$<$typename R$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::T = std\+::remove\+\_\+cvref\+\_\+t$<$std\+::ranges\+::range\+\_\+value\+\_\+t$<$R$>$$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9e075b5b65c5cc7fd33565fde0e75de9}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!RangeErrorPolicy@{RangeErrorPolicy}}
+\index{RangeErrorPolicy@{RangeErrorPolicy}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{RangeErrorPolicy()}{RangeErrorPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9e075b5b65c5cc7fd33565fde0e75de9} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::\+Range\+Error\+Policy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae2130394152de7999233408493470835}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!````~RangeErrorPolicy@{\texorpdfstring{$\sim$}{\string~}RangeErrorPolicy}}
+\index{````~RangeErrorPolicy@{\texorpdfstring{$\sim$}{\string~}RangeErrorPolicy}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RangeErrorPolicy()}{\string~RangeErrorPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae2130394152de7999233408493470835} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{Range\+Error\+Policy}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ac3c2cf48007c07e37e794ccb5bc906e5}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!compute\_error@{compute\_error}}
+\index{compute\_error@{compute\_error}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{compute\_error()}{compute\_error()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ac3c2cf48007c07e37e794ccb5bc906e5} 
+template$<$typename R$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{const R \&}]{a}{, }\item[{const R \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9c58459988ba45cb338f19191029cbc2}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!get\_max@{get\_max}}
+\index{get\_max@{get\_max}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{get\_max()}{get\_max()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9c58459988ba45cb338f19191029cbc2} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::get\+\_\+max (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a66cca7a02704c0dee4c7c57da81549d8}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!get\_mean@{get\_mean}}
+\index{get\_mean@{get\_mean}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{get\_mean()}{get\_mean()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a66cca7a02704c0dee4c7c57da81549d8} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::get\+\_\+mean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad435ecec171e1d3f8f34dde50482acbe}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!get\_total@{get\_total}}
+\index{get\_total@{get\_total}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{get\_total()}{get\_total()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad435ecec171e1d3f8f34dde50482acbe} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::get\+\_\+total (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!is\_fail@{is\_fail}}
+\index{is\_fail@{is\_fail}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{is\_fail()}{is\_fail()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7} 
+template$<$typename R$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::is\+\_\+fail (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a5f213e679b4eafbf68965919d41b6d55}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!metric@{metric}}
+\index{metric@{metric}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric()}{metric()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a5f213e679b4eafbf68965919d41b6d55} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::metric (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a6044adb0336edbf3d9de23c0c9b418cc}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!metric\_count@{metric\_count}}
+\index{metric\_count@{metric\_count}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_count()}{metric\_count()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a6044adb0336edbf3d9de23c0c9b418cc} 
+template$<$typename R$>$ \\
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::metric\+\_\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae8a3d285a514aad383527f26da2dc140}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!metric\_name@{metric\_name}}
+\index{metric\_name@{metric\_name}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{metric\_name()}{metric\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae8a3d285a514aad383527f26da2dc140} 
+template$<$typename R$>$ \\
+constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::metric\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!elem\_cnt\_@{elem\_cnt\_}}
+\index{elem\_cnt\_@{elem\_cnt\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{elem\_cnt\_}{elem\_cnt\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0} 
+template$<$typename R$>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::elem\+\_\+cnt\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!err\_msg\_@{err\_msg\_}}
+\index{err\_msg\_@{err\_msg\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{err\_msg\_}{err\_msg\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5} 
+template$<$typename R$>$ \\
+std\+::string \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::err\+\_\+msg\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!fail\_@{fail\_}}
+\index{fail\_@{fail\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{fail\_}{fail\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93} 
+template$<$typename R$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::fail\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!max\_error\_@{max\_error\_}}
+\index{max\_error\_@{max\_error\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{max\_error\_}{max\_error\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::max\+\_\+error\+\_\+ = \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!names@{names}}
+\index{names@{names}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03} 
+template$<$typename R$>$ \\
+std\+::array \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::names \{"{}Max\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Mean\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}, "{}Total\texorpdfstring{$\vert$}{|}err\texorpdfstring{$\vert$}{|}"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!tolerance\_@{tolerance\_}}
+\index{tolerance\_@{tolerance\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{tolerance\_}{tolerance\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::tolerance\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!total\_error\_@{total\_error\_}}
+\index{total\_error\_@{total\_error\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{total\_error\_}{total\_error\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96} 
+template$<$typename R$>$ \\
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}} \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::total\+\_\+error\+\_\+ = \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0)\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}\index{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}!valid\_@{valid\_}}
+\index{valid\_@{valid\_}!comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$@{comppare::internal::policy::autopolicy::RangeErrorPolicy$<$ R $>$}}
+\doxysubsubsection{\texorpdfstring{valid\_}{valid\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6} 
+template$<$typename R$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{comppare\+::internal\+::policy\+::autopolicy\+::\+Range\+Error\+Policy}}$<$ R $>$\+::valid\+\_\+ \{true\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{policy_8hpp}{policy.\+hpp}}\end{DoxyCompactItemize}

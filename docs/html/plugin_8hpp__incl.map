@@ -1,0 +1,17 @@
+<map id="include/comppare/plugin/plugin.hpp" name="include/comppare/plugin/plugin.hpp">
+<area shape="rect" id="Node000001" title="This file contains the base Plugin class and concept of a valid Plugin class for the ComPPare framewo..." alt="" coords="230,5,391,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,80,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,49,95,93,94,88,243,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,94,157,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,49,172,90,170,85,264,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="181,94,248,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="288,48,243,86,239,82,285,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="271,94,350,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="313,46,313,78,308,78,308,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="374,94,442,120"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="336,44,383,82,379,86,333,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="466,94,520,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="357,44,453,85,451,90,355,49"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="544,94,602,120"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="377,44,531,90,529,95,375,49"/>
+</map>

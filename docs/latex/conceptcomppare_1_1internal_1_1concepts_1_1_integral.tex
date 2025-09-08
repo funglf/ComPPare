@@ -1,0 +1,28 @@
+\doxysection{comppare\+::internal\+::concepts\+::Integral Concept Reference}
+\hypertarget{conceptcomppare_1_1internal_1_1concepts_1_1_integral}{}\label{conceptcomppare_1_1internal_1_1concepts_1_1_integral}\index{comppare::internal::concepts::Integral@{comppare::internal::concepts::Integral}}
+
+
+Concept for an integral type.  
+
+
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_integral}{comppare::internal::concepts::Integral}}\ =\ \ std::integral<std::remove\_cvref\_t<T>>}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for an integral type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}

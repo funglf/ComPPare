@@ -1,0 +1,118 @@
+\doxysection{comppare\+::internal\+::policy\+::autopolicy\+::String\+Equal\+Policy Class Reference}
+\hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy}{}\label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+
+
+Error policy for std\+::string. Compares two strings for equality.  
+
+
+
+
+{\ttfamily \#include $<$policy.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a443658a81724b3a1b3627e4924f29647}{String\+Equal\+Policy}} ()=default
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a6aabe522d1ba1c15d1b11fad7a734c9d}{\texorpdfstring{$\sim$}{\string~}\+String\+Equal\+Policy}} ()=default
+\item 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ std\+::string $>$ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_af18932fbf11594168938eabea78b4420}{metric}} (std\+::size\+\_\+t) const
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_ac842641effb8b683c4dfbccb4963a90d}{is\+\_\+fail}} () const
+\item 
+void \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a7986a3ccacb0230a36b9646c6321e86a}{compute\+\_\+error}} (const std\+::string \&a, const std\+::string \&b)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a1b3bafdfba046b3e3c855cc795122120}{metric\+\_\+count}} ()
+\item 
+static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a9f2f82ca78b77f8bacd05b98abed3f35}{metric\+\_\+name}} (std\+::size\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}{eq\+\_\+}} \{true\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::array \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_aba6241e969d47994c12e912403a5fed0}{names}} \{"{}Equal?"{}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Error policy for std\+::string. Compares two strings for equality. 
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a443658a81724b3a1b3627e4924f29647}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!StringEqualPolicy@{StringEqualPolicy}}
+\index{StringEqualPolicy@{StringEqualPolicy}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{StringEqualPolicy()}{StringEqualPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a443658a81724b3a1b3627e4924f29647} 
+comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::\+String\+Equal\+Policy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a6aabe522d1ba1c15d1b11fad7a734c9d}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!````~StringEqualPolicy@{\texorpdfstring{$\sim$}{\string~}StringEqualPolicy}}
+\index{````~StringEqualPolicy@{\texorpdfstring{$\sim$}{\string~}StringEqualPolicy}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}StringEqualPolicy()}{\string~StringEqualPolicy()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a6aabe522d1ba1c15d1b11fad7a734c9d} 
+comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::\texorpdfstring{$\sim$}{\string~}\+String\+Equal\+Policy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a7986a3ccacb0230a36b9646c6321e86a}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!compute\_error@{compute\_error}}
+\index{compute\_error@{compute\_error}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{compute\_error()}{compute\_error()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a7986a3ccacb0230a36b9646c6321e86a} 
+void comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::compute\+\_\+error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{a}{, }\item[{const std\+::string \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_ac842641effb8b683c4dfbccb4963a90d}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!is\_fail@{is\_fail}}
+\index{is\_fail@{is\_fail}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{is\_fail()}{is\_fail()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_ac842641effb8b683c4dfbccb4963a90d} 
+bool comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::is\+\_\+fail (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_af18932fbf11594168938eabea78b4420}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!metric@{metric}}
+\index{metric@{metric}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{metric()}{metric()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_af18932fbf11594168938eabea78b4420} 
+\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{Metric\+Value}}$<$ std\+::string $>$ comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::metric (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a1b3bafdfba046b3e3c855cc795122120}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!metric\_count@{metric\_count}}
+\index{metric\_count@{metric\_count}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{metric\_count()}{metric\_count()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a1b3bafdfba046b3e3c855cc795122120} 
+constexpr std\+::size\+\_\+t comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::metric\+\_\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a9f2f82ca78b77f8bacd05b98abed3f35}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!metric\_name@{metric\_name}}
+\index{metric\_name@{metric\_name}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{metric\_name()}{metric\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a9f2f82ca78b77f8bacd05b98abed3f35} 
+constexpr std\+::string\+\_\+view comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::metric\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!eq\_@{eq\_}}
+\index{eq\_@{eq\_}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{eq\_}{eq\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366} 
+bool comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::eq\+\_\+ \{true\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_aba6241e969d47994c12e912403a5fed0}\index{comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}!names@{names}}
+\index{names@{names}!comppare::internal::policy::autopolicy::StringEqualPolicy@{comppare::internal::policy::autopolicy::StringEqualPolicy}}
+\doxysubsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily \label{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_aba6241e969d47994c12e912403a5fed0} 
+std\+::array comppare\+::internal\+::policy\+::autopolicy\+::\+String\+Equal\+Policy\+::names \{"{}Equal?"{}\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{policy_8hpp}{policy.\+hpp}}\end{DoxyCompactItemize}

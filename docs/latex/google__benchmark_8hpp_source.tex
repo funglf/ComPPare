@@ -1,0 +1,250 @@
+\doxysection{google\+\_\+benchmark.\+hpp}
+\hypertarget{google__benchmark_8hpp_source}{}\label{google__benchmark_8hpp_source}\index{include/comppare/plugin/google\_benchmark/google\_benchmark.hpp@{include/comppare/plugin/google\_benchmark/google\_benchmark.hpp}}
+\mbox{\hyperlink{google__benchmark_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Copyright\ 2025\ |\ Leong\ Fan\ FUNG\ |\ funglf\ |\ stanleyfunglf@gmail.com}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00006\ \textcolor{comment}{of\ this\ software\ and\ associated\ documentation\ files\ (the\ “Software”),\ to\ deal}}
+\DoxyCodeLine{00007\ \textcolor{comment}{in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00008\ \textcolor{comment}{to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00009\ \textcolor{comment}{copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00010\ \textcolor{comment}{furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00013\ \textcolor{comment}{all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ “AS\ IS”,\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00016\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00018\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00021\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ HAVE\_GOOGLE\_BENCHMARK}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <benchmark/benchmark.h>}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{plugin_8hpp}{comppare/plugin/plugin.hpp}}"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ansi_8hpp}{comppare/internal/ansi.hpp}}"{}}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark}{comppare::plugin::google\_benchmark}}}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad3b50a349e61bb142b4d0386f4186d5e}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a87c63b7ef4d5bbb867f9cea5abb6957b}{state}}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a8f64920f89199af4c9ec1c557ba9628b}{operator=}}(\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}{instance}}()}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}}\ inst;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inst;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad31e30a86642ceee70e79e479515e190}{set\_state}}(benchmark::State\ \&st)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}{instance}}().\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}{st\_}}\ =\ \&st;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ benchmark::State\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}{get\_state}}()}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}{instance}}().\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}{st\_}})}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Benchmark\ state\ is\ not\ set."{}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}{instance}}().\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}{st\_}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aa4bdc95f1ede858215d2d32a960c0a27}{state}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ benchmark::State\ *\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}{st\_}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_acc5e18b6fc8860d43452c7f347853ec9}{google\_benchmark\_manager}}}
+\DoxyCodeLine{00098\ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_acc5e18b6fc8860d43452c7f347853ec9}{google\_benchmark\_manager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a0b1736d5816c30c9591944044f916ea5}{\string~google\_benchmark\_manager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_abb7f8dd97ebb71bf975fa127c41ff2d2}{initialize}}(\textcolor{keywordtype}{int}\ \&argc,\ \textcolor{keywordtype}{char}\ **argv)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ [tmp\_argc,\ tmp\_argv]\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_ab0b6d1538e089a8838f59cc9cd76225d}{gbench\_parser\_}}.parse(argc,\ argv);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a5c8a4e2e18955a48f79f02f426d4504d}{gbench\_argc}}\ =\ tmp\_argc;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a9b12f1db14a16d3f1dd643db216940d0}{gbench\_argv}}\ =\ tmp\_argv;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_ad65f2de9ecd251a8941d5d92346447bb}{print\_benchmark\_header}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ benchmark::Initialize(\&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a5c8a4e2e18955a48f79f02f426d4504d}{gbench\_argc}},\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a9b12f1db14a16d3f1dd643db216940d0}{gbench\_argv}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ benchmark::ReportUnrecognizedArguments(\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a5c8a4e2e18955a48f79f02f426d4504d}{gbench\_argc}},\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a9b12f1db14a16d3f1dd643db216940d0}{gbench\_argv}});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Func,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ benchmark::internal::Benchmark\ *\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a64cbd415578de523a286fff468ddc29c}{add\_gbench}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ Func\ f,\ Args\ \&\&...args)}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ std::tuple<Args...>\ cargs(std::forward<Args>(args)...);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ benchptr\ =\ benchmark::RegisterBenchmark(}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [f,\ cargs\ =\ std::move(cargs)](benchmark::State\ \&st)\ \textcolor{keyword}{mutable}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad31e30a86642ceee70e79e479515e190}{comppare::plugin::google\_benchmark::state::set\_state}}(st);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::apply([\&](\textcolor{keyword}{auto}\ \&\&...unpacked)}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ f(std::forward<\textcolor{keyword}{decltype}(unpacked)>(unpacked)...);\ \},\ cargs);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ benchmark::ClobberMemory();}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ benchptr;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a2da4fa4784650adc8dec043a8d737946}{run}}()}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ benchmark::RunSpecifiedBenchmarks();}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ benchmark::Shutdown();}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a5c8a4e2e18955a48f79f02f426d4504d}{gbench\_argc}};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ **\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a9b12f1db14a16d3f1dd643db216940d0}{gbench\_argv}};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser}{comppare::plugin::PluginArgParser}}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_ab0b6d1538e089a8838f59cc9cd76225d}{gbench\_parser\_}}\{\textcolor{stringliteral}{"{}-\/-\/gbench"{}}\};}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_ad65f2de9ecd251a8941d5d92346447bb}{print\_benchmark\_header}}()}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::left\ <<\ comppare::internal::ansi::BOLD}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=\(\backslash\)n=============\ "{}}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::ITALIC(\textcolor{stringliteral}{"{}Google\ Benchmark"{}})}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ =============\(\backslash\)n=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*"{}}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::BOLD\_OFF\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Google\ Benchmark\ cmdline\ arguments:\(\backslash\)n"{}};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a5c8a4e2e18955a48f79f02f426d4504d}{gbench\_argc}};\ ++i)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::setw(2)\ <<\ std::right\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ \ ["{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}]\ "{}}\ <<\ std::quoted(\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager_a9b12f1db14a16d3f1dd643db216940d0}{gbench\_argv}}[i])\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::left}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::BOLD(\textcolor{stringliteral}{"{}=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*"{}})}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ InTup,\ \textcolor{keyword}{class}\ OutTup>}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{Plugin}}<InTup,\ OutTup>}
+\DoxyCodeLine{00231\ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ae8040a566a4ae0263b06e89a2ac6bb96}{Self}}\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin<InTup,\ OutTup>}};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager}{comppare::plugin::google\_benchmark::google\_benchmark\_manager}}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a738c331e9972d310e1524cac0af5d73c}{gb\_}};}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin}}\ \&\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_abea3650db9b2a56e340c3a00ffa56a26}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ad09e702dcc149bce9e1e861c3ec1f05a}{GoogleBenchmarkPlugin}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Self>\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a5875e6d27a8bfd6ca6181a8378fdda7b}{instance}}()}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Self>\ inst\{\textcolor{keyword}{new}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ae8040a566a4ae0263b06e89a2ac6bb96}{Self}}\};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inst;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Func>}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ benchmark::internal::Benchmark\ *\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a9735558c8edfc14009b9fb3b238427d4}{register\_impl}}(\textcolor{keyword}{const}\ std::string\ \&name,}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Func\ \&\&user\_fn,}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ InTup\ \&inputs,}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OutTup\ \&outs)}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::apply([\&](\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\ \&...in\_vals)}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{keywordflow}{return}\ std::apply([\&](\textcolor{keyword}{auto}\ \&\&...outs\_vals)}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a738c331e9972d310e1524cac0af5d73c}{gb\_}}.add\_gbench(name.c\_str(),}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::forward<Func>(user\_fn),}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ in\_vals...,\ outs\_vals...);\ \},\ outs);\ \},\ inputs);}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a77db3697fb5fad52be954c70e4da68dc}{initialize}}(\textcolor{keywordtype}{int}\ \&argc,\ \textcolor{keywordtype}{char}\ **argv)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00290\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a738c331e9972d310e1524cac0af5d73c}{gb\_}}.initialize(argc,\ argv);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_ac9756613f1e1ed93b03262e408be0154}{run}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00300\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a738c331e9972d310e1524cac0af5d73c}{gb\_}}.run();}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin_a1fd85fb2f2dff75da3393c3171525894}{GoogleBenchmarkPlugin}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00306\ \ \ \ \ \};}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keyword}{template}\ <comppare::\textcolor{keywordtype}{int}ernal::concepts::FloatingPo\textcolor{keywordtype}{int}\ T>}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark_a2892805822e4a27405a97111b08f8983}{SetIterationTime}}(T\ time)}
+\DoxyCodeLine{00322\ \ \ \ \ \{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ benchmark::State\ \&st\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}{comppare::plugin::google\_benchmark::state::get\_state}}();}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ st.SetIterationTime(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(time\ *\ 1e-\/6));}
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Rep,\ \textcolor{keyword}{typename}\ Period>}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark_a2892805822e4a27405a97111b08f8983}{SetIterationTime}}(std::chrono::duration<Rep,\ Period>\ time)}
+\DoxyCodeLine{00342\ \ \ \ \ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ benchmark::State\ \&st\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}{comppare::plugin::google\_benchmark::state::get\_state}}();}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ elapsed\_seconds\ =\ std::chrono::duration\_cast<std::chrono::duration<double>>(time).count();}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ st.SetIterationTime(elapsed\_seconds);}
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#define\ PLUGIN\_HOTLOOP\_BENCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00354\ \textcolor{preprocessor}{\ \ \ \ benchmark::State\ \&st\ =\ comppare::plugin::google\_benchmark::state::get\_state();\ \(\backslash\)}}
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\ \ \ \ for\ (auto\ \_\ :\ st)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ hotloop\_body();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \textcolor{preprocessor}{\#if\ defined(\_\_CUDACC\_\_)}}
+\DoxyCodeLine{00361\ \textcolor{preprocessor}{\#define\ GPU\_PLUGIN\_HOTLOOP\_BENCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00362\ \textcolor{preprocessor}{\ \ \ \ cudaEvent\_t\ \_\_LINE\_\_stop;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00363\ \textcolor{preprocessor}{\ \ \ \ cudaEventCreate(\&\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\ \ \ \ benchmark::State\ \&st\ =\ comppare::plugin::google\_benchmark::state::get\_state();\ \(\backslash\)}}
+\DoxyCodeLine{00365\ \textcolor{preprocessor}{\ \ \ \ for\ (auto\ \_\ :\ st)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ hotloop\_body();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00368\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Syncronise\ every\ time\ to\ record\ GPU\ time\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Google\ Benchmark\ records\ extra\ overhead\ of\ EventSynchronization\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Google\ Benchmark\ not\ recommended\ for\ GPU\ code\ anyways.\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ cudaEventRecord(\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00372\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ cudaEventSynchronize(\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00373\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#elif\ defined(\_\_HIPCC\_\_)}}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\#define\ GPU\_PLUGIN\_HOTLOOP\_BENCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\ \ \ \ hipEvent\_t\ \_\_LINE\_\_stop;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\ \ \ \ hipEventCreate(\&\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\ \ \ \ benchmark::State\ \&st\ =\ comppare::plugin::google\_benchmark::state::get\_state();\ \(\backslash\)}}
+\DoxyCodeLine{00379\ \textcolor{preprocessor}{\ \ \ \ for\ (auto\ \_\ :\ st)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ hotloop\_body();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Syncronise\ every\ time\ to\ record\ GPU\ time\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00383\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Google\ Benchmark\ records\ extra\ overhead\ of\ EventSynchronization\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00384\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Google\ Benchmark\ not\ recommended\ for\ GPU\ code\ anyways.\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00385\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ hipEventRecord(\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ hipEventSynchronize(\_\_LINE\_\_stop);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#define\ PLUGIN\_SET\_ITERATION\_TIME(TIME)\ \(\backslash\)}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\ \ \ \ comppare::plugin::google\_benchmark::SetIterationTime(TIME);}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HAVE\_GOOGLE\_BENCHMARK}}
+
+\end{DoxyCode}

@@ -1,0 +1,304 @@
+\doxysection{examples/advanced\+\_\+demo/1-\/custom\+\_\+error\+\_\+policy Directory Reference}
+\hypertarget{dir_8140ab9b5eac49e3fd238e236b07cebe}{}\label{dir_8140ab9b5eac49e3fd238e236b07cebe}\index{examples/advanced\_demo/1-\/custom\_error\_policy Directory Reference@{examples/advanced\_demo/1-\/custom\_error\_policy Directory Reference}}
+Directory dependency graph for 1-\/custom\+\_\+error\+\_\+policy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{dir_8140ab9b5eac49e3fd238e236b07cebe_dep}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_8fb043e5bf74f5be2c7f8445295470bf}{build}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{custom__error__policy__demo_8cpp}{custom\+\_\+error\+\_\+policy\+\_\+demo.\+cpp}}
+\item 
+file \mbox{\hyperlink{custom__policy_8hpp}{custom\+\_\+policy.\+hpp}}
+\item 
+file \mbox{\hyperlink{data__structure_8hpp}{data\+\_\+structure.\+hpp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item 1. Introduction
+\item 2. Quick Start
+\begin{DoxyItemize}
+\item 2.1. Build
+\item 2.2. Run
+\item 2.3. Results
+\end{DoxyItemize}
+\item 3. Example Case
+\begin{DoxyItemize}
+\item 3.1. Custom Data Structure -\/-\/ \`{}data\+\_\+structure.hpp\`{}
+\item 3.2. Error Policy\+: Same Make/\+Brand? -\/-\/ \`{}custom\+\_\+policy.hpp\`{}
+\end{DoxyItemize}
+\item 4. Error Policy Rules
+\item 4.1. Error\+Policy\textquotesingle{}s Rule of 5 -\/-\/ Summary
+\end{DoxyItemize}
+
+\doxysubsection*{1. Introduction}
+
+This example is used to demonstrate how to make your own Error Policy -- your custom method for comparing outputs of your functions. At the time of writing, comppare provides error testing ONLY for types\+:
+
+
+\begin{DoxyEnumerate}
+\item Floating Point Number
+\item Integral Number
+\item Containers of {\bfseries{Numbers}} that is able to {\bfseries{Iterate Forward}} (eg. std\+::vector\texorpdfstring{$<$}{<}int\texorpdfstring{$>$}{>}, std\+::deque\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>} etc) \href{https://en.cppreference.com/w/cpp/ranges/forward_range.html}{\texttt{\mbox{[}see std\+::ranges\+::forward\+\_\+range\mbox{]}}}
+\item std\+::string
+\end{DoxyEnumerate}
+
+Any other types, or custom types require their own Error Policy to compare.
+
+\doxysubsection*{2. Quick Start}
+
+\doxysubsubsection*{2.\+1. Build}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ }
+\DoxyCodeLine{cd\ build\ }
+\DoxyCodeLine{cmake\ ..\ }
+\DoxyCodeLine{make\ }
+
+\end{DoxyCode}
+ \doxysubsubsection*{2.\+2. Run}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./custom\_error\_policy\_demo}
+
+\end{DoxyCode}
+ \doxysubsubsection*{2.\+3. Results}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=}
+\DoxyCodeLine{============\ ComPPare\ Framework\ ============}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Number\ of\ implementations:\ \ \ \ \ \ \ \ \ \ \ \ \ 3}
+\DoxyCodeLine{Warmup\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{Benchmark\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ Func\ µs/Iter\ \ \ \ \ \ \ \ ROI\ µs/Iter\ \ \ \ \ \ \ Ovhd\ µs/Iter\ \ \ \ \ \ \ SameBrand?[0]}
+\DoxyCodeLine{Toyota\ Prius\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.04\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ true\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{Toyota\ Corolla\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.04\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ true\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{Porsche\ 911\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.04\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ false\ \ \ \ \ \ \ \ \ \ \ \ <-\/-\/\ FAIL\ }
+
+\end{DoxyCode}
+
+
+\doxysubsection*{3. Example Case}
+
+This example is found in code.
+
+\doxysubsubsection*{3.\+1. Custom Data Structure -- {\ttfamily \doxylink{data__structure_8hpp}{data\+\_\+structure.\+hpp}}}
+
+Here we have a custom struct called {\ttfamily car} which stores the following information\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\mbox{\hyperlink{structcar}{car}}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ std::string\ \mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}};}
+\DoxyCodeLine{\ \ \ \ std::string\ \mbox{\hyperlink{structcar_a5ecde531932c2a9e99f493ebfb168148}{model}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structcar_a337609f8f1b6678c6fbfed0964841e60}{mileage}};}
+\DoxyCodeLine{\ \ \ \ uint64\_t\ \mbox{\hyperlink{structcar_affd3694cef7a4da693b81bfdd1c1b29e}{year}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3.\+2. Error Policy\+: Same Make/\+Brand? -- {\ttfamily \doxylink{custom__policy_8hpp}{custom\+\_\+policy.\+hpp}}}
+
+We want to compare different functions whether they write out the {\ttfamily same make/brand} for instance, function {\ttfamily car1} writes the make/brand as "{}\+Toyota"{} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{custom__error__policy__demo_8cpp_af04d55bb9c8751a65df2f8a0fbd8badf}{car1}}(\mbox{\hyperlink{structcar}{car}}\ \&c)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}}\ =\ \textcolor{stringliteral}{"{}Toyota"{}};}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a5ecde531932c2a9e99f493ebfb168148}{model}}\ =\ \textcolor{stringliteral}{"{}Prius"{}};}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a337609f8f1b6678c6fbfed0964841e60}{mileage}}\ =\ 6006.13f;}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_affd3694cef7a4da693b81bfdd1c1b29e}{year}}\ =\ 2020;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ and function {\ttfamily car2} also writes "{}\+Toyota"{} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{custom__error__policy__demo_8cpp_a0ac868cc489b258cae764b5969770b69}{car2}}(\mbox{\hyperlink{structcar}{car}}\ \&c)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}}\ =\ \textcolor{stringliteral}{"{}Toyota"{}};}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a5ecde531932c2a9e99f493ebfb168148}{model}}\ =\ \textcolor{stringliteral}{"{}Corolla"{}};}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_a337609f8f1b6678c6fbfed0964841e60}{mileage}}\ =\ 101010.1f;}
+\DoxyCodeLine{\ \ \ \ c.\mbox{\hyperlink{structcar_affd3694cef7a4da693b81bfdd1c1b29e}{year}}\ =\ 1998;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Therefore, based on this comparison criteria, {\ttfamily \doxylink{custom__error__policy__demo_8cpp_a0ac868cc489b258cae764b5969770b69}{car2()}} is the same implementation as {\ttfamily \doxylink{custom__error__policy__demo_8cpp_af04d55bb9c8751a65df2f8a0fbd8badf}{car1()}}
+
+\doxysubsection*{4. Error Policy Rules}
+
+With this Example in mind, we can start writing the custom Error Policy {\ttfamily \doxylink{class_is_same_brand}{Is\+Same\+Brand}}
+
+To be a valid Error Policy, there are a couple rules to follow\+:
+
+\doxysubsubsection*{1. How many Metrics -- {\ttfamily metric\+\_\+count()} }
+
+For our case, we only need a {\ttfamily single metric}\+: is it the {\ttfamily Same Brand?}
+
+Therefore, our first function {\ttfamily metric\+\_\+count()} would simply return 1
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ metric\_count()\ \{\ \textcolor{keywordflow}{return}\ 1;\ \}}
+
+\end{DoxyCode}
+
+
+\begin{quote}
+Note\+: Some types can have a few metrics. For instance, std\+::vector\texorpdfstring{$<$}{<}double\texorpdfstring{$>$}{>} can be 3 criteria\+: Total Error, Mean Error, Max Error. \end{quote}
+
+
+\doxysubsubsection*{2. What is the Name of the metric(s)? }
+
+We only have 1 metric on whether is it the same make, lets name it {\ttfamily Same\+Brand?} This is used to print the column name. So any human readable, easily understood name would be perfect!
+
+Therefore, we have our second function {\ttfamily metric\+\_\+name(size\+\_\+t i)}, where i is the index of the metrics 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ std::string\_view\ metric\_name(std::size\_t\ i)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SameBrand?"{}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ metric\ index"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3. Way to compute the Error }
+
+To compute the error, we need to provide a reference object against a object you want to test
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a7d8e6f6e36ca5aa4bd000d0c6865e36b}{compute\_error}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structcar}{car}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structcar}{car}}\ \&b)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ same\_brand\_\ =\ (a.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}}\ ==\ b.\mbox{\hyperlink{structcar_a3586efd053e057718a3309f062e25323}{make}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{4. Did it pass? }
+
+A function that returns whether this current implementation had passed or not. It can be any logic you want to be, based on the calculated metrics. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a6346bbf28a005f699688f8e68660d37e}{is\_fail}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\textcolor{keyword}{}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ !same\_brand\_;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{5. Print out the results }
+
+\doxysubsubsubsection*{Option 1\+: Returning a String }
+
+The most straightforward way to return a value. The returned value can be any numerical (scalar) value too. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ metric(std::size\_t\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\textcolor{keyword}{}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ same\_brand\_\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \doxysubsubsubsection*{Option 2\+: Returning a Wrapper class of a "{}\+Streamable"{} type }
+
+The only advantage to use the wrapper to return is for colouring of the results. The values are coloured red if it fails. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<std::string>}}\ metric(std::size\_t\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\textcolor{keyword}{}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<std::string>}}(same\_brand\_\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}},\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a6346bbf28a005f699688f8e68660d37e}{is\_fail}}());}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ metric\ index"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ {\bfseries{"{}\+Streamable"{} Type?}} It means the type must have an {\ttfamily operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} to perform stream output. \href{https://en.cppreference.com/w/cpp/string/basic_string/operator_ltltgtgt.html}{\texttt{(See cppreference)}}
+
+(aka, can you do {\ttfamily std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} X;} ?)
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float}\ a\ =\ 1.0f;}
+\DoxyCodeLine{std::cout\ <<\ a;\ \textcolor{comment}{//\ Valid\ }}
+\DoxyCodeLine{}
+\DoxyCodeLine{std::vector<float>\ b\ =\ \{1.0f\};}
+\DoxyCodeLine{std::cout\ <<\ b\ \textcolor{comment}{//\ Invalid\ -\/-\/\ std::vector\ does\ not\ have\ operator\ <<}}
+
+\end{DoxyCode}
+
+
+Hence\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<float>}};\ \textcolor{comment}{//\ Valid\ }}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<std::vector<float>}}>\ \textcolor{comment}{//\ Invalid\ -\/-\/\ std::vector\ does\ not\ have\ operator\ <<}}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{4.\+1. Error\+Policy\textquotesingle{}s Rule of 5 -- Summary}
+
+\doxysubsubsection*{1. {\ttfamily static size\+\_\+t metric\+\_\+count()} }
+
+Returns the number of metrics
+
+\doxysubsubsection*{2. {\ttfamily static std\+::string\+\_\+view metric\+\_\+name(std\+::size\+\_\+t i)} }
+
+Returns the Name of Metric based on input index {\ttfamily i}, for {\ttfamily i \texorpdfstring{$<$}{<} metric\+\_\+count()}.
+
+\doxysubsubsection*{3. {\ttfamily void compute\+\_\+error(const T\&\&a, const T\&\&b)} }
+
+Void function requiring input of 2 objects to compute the error metrics
+
+\doxysubsubsection*{4. {\ttfamily bool is\+\_\+fail()} }
+
+Returns whether the case has failed or not.
+
+\doxysubsubsection*{5 -- option 1 {\ttfamily T metric(size\+\_\+t i) const} }
+
+{\bfseries{T must be either a Numerical Value or std\+::string}} Returns the Value of Metric based on input index {\ttfamily i}, for {\ttfamily i \texorpdfstring{$<$}{<} metric\+\_\+count()}.
+
+\doxysubsubsection*{5 -- option 2 {\ttfamily \doxylink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare\+::internal\+::policy\+::\+Metric\+Value}\texorpdfstring{$<$}{<}T\texorpdfstring{$>$}{>} metric(size\+\_\+t i) const} }
+
+again, {\bfseries{T must be able to print to out stream}} In other words\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{T\ a;}
+\DoxyCodeLine{std::cout\ <<\ a;\ \textcolor{comment}{//\ if\ valid}}
+\DoxyCodeLine{\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{comppare::internal::policy::MetricValue<T>}}\ \textcolor{comment}{//\ then\ this\ is\ valid\ }}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{Summary of Summary }
+
+If your Error\+Policy fulfils these 5 functions, your code should be able to compile. Or else, compile time restraints will not allow this to compile.
+
+\begin{quote}
+Rule of Five is actually a C++ Convention/\+Rule on how to write classes. Hope this C++ intended pun did not confuse you. \href{https://en.cppreference.com/w/cpp/language/rule_of_three.html}{\texttt{(See Rule of Five in Cppreference)}} \end{quote}

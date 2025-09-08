@@ -1,0 +1,346 @@
+\doxysection{examples/max\+\_\+reduction Directory Reference}
+\hypertarget{dir_8d4c8d310e3b52dbd1209e3ee14d5b48}{}\label{dir_8d4c8d310e3b52dbd1209e3ee14d5b48}\index{examples/max\_reduction Directory Reference@{examples/max\_reduction Directory Reference}}
+Directory dependency graph for max\+\_\+reduction\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{dir_8d4c8d310e3b52dbd1209e3ee14d5b48_dep}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{init__max_8cpp}{init\+\_\+max.\+cpp}}
+\item 
+file \mbox{\hyperlink{init__max_8hpp}{init\+\_\+max.\+hpp}}
+\item 
+file \mbox{\hyperlink{max__reduction_2main_8cpp}{main.\+cpp}}
+\item 
+file \mbox{\hyperlink{max__cpu_8cpp}{max\+\_\+cpu.\+cpp}}
+\item 
+file \mbox{\hyperlink{max__cpu_8hpp}{max\+\_\+cpu.\+hpp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Finds the maximum value within an array/vector.
+
+
+\begin{DoxyItemize}
+\item 1. Build Instructions
+\begin{DoxyItemize}
+\item 1.1. Dependencies
+\end{DoxyItemize}
+\item 2. Run the Benchmark
+\item 3. Implementation of Com\+PPare in this example
+\begin{DoxyItemize}
+\item 3.1. Basic Usage of \`{}\+HOTLOOP\`{} macro
+\item 3.2. Manual Timing
+\item 3.3. Use of Pointer with \`{}std\+::span\`{}
+\item 3.4. Com\+PPare in \`{}main()\`{}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection*{1. Build Instructions}
+
+\doxysubsubsection*{1.\+1. Dependencies}
+
+
+\begin{DoxyItemize}
+\item CMake
+\item C++20 compatible compiler
+\item For GPU kernel build\+:
+\begin{DoxyItemize}
+\item NVIDIA nvcc compiler wrapper
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsection*{1.\+1.\+2. GPU Build }
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DCMAKE\_BUILD\_TYPE=Release\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DUSE\_CUDA=ON\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ ..}
+\DoxyCodeLine{}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{1.\+1.\+2.\+1. Optional GPU build option }
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DCMAKE\_BUILD\_TYPE=Release\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DUSE\_CUDA=ON\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DCUDA\_ARCH=90\ \(\backslash\)\ \#Optional:\ Specify\ CUDA\ Architecture\ }
+\DoxyCodeLine{\ \ \ \ ..}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{1.\+1.\+3. CPU only Build (default) }
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+Or explicitly\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{}
+\DoxyCodeLine{cmake\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DCMAKE\_BUILD\_TYPE=Release\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ -\/DUSE\_CUDA=OFF\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ ..}
+\DoxyCodeLine{}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+Only CPU backends (serial and parallel) will be built.
+
+\DoxyHorRuler{0}
+
+
+\doxysubsection*{2. Run the Benchmark}
+
+The executable takes the following command-\/line arguments\+:
+
+\doxysubsubsection*{1.\+2.\+1. Arguments }
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default  }\\\cline{1-3}
+\endhead
+{\ttfamily -\/-\/size}  &log2 of vector size ({\ttfamily N = 2\texorpdfstring{$^\wedge$}{\string^}n})  &18  \\\cline{1-3}
+\end{longtabu}
+
+
+\doxysubsubsection*{1.\+2.\+2. Example }
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./max\_reduction\ -\/-\/size\ 26}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{1.\+2.\+3. Output Example }
+
+Output will print\+:
+
+
+\begin{DoxyItemize}
+\item Function execution time
+\item Core compute time (isolated)
+\item Overhead (e.\+g., memory copies)
+\item Error of Max Val against reference
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{===\ Max\ Reduction\ Benchmark\ Parameters\ ===}
+\DoxyCodeLine{Vector\ size\ (N)\ \ \ \ \ :\ 67108864}
+\DoxyCodeLine{===================================}
+\DoxyCodeLine{}
+\DoxyCodeLine{*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=}
+\DoxyCodeLine{============\ ComPPare\ Framework\ ============}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Number\ of\ implementations:\ \ \ \ \ \ \ \ \ \ \ \ \ 5}
+\DoxyCodeLine{Warmup\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{Benchmark\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Func\ µs\ \ \ \ \ \ \ \ \ \ \ \ \ ROI\ µs\ \ \ \ \ \ \ \ \ \ \ \ Ovhd\ µs\ \ \ \ \ \ \ Total|err|[0]}
+\DoxyCodeLine{cpu\ serial\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 36303.95\ \ \ \ \ \ \ \ \ \ \ \ 17437.95\ \ \ \ \ \ \ \ \ \ \ \ 18866.00\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+\DoxyCodeLine{cpu\ omp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 107208.48\ \ \ \ \ \ \ \ \ \ \ \ 62084.54\ \ \ \ \ \ \ \ \ \ \ \ 45123.94\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+\DoxyCodeLine{cpu\ thread\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 44459.22\ \ \ \ \ \ \ \ \ \ \ \ 21151.77\ \ \ \ \ \ \ \ \ \ \ \ 23307.45\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+\DoxyCodeLine{gpu\ kernel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 133597.43\ \ \ \ \ \ \ \ \ \ \ \ 32933.28\ \ \ \ \ \ \ \ \ \ \ 100664.15\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+\DoxyCodeLine{gpu\ kernel\ opt\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 109846.87\ \ \ \ \ \ \ \ \ \ \ \ 20369.54\ \ \ \ \ \ \ \ \ \ \ \ 89477.33\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{3. Implementation of Com\+PPare in this example}
+
+\doxysubsubsection*{3.\+1. Basic Usage of {\ttfamily HOTLOOP} macro}
+
+Adding {\ttfamily HOTLOOPSTART} and {\ttfamily HOTLOOPEND} macros to the region you want to benchmark. It will run the region with certain iterations of warmup (default=100) before running another certain number of iterations for benchmark (default=100).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ max\_cpu.cpp}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{max__cpu_8cpp_ada2f04938f2dea02a36ed954bfc7d3d6}{cpu\_max\_serial}}(std::span<const\ float>\ in,\ \textcolor{keywordtype}{float}\ \&out)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};\ \ \ \textcolor{comment}{//\ Start\ of\ Region\ you\ want\ to\ benchmark}}
+\DoxyCodeLine{\ \ \ \ out\ =\ *std::max\_element(in.data(),\ in.data()\ +\ in.size());}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};\ \ \ \ \ \textcolor{comment}{//\ End\ of\ Region\ you\ want\ to\ benchmark}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3.\+2. Manual Timing}
+
+\doxysubsubsubsection*{Reduction on GPUs }
+
+In GPU, operations are executed in units of thread-\/blocks. Each block contains a number of threads, and a grid (a number of) of blocks are launched.
+
+In reduction, each block is reponsible for a portion of the whole array. After each block reduces, it returns the local maximum. As there are multiple blocks, it forms an output array of local maxima, or a partially reduced output. Therefore, we take this partial reduced output and do reduction again until there is only 1 value, which is our global maximum.
+
+Below is a graphical explanation of reduction on GPU\+: $<$style$>$ .diagram \{ font-\/family\+: ui-\/monospace, SFMono-\/\+Regular, Menlo, Consolas, "{}\+Liberation Mono"{}, monospace; line-\/height\+: 1.\+35; \} .h \{ font-\/weight\+: 800; letter-\/spacing\+: .02em; \} .note \{ color\+: \#444; \} .swapptr\{ color\+: \#6a1b9a; font-\/weight\+: 700; \} .b0 \{ color\+:\#e53935; \} /\texorpdfstring{$\ast$}{*} \texorpdfstring{$\ast$}{*} \texorpdfstring{$\ast$}{*}/ .b1 \{ color\+:\#222222; \} /\texorpdfstring{$\ast$}{*} • \texorpdfstring{$\ast$}{*}/ .b2 \{ color\+:\#1e88e5; \} /\texorpdfstring{$\ast$}{*} o \texorpdfstring{$\ast$}{*}/ .b3 \{ color\+:\#43a047; \} /\texorpdfstring{$\ast$}{*} x \texorpdfstring{$\ast$}{*}/ .b4 \{ color\+:\#fb8c00; \} /\texorpdfstring{$\ast$}{*} + \texorpdfstring{$\ast$}{*}/ .dim \{ color\+:\#777; \} .hr \{ margin\+: 8px 0; border-\/bottom\+: 1px dashed \#bbb; \} .pad \{ margin\+: 6px 0; \} $<$/style$>$
+
+ Legend\+: \mbox{[}B0\mbox{]} \texorpdfstring{$\ast$}{*} ~ \mbox{[}B1\mbox{]} • ~ \mbox{[}B2\mbox{]} o ~ \mbox{[}B3\mbox{]} x ~ \mbox{[}B4\mbox{]} + ~ ~ \mbox{[}B\#\mbox{]} denotes a thread block. 
+
+ 
+
+ — ONE REDUCTION ITERATION —
+
+ 
+\begin{DoxyPre}
+{\bfseries{INPUT}}  ({\ttfamily d\_input}, N elements; grouped by blocks of size {\ttfamily BLOCKSIZE})
+[B0]  * * * * * * * *  | [B1]  • • • • • • • • |  [B2]  o o o o o o o o |  [B3]  x x x x x x x x |   …
+
+      │                        │                        │                        │
+      v                        v                        v                        v
+
+{\bfseries{OUTPUT}}  ({\ttfamily d\_output}, one per block = N/BLOCKSIZE)
+      *                        •                        o                        x                   …
+  \end{DoxyPre}
+
+
+ Each block reduces its chunk → {\bfseries{one block-\/maximum}} goes to {\ttfamily d\+\_\+output}.
+
+ SWAP POINTERS\+: {\ttfamily d\+\_\+input} ↔ {\ttfamily d\+\_\+output} ~ Now the block maxima are the next iteration’s input, so the partial result can be further reduced.
+
+ 
+
+ — NEXT ITERATION —
+
+ 
+\begin{DoxyPre}
+{\bfseries{INPUT}}  ({\ttfamily d\_input}, N/BLOCKSIZE; previous iteration's partially reduced output)
+[G0]  * • o x + * • o | [G1]  x + * • o x + * |   …
+
+      │                       │                   │
+      v                       v                   v
+
+{\bfseries{OUTPUT}}  ({\ttfamily d\_output}, one per block = ⌈N/BLOCKSIZE²⌉)
+      *                       x                   …
+  \end{DoxyPre}
+
+
+ {\bfseries{Repeat until only one value remains -- global maximum}}. ~\newline
+~\newline
+ 
+
+\doxysubsubsubsection*{Benchmarking GPU Reduction }
+
+As shown, input and output arrays are used interchangably in the reduction operation for read and writes. Hence, the original array is no longer avaliable in device memory. Therefore, we would need to copy the original array back into device memory before each iteration. This is memory transfer overhead we would avoid benchmarking, as we want to know the performance of the kernel itself.
+
+To limit to certain regions to benchmark, there are macros provided {\ttfamily START\+\_\+\+MANUAL\+\_\+\+TIMER} and {\ttfamily STOP\+\_\+\+MANUAL\+\_\+\+TIMER} to specify the actual region of interest, and ignoring any overhead within the loop.
+
+As for GPU code, macros {\ttfamily GPU\+\_\+\+START\+\_\+\+MANUAL\+\_\+\+TIMER} and {\ttfamily GPU\+\_\+\+STOP\+\_\+\+MANUAL\+\_\+\+TIMER} are used instead to time the device but not host cpu.
+
+Hence, our GPU host code looks like\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ max\_gpu.cu}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keywordtype}{void}\ (*KERNEL)(const\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{float}\ *\_\_restrict\_\_,\ const\ \textcolor{keywordtype}{float}\ *\_\_restrict\_\_)>}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ gpu\_max(std::span<const\ float>\ in,\ \textcolor{keywordtype}{float}\ \&out)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ GPU\_HOTLOOPSTART;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Mem\ copy\ of\ Original\ Array\ to\ Device\ -\/-\/\ Required\ in\ each\ loop\ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ GPU\_START\_MANUAL\_TIMER;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Parallel\ Reduction\ on\ GPU\ */}}
+\DoxyCodeLine{\ \ \ \ GPU\_STOP\_MANUAL\_TIMER;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ GPU\_HOTLOOPEND;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ ...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3.\+3. Use of Pointer with {\ttfamily std\+::span}}
+
+In this code, the data is essentially a pointer to a raw array. However, the framework would not be able to compare raw arrays as the size is unknown. How can we solve this?
+
+\doxysubsubsubsection*{{\ttfamily std\+::span} }
+
+Since C++20, {\ttfamily std\+::span} is avaliable which acts as a wrapper over raw pointers.
+
+It stores the pointer to the array and the size of the array. Therefore, size would be known and the framework will be able to automatically compare the arrays.
+
+{\bfseries{Essentially, std\+::span can be defined minimally\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }span}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ T*\ pointer\_to\_array;}
+\DoxyCodeLine{\ \ \ \ std::size\_t\ size\_of\_array;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ {\bfseries{How to use std\+::span\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::size\_t\ array\_size\ =\ 10;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}*\ array\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[array\_size];}
+\DoxyCodeLine{std::span<int>\ wrapped\_array\ =\ std::span<int>(array,\ array\_size);}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3.\+4. Com\+PPare in {\ttfamily \doxylink{dummy_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}}}
+
+First create the the instance of comppare by providing the input type(s) in Input\+Context ({\ttfamily std\+::span\texorpdfstring{$<$}{<}const float\texorpdfstring{$>$}{>}} in this case) and the output type(s) in Output\+Context ({\ttfamily float} in this case). Then initialize the instance with input data. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{comppare::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ InputContext<std::span<const\ float>>::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ OutputContext<float>}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ compare(\textcolor{comment}{/*type:\ std::span<const\ float>*/}input\_data);}
+
+\end{DoxyCode}
+
+
+Set Reference function and add other functions for comparison 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Set\ reference\ implementation}}
+\DoxyCodeLine{compare.set\_reference(\textcolor{stringliteral}{"{}cpu\ serial"{}},\ \mbox{\hyperlink{max__cpu_8cpp_ada2f04938f2dea02a36ed954bfc7d3d6}{cpu\_max\_serial}});}
+\DoxyCodeLine{\textcolor{comment}{//\ Add\ implementations\ to\ compare}}
+\DoxyCodeLine{compare.add(\textcolor{stringliteral}{"{}cpu\ omp"{}},\ \mbox{\hyperlink{max__cpu_8cpp_a9fef4e1759a92151e7afbdc25f671fdd}{cpu\_max\_omp}});}
+
+\end{DoxyCode}
+ 

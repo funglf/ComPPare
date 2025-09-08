@@ -1,0 +1,389 @@
+\doxysection{policy.\+hpp}
+\hypertarget{policy_8hpp_source}{}\label{policy_8hpp_source}\index{include/comppare/internal/policy.hpp@{include/comppare/internal/policy.hpp}}
+\mbox{\hyperlink{policy_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Copyright\ 2025\ |\ Leong\ Fan\ FUNG\ |\ funglf\ |\ stanleyfunglf@gmail.com}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00006\ \textcolor{comment}{of\ this\ software\ and\ associated\ documentation\ files\ (the\ “Software”),\ to\ deal}}
+\DoxyCodeLine{00007\ \textcolor{comment}{in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00008\ \textcolor{comment}{to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00009\ \textcolor{comment}{copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00010\ \textcolor{comment}{furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00013\ \textcolor{comment}{all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ “AS\ IS”,\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00016\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00018\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00021\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <type\_traits>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{concepts_8hpp}{comppare/internal/concepts.hpp}}>}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{ansi_8hpp}{comppare/internal/ansi.hpp}}>}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy}{comppare::internal::policy}}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{template}\ <comppare::\textcolor{keywordtype}{int}ernal::concepts::Streamable\ T>}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52}{MetricValue}}}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\_msg\_}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52}{MetricValue}}(T\ v)\ :\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}}(v),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\_msg\_}}(\textcolor{stringliteral}{"{}"{}}),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}(true),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}}(false)\ \{\}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa7bdf0209b114d28321908066d5ff51a}{MetricValue}}(T\ v,\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\_fail}})\ :\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}}(v),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}}(\mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\_fail}}),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}(true),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\_msg\_}}(\textcolor{stringliteral}{"{}"{}})\ \{\}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a4b23eb0f651e6fc5c0f1b96173ace976}{MetricValue}}(T\ v,\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\_fail}},\ \textcolor{keywordtype}{bool}\ valid,\ std::string\_view\ msg)\ :\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}}(v),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}}(\mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\_fail}}),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}(valid),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\_msg\_}}(msg)\ \{\}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa91243339e9e2099d9d53308f785da05}{operator<<}}(std::ostream\ \&os,\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a73f512ef63155b5dc803a670f3c7ee52}{MetricValue<T>}}\ \textcolor{keyword}{const}\ \&mv)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ std::ios\ saved(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ saved.copyfmt(os);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ std::ostringstream\ tmp;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ tmp.copyfmt(os);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}\ \&\&\ !mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}})}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ <<\ mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a9b8aaf10941b10da7091bb8d39e5725e}{valid\_}}\ \&\&\ mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a959866930af85aad9f4c35559c3dc98c}{is\_fail\_}})}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ <<\ comppare::internal::ansi::RED(mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_a14ae1f3856363147a70476746b96b72e}{value\_}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ <<\ comppare::internal::ansi::RED(mv.\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value_aa97884953aab93cb1c4199417add1152}{err\_msg\_}});}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ body\ =\ std::move(tmp).str();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ os.width(0);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ body;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ os.copyfmt(saved);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}>}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value}{is\_metric\_value}}\ :\ std::false\_type}
+\DoxyCodeLine{00128\ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ U>}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value}{is\_metric\_value}}<\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue}}<U>>\ :\ std::true\_type}
+\DoxyCodeLine{00136\ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ M>}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a240fe5f8d269cee700ef3913ea17b010}{is\_metric\_value\_v}}\ =\ \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1is__metric__value}{is\_metric\_value<std::remove\_cvref\_t<M>}}>::value;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ M>}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1_is_metric_value}{IsMetricValue}}\ =\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a240fe5f8d269cee700ef3913ea17b010}{is\_metric\_value\_v<M>}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ \ Concept\ for\ a\ valid\ Error\ Policy}}
+\DoxyCodeLine{00161\ \textcolor{comment}{}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ \ It\ requires:}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ \ -\/\ metric\_count()\ to\ return\ the\ number\ of\ metrics}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ \ -\/\ metric\_name(std::size\_t\ i)\ to\ return\ the\ name\ of\ the\ metric\ at\ index\ i}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ \ -\/\ compute\_error(const\ Val\ \&a,\ const\ Val\ \&b,\ double\ tol)\ to\ compute\ the\ error}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ \ \ \ between\ two\ values\ a\ and\ b\ with\ a\ given\ tolerance\ tol\ -\/-\/\ or\ not}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ \ -\/\ metric(std::size\_t)\ to\ return\ the\ value\ of\ the\ metric\ as\ MetricValue<T>}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ \ -\/\ is\_fail()\ to\ return\ true\ if\ the\ error\ exceeds\ the\ tolerance}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Val,\ \textcolor{keyword}{typename}\ EP>}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1_error_policy}{ErrorPolicy}}\ =\ \textcolor{keyword}{requires}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ static\ members}}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \{\ EP::metric\_count()\ \}\ -\/>\ std::convertible\_to<std::size\_t>;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \{\ EP::metric\_name(std::size\_t\{\})\ \}\ -\/>\ std::convertible\_to<std::string\_view>;}
+\DoxyCodeLine{00197\ \ \ \ \ \}\ \&\&}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ error\ -\/-\/\ either\ with\ or\ without\ tolerance}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{requires}(EP\ ep,\ \textcolor{keyword}{const}\ Val\ \&a,\ \textcolor{keyword}{const}\ Val\ \&b)\ \{\ ep.compute\_error(a,\ b);\ \})\ \&\&}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ metric()\ returns\ value\ of\ the\ metric}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{requires}(EP\ ep,\ std::size\_t\ i)\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ ep.metric(i)\ \}\ -\/>\ IsMetricValue;\ \}\ ||\ \textcolor{keyword}{requires}(EP\ ep,\ std::size\_t\ i)\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ ep.metric(i)\ \}\ -\/>\ std::convertible\_to<double>;\ \}\ ||\ \textcolor{keyword}{requires}(EP\ ep,\ std::size\_t\ i)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ ep.metric(i)\ \}\ -\/>\ std::same\_as<std::string>;\ \})\ \&\&}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\_fail()\ -\/-\/\ either\ with\ or\ without\ tolerance}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{requires}(EP\ ep)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ ep.is\_fail()\ \}\ -\/>\ std::convertible\_to<bool>;\ \});}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ EP,\ \textcolor{keyword}{class}\ V>}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_ae294ad374430c59c18320e5e52f36c5f}{compute\_error}}(EP\ \&ep,\ \textcolor{keyword}{const}\ V\ \&a,\ \textcolor{keyword}{const}\ V\ \&b)}
+\DoxyCodeLine{00220\ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ ep.compute\_error(a,\ b);}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ EP>}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_a0e9ab984192a341c2304e640983befc2}{is\_fail}}(\textcolor{keyword}{const}\ EP\ \&ep)}
+\DoxyCodeLine{00233\ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ep.is\_fail();}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_1_1autopolicy}{autopolicy}}}
+\DoxyCodeLine{00242\ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_supported_by_auto_policy}{SupportedByAutoPolicy}}\ =}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_arithmetic}{comppare::internal::concepts::Arithmetic<T>}}\ ||}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_string}{comppare::internal::concepts::String<T>}}\ ||}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_range_of_arithmetic}{comppare::internal::concepts::RangeOfArithmetic<T>}};}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00260\ \textcolor{comment}{\ \ \ \ \ \ \ \ Error\ Policy\ for\ scalar/numbers}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_arithmetic}{comppare::internal::concepts::Arithmetic<T>}}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a6da9b6dca169eb3be15ce01da3edd4b7}{ArithmeticErrorPolicy}}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}{error\_}}\ =\ T(0);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f}{err\_msg\_}};}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794}{fail\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273}{valid\_}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ T\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}{tolerance\_}};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::array\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9f02f53eb7225c4db09ce8495c0edb7d}{names}}\{\textcolor{stringliteral}{"{}Total|err|"{}}\};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a6da9b6dca169eb3be15ce01da3edd4b7}{ArithmeticErrorPolicy}}()}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (!std::is\_floating\_point\_v<T>)}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cast\ tolerance\ to\ T\ for\ integral\ types}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}{tolerance\_}}\ =\ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(\mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{comppare::config::fp\_tolerance<double>}}());}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ tolerance\ as\ is\ for\ floating-\/point\ types}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}{tolerance\_}}\ =\ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{comppare::config::fp\_tolerance<T>}}();}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_ad6f28eec51970e35e91890fc272eb38a}{\string~ArithmeticErrorPolicy}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a90d923a6261fe4b75de10d7d60b241f2}{metric\_count}}()\ \{\ \textcolor{keywordflow}{return}\ 1;\ \}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_afc750d176d1a6b26f835a298f04d2155}{metric\_name}}(std::size\_t)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9f02f53eb7225c4db09ce8495c0edb7d}{names}}[0];\ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a277360f87da9588867f561368334d51f}{metric}}(std::size\_t)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00304\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}{error\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a3468314dc161e6f765c0beec0a2a4cd3}{is\_fail}}(),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273}{valid\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f}{err\_msg\_}});}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a3468314dc161e6f765c0beec0a2a4cd3}{is\_fail}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794}{fail\_}};\ \}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a9bb57d41f27b1d0a061feff1d15bf3a3}{compute\_error}}(\textcolor{keyword}{const}\ T\ \&a,\ \textcolor{keyword}{const}\ T\ \&b)}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_floating\_point\_v<T>)}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isfinite(a)\ ||\ !std::isfinite(b))}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}{error\_}}\ =\ std::numeric\_limits<T>::quiet\_NaN();}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a17a1750ca719ce6521109a11198f7f6f}{err\_msg\_}}\ =\ \textcolor{stringliteral}{"{}NAN/INF"{}};}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a24a4844ace90f0b6448af5a6d827f273}{valid\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ e\ =\ std::abs(a\ -\/\ b);}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ >\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a61aeff671737de55b6e57cc71b1fd3ed}{tolerance\_}})}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a7a68c495fbf50ef5aa0613607a211794}{fail\_}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy_a2ef7cbc70d1bcc15d530da7ab73c510f}{error\_}}\ =\ e;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a443658a81724b3a1b3627e4924f29647}{StringEqualPolicy}}}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}{eq\_}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::array\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_aba6241e969d47994c12e912403a5fed0}{names}}\{\textcolor{stringliteral}{"{}Equal?"{}}\};}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a443658a81724b3a1b3627e4924f29647}{StringEqualPolicy}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a6aabe522d1ba1c15d1b11fad7a734c9d}{\string~StringEqualPolicy}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a1b3bafdfba046b3e3c855cc795122120}{metric\_count}}()\ \{\ \textcolor{keywordflow}{return}\ 1;\ \}}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a9f2f82ca78b77f8bacd05b98abed3f35}{metric\_name}}(std::size\_t)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_aba6241e969d47994c12e912403a5fed0}{names}}[0];\ \}}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<std::string>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_af18932fbf11594168938eabea78b4420}{metric}}(std::size\_t)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00350\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<std::string>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}{eq\_}}\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_ac842641effb8b683c4dfbccb4963a90d}{is\_fail}}());}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_ac842641effb8b683c4dfbccb4963a90d}{is\_fail}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}{eq\_}};\ \}}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a7986a3ccacb0230a36b9646c6321e86a}{compute\_error}}(\textcolor{keyword}{const}\ std::string\ \&a,\ \textcolor{keyword}{const}\ std::string\ \&b)\ \{\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy_a76832e20fd6e2dc93ab5b2b6e8c37366}{eq\_}}\ =\ (a\ ==\ b);\ \}}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_range_of_arithmetic}{comppare::internal::concepts::RangeOfArithmetic<R>}}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9e075b5b65c5cc7fd33565fde0e75de9}{RangeErrorPolicy}}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\ =\ std::remove\_cvref\_t<std::ranges::range\_value\_t<R>>;}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\_error\_}}\ =\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0);}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\_error\_}}\ =\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0);}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}\ =\ 0;}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93}{fail\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}};}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}{tolerance\_}};}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::array\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03}{names}}\{\textcolor{stringliteral}{"{}Max|err|"{}},\ \textcolor{stringliteral}{"{}Mean|err|"{}},\ \textcolor{stringliteral}{"{}Total|err|"{}}\};}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9c58459988ba45cb338f19191029cbc2}{get\_max}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00385\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\_error\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\_fail}}(),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}});}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a66cca7a02704c0dee4c7c57da81549d8}{get\_mean}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00390\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}\ \&\&\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}})}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\_error\_}}\ /\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\textcolor{keyword}{>}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\_fail}}(),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}});}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}(0),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\_fail}}(),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}});}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad435ecec171e1d3f8f34dde50482acbe}{get\_total}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00398\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\_error\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\_fail}}(),\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}},\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}});}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9e075b5b65c5cc7fd33565fde0e75de9}{RangeErrorPolicy}}()}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (!std::is\_floating\_point\_v<T>)}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cast\ tolerance\ to\ T\ for\ integral\ types}}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}{tolerance\_}}\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\textcolor{keyword}{>}(\mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{comppare::config::fp\_tolerance<double>}}());}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ tolerance\ as\ is\ for\ floating-\/point\ types}}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}{tolerance\_}}\ =\ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{comppare::config::fp\_tolerance<T>}}();}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae2130394152de7999233408493470835}{\string~RangeErrorPolicy}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a6044adb0336edbf3d9de23c0c9b418cc}{metric\_count}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03}{names}}.size();\ \}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae8a3d285a514aad383527f26da2dc140}{metric\_name}}(std::size\_t\ i)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af16b7d8218b706269408635335774d03}{names}}[i];\ \}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1_metric_value}{MetricValue<T>}}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a5f213e679b4eafbf68965919d41b6d55}{metric}}(std::size\_t\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00423\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (i)}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a9c58459988ba45cb338f19191029cbc2}{get\_max}}();}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a66cca7a02704c0dee4c7c57da81549d8}{get\_mean}}();}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad435ecec171e1d3f8f34dde50482acbe}{get\_total}}();}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}Invalid\ metric\ index"{}});}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad83784349587f1c4edcf73fdde3054c7}{is\_fail}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00438\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}})}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93}{fail\_}};}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ac3c2cf48007c07e37e794ccb5bc906e5}{compute\_error}}(\textcolor{keyword}{const}\ R\ \&a,\ \textcolor{keyword}{const}\ R\ \&b)}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::ranges::size(a)\ !=\ std::ranges::size(b))}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}}\ =\ \textcolor{stringliteral}{"{}Size\ mismatch"{}};}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}\ =\ 0;}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ ia\ =\ std::ranges::begin(a);}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ ib\ =\ std::ranges::begin(b);}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ ia\ !=\ std::ranges::end(a)\ \&\&\ ib\ !=\ std::ranges::end(b);\ ++ia,\ ++ib)}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_floating\_point\_v<T>)}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isfinite(*ia)\ ||\ !std::isfinite(*ib))}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\_error\_}}\ =\ std::numeric\_limits<T>::quiet\_NaN();}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\_error\_}}\ =\ std::numeric\_limits<T>::quiet\_NaN();}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}\ =\ 0;}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a80f9a875e9f0763ad18ecadfd81accc6}{valid\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_aabfd095ae383e403a0b3db4306b280a5}{err\_msg\_}}\ =\ \textcolor{stringliteral}{"{}NAN/INF"{}};}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ae5f52b82ae621c6a4b7e208d3d0b896d}{T}}\ e\ =\ std::abs(*ia\ -\/\ *ib);}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ >\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a212ee297aadf08512ad7baa2bcd7330f}{tolerance\_}})}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_af7889df47f700521270ccc1a79a01b93}{fail\_}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a478838e3191e2a8b1adce32f0eca23d0}{elem\_cnt\_}}++;}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_ad403c5a8d159ebd1dd8f098cc2ccaf96}{total\_error\_}}\ +=\ e;}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\_error\_}}\ =\ std::max(\mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy_a12dc743d1f2e16653e2f1ccde5ee590a}{max\_error\_}},\ e);}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ }
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{AutoPolicy}};}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_arithmetic}{comppare::internal::concepts::Arithmetic<T>}}}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{AutoPolicy}}<T>}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy_3_01_t_01_4_a0b1190e3013477a4ce809b60e0c29544}{type}}\ =\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_arithmetic_error_policy}{ArithmeticErrorPolicy<std::remove\_cvref\_t<T>}}>;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_string}{comppare::internal::concepts::String<T>}}}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{AutoPolicy}}<T>}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy_3_01_t_01_4_a0b1190e3013477a4ce809b60e0c29544}{type}}\ =\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_string_equal_policy}{StringEqualPolicy}};}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_range_of_arithmetic}{comppare::internal::concepts::RangeOfArithmetic<T>}}}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{AutoPolicy}}<T>}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy_3_01_t_01_4_a0b1190e3013477a4ce809b60e0c29544}{type}}\ =\ \mbox{\hyperlink{classcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_range_error_policy}{RangeErrorPolicy<T>}};}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacecomppare_1_1internal_1_1policy_1_1autopolicy_a947342d478b2a264feefe51135fd91a4}{AutoPolicy\_t}}\ =\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structcomppare_1_1internal_1_1policy_1_1autopolicy_1_1_auto_policy}{AutoPolicy<T>::type}};}
+\DoxyCodeLine{00536\ \ \ \ \ \}}
+\DoxyCodeLine{00537\ \}}
+
+\end{DoxyCode}

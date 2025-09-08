@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,84,113,110"/>
+<area shape="rect" id="Node000001" href="$structcomppare_1_1internal_1_1policy_1_1is__metric__value_3_01_metric_value_3_01_u_01_4_01_4.html" title="Partial specialisation for any MetricValue and returns true." alt="" coords="161,5,346,61"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="114,76,166,59,168,64,116,82"/>
+<area shape="rect" id="Node000003" href="$structcomppare_1_1internal_1_1policy_1_1is__metric__value.html" title="Partial specialisation for not a MetricValue." alt="" coords="183,85,324,141"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="129,100,183,105,183,110,128,105"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="8,20,110,46"/>
+<area shape="poly" id="edge5_Node000002_Node000001" title=" " alt="" coords="125,30,160,30,160,36,125,36"/>
+</map>

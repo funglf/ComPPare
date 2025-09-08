@@ -1,0 +1,120 @@
+\doxysection{comppare\+::plugin\+::google\+\_\+benchmark\+::state Class Reference}
+\hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{}\label{classcomppare_1_1plugin_1_1google__benchmark_1_1state}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+
+
+State class to manage the benchmark state.  
+
+
+
+
+{\ttfamily \#include $<$google\+\_\+benchmark.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}{state}} (const \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&)=delete
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad3b50a349e61bb142b4d0386f4186d5e}{operator=}} (const \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&)=delete
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a87c63b7ef4d5bbb867f9cea5abb6957b}{state}} (\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a8f64920f89199af4c9ec1c557ba9628b}{operator=}} (\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}{instance}} ()
+\item 
+static void \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad31e30a86642ceee70e79e479515e190}{set\+\_\+state}} (benchmark\+::\+State \&st)
+\item 
+static benchmark\+::\+State \& \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}{get\+\_\+state}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aa4bdc95f1ede858215d2d32a960c0a27}{state}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+benchmark\+::\+State \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}{st\+\_\+}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State class to manage the benchmark state. 
+
+This class is a singleton to ensure a single instance throughout the program. It provides methods to set and get the benchmark state {\ttfamily benchmark\+::\+State \&}. The state is used to interact with the Google Benchmark library. 
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!state@{state}}
+\index{state@{state}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aefd94ce550009c5a3940058b779bc260} 
+comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::state (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a87c63b7ef4d5bbb867f9cea5abb6957b}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!state@{state}}
+\index{state@{state}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a87c63b7ef4d5bbb867f9cea5abb6957b} 
+comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aa4bdc95f1ede858215d2d32a960c0a27}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!state@{state}}
+\index{state@{state}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{state()}{state()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_aa4bdc95f1ede858215d2d32a960c0a27} 
+comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270} 
+benchmark\+::\+State \& comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::get\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!instance@{instance}}
+\index{instance@{instance}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a44afc821985b4590d513564777f88c37} 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad3b50a349e61bb142b4d0386f4186d5e}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad3b50a349e61bb142b4d0386f4186d5e} 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a8f64920f89199af4c9ec1c557ba9628b}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_a8f64920f89199af4c9ec1c557ba9628b} 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \& comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{state}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad31e30a86642ceee70e79e479515e190}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!set\_state@{set\_state}}
+\index{set\_state@{set\_state}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{set\_state()}{set\_state()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ad31e30a86642ceee70e79e479515e190} 
+void comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::set\+\_\+state (\begin{DoxyParamCaption}\item[{benchmark\+::\+State \&}]{st}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9}\index{comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}!st\_@{st\_}}
+\index{st\_@{st\_}!comppare::plugin::google\_benchmark::state@{comppare::plugin::google\_benchmark::state}}
+\doxysubsubsection{\texorpdfstring{st\_}{st\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1google__benchmark_1_1state_ac588d8c8efbf092be7b1b4d0549ec4e9} 
+benchmark\+::\+State\texorpdfstring{$\ast$}{*} comppare\+::plugin\+::google\+\_\+benchmark\+::state\+::st\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/plugin/google\+\_\+benchmark/\mbox{\hyperlink{google__benchmark_8hpp}{google\+\_\+benchmark.\+hpp}}\end{DoxyCompactItemize}

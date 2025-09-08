@@ -1,0 +1,66 @@
+\doxysection{include/comppare/plugin/nvbench/nvbench.hpp File Reference}
+\hypertarget{nvbench_8hpp}{}\label{nvbench_8hpp}\index{include/comppare/plugin/nvbench/nvbench.hpp@{include/comppare/plugin/nvbench/nvbench.hpp}}
+Include dependency graph for nvbench.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nvbench_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{nvbench_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcomppare_1_1plugin_1_1nvbenchplugin_1_1_nvbench_callable}{comppare\+::plugin\+::nvbenchplugin\+::\+Nvbench\+Callable$<$ F $>$}}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1state}{comppare\+::plugin\+::nvbenchplugin\+::state}}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager}{comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager}}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench_plugin}{comppare\+::plugin\+::nvbenchplugin\+::nvbench\+Plugin$<$ In\+Tup, Out\+Tup $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare}{comppare}}
+\begin{DoxyCompactList}\small\item\em Com\+PPare framework main namespace. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1plugin}{comppare\+::plugin}}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1nvbenchplugin}{comppare\+::plugin\+::nvbenchplugin}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{nvbench_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}{PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}}
+\item 
+\#define \mbox{\hyperlink{nvbench_8hpp_a6811a175242334ee3edc912f28e48c59}{GPU\+\_\+\+PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}}~\mbox{\hyperlink{google__benchmark_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}{PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{nvbench_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{nvbench_8hpp_a6811a175242334ee3edc912f28e48c59}\index{nvbench.hpp@{nvbench.hpp}!GPU\_PLUGIN\_HOTLOOP\_BENCH@{GPU\_PLUGIN\_HOTLOOP\_BENCH}}
+\index{GPU\_PLUGIN\_HOTLOOP\_BENCH@{GPU\_PLUGIN\_HOTLOOP\_BENCH}!nvbench.hpp@{nvbench.hpp}}
+\doxysubsubsection{\texorpdfstring{GPU\_PLUGIN\_HOTLOOP\_BENCH}{GPU\_PLUGIN\_HOTLOOP\_BENCH}}
+{\footnotesize\ttfamily \label{nvbench_8hpp_a6811a175242334ee3edc912f28e48c59} 
+\#define GPU\+\_\+\+PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH~\mbox{\hyperlink{google__benchmark_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}{PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}}}
+
+\Hypertarget{nvbench_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}\index{nvbench.hpp@{nvbench.hpp}!PLUGIN\_HOTLOOP\_BENCH@{PLUGIN\_HOTLOOP\_BENCH}}
+\index{PLUGIN\_HOTLOOP\_BENCH@{PLUGIN\_HOTLOOP\_BENCH}!nvbench.hpp@{nvbench.hpp}}
+\doxysubsubsection{\texorpdfstring{PLUGIN\_HOTLOOP\_BENCH}{PLUGIN\_HOTLOOP\_BENCH}}
+{\footnotesize\ttfamily \label{nvbench_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867} 
+\#define PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ state\_\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1state_a458c0910d3c7c5118dc8b5e852ea7352}{comppare::plugin::nvbenchplugin::state::get\_state}}();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ state\_-\/>exec([\&](nvbench::launch\ \&launch)\ \{\ hotloop\_body();\ \});}
+
+\end{DoxyCode}

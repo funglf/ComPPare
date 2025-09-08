@@ -1,0 +1,198 @@
+\doxysection{comppare\+::current\+\_\+state Class Reference}
+\hypertarget{classcomppare_1_1current__state}{}\label{classcomppare_1_1current__state}\index{comppare::current\_state@{comppare::current\_state}}
+
+
+Singleton class for the current state.  
+
+
+
+
+{\ttfamily \#include $<$config.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\+\_\+state}} (const \mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1current__state_a1d662267558f1ba0c5e21cc6335c5a2a}{current\+\_\+state}} (\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& \mbox{\hyperlink{classcomppare_1_1current__state_a9198d2a05882babc2d6625bbe22751e0}{operator=}} (const \mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& \mbox{\hyperlink{classcomppare_1_1current__state_a4b5b22990b57b7994136996ec248b234}{operator=}} (\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classcomppare_1_1current__state_ae90f9cbfd77a116d5ff05ca13b0e0418}{using\+\_\+plugin}} ()
+\begin{DoxyCompactList}\small\item\em Get if a plugin is being used currently. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1current__state_a1ef5f6becff4320be468fa5937217a5f}{set\+\_\+using\+\_\+plugin}} (bool v)
+\begin{DoxyCompactList}\small\item\em Set if a plugin is being used currently. \end{DoxyCompactList}\item 
+static std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1current__state_afe29cab3a8553573fbd377996bd84ea5}{impl\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em Get the name of the current implementation. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classcomppare_1_1current__state_a5ff1f3fdbc5b6b55113aa6606c9ce621}{set\+\_\+impl\+\_\+name}} (std\+::string\+\_\+view name)
+\begin{DoxyCompactList}\small\item\em Set the name of the current implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1current__state_ab9d33887a9a377d9eff7a6a8623bf83a}{current\+\_\+state}} ()=default
+\begin{DoxyCompactList}\small\item\em Private Default kconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& \mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the singleton instance of the \doxylink{classcomppare_1_1current__state}{current\+\_\+state} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84}{using\+\_\+plugin\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em The current state of plugin usage. \end{DoxyCompactList}\item 
+std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556}{impl\+\_\+name\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The name of the current implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class for the current state. 
+
+This singleton class holds the current state of the benchmarking process. It tracks whether a plugin is being used and the name of the current implementation. \begin{DoxyNote}{Note}
+Singleton is chosen as this is a header only library, using global variables will require user to declare them in a .cpp file. 
+\end{DoxyNote}
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1current__state_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}\index{comppare::current\_state@{comppare::current\_state}!current\_state@{current\_state}}
+\index{current\_state@{current\_state}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{current\_state()}{current\_state()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f} 
+comppare\+::current\+\_\+state\+::current\+\_\+state (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy constructor. 
+
+\Hypertarget{classcomppare_1_1current__state_a1d662267558f1ba0c5e21cc6335c5a2a}\index{comppare::current\_state@{comppare::current\_state}!current\_state@{current\_state}}
+\index{current\_state@{current\_state}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{current\_state()}{current\_state()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a1d662267558f1ba0c5e21cc6335c5a2a} 
+comppare\+::current\+\_\+state\+::current\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move constructor. 
+
+\Hypertarget{classcomppare_1_1current__state_ab9d33887a9a377d9eff7a6a8623bf83a}\index{comppare::current\_state@{comppare::current\_state}!current\_state@{current\_state}}
+\index{current\_state@{current\_state}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{current\_state()}{current\_state()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_ab9d33887a9a377d9eff7a6a8623bf83a} 
+comppare\+::current\+\_\+state\+::current\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+Private Default kconstructor. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1current__state_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1current__state_afe29cab3a8553573fbd377996bd84ea5}\index{comppare::current\_state@{comppare::current\_state}!impl\_name@{impl\_name}}
+\index{impl\_name@{impl\_name}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{impl\_name()}{impl\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_afe29cab3a8553573fbd377996bd84ea5} 
+std\+::string\+\_\+view comppare\+::current\+\_\+state\+::impl\+\_\+name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the name of the current implementation. 
+
+\Hypertarget{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}\index{comppare::current\_state@{comppare::current\_state}!instance@{instance}}
+\index{instance@{instance}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9} 
+\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& comppare\+::current\+\_\+state\+::instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Get the singleton instance of the \doxylink{classcomppare_1_1current__state}{current\+\_\+state} class. 
+
+\Hypertarget{classcomppare_1_1current__state_a9198d2a05882babc2d6625bbe22751e0}\index{comppare::current\_state@{comppare::current\_state}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a9198d2a05882babc2d6625bbe22751e0} 
+\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& comppare\+::current\+\_\+state\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy assignment operator. 
+
+\Hypertarget{classcomppare_1_1current__state_a4b5b22990b57b7994136996ec248b234}\index{comppare::current\_state@{comppare::current\_state}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a4b5b22990b57b7994136996ec248b234} 
+\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \& comppare\+::current\+\_\+state\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1current__state}{current\+\_\+state}} \&\&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move assignment operator. 
+
+\Hypertarget{classcomppare_1_1current__state_a5ff1f3fdbc5b6b55113aa6606c9ce621}\index{comppare::current\_state@{comppare::current\_state}!set\_impl\_name@{set\_impl\_name}}
+\index{set\_impl\_name@{set\_impl\_name}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{set\_impl\_name()}{set\_impl\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a5ff1f3fdbc5b6b55113aa6606c9ce621} 
+void comppare\+::current\+\_\+state\+::set\+\_\+impl\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set the name of the current implementation. 
+
+\Hypertarget{classcomppare_1_1current__state_a1ef5f6becff4320be468fa5937217a5f}\index{comppare::current\_state@{comppare::current\_state}!set\_using\_plugin@{set\_using\_plugin}}
+\index{set\_using\_plugin@{set\_using\_plugin}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{set\_using\_plugin()}{set\_using\_plugin()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_a1ef5f6becff4320be468fa5937217a5f} 
+void comppare\+::current\+\_\+state\+::set\+\_\+using\+\_\+plugin (\begin{DoxyParamCaption}\item[{bool}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Set if a plugin is being used currently. 
+
+\Hypertarget{classcomppare_1_1current__state_ae90f9cbfd77a116d5ff05ca13b0e0418}\index{comppare::current\_state@{comppare::current\_state}!using\_plugin@{using\_plugin}}
+\index{using\_plugin@{using\_plugin}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{using\_plugin()}{using\_plugin()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_ae90f9cbfd77a116d5ff05ca13b0e0418} 
+bool comppare\+::current\+\_\+state\+::using\+\_\+plugin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get if a plugin is being used currently. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1current__state_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556}\index{comppare::current\_state@{comppare::current\_state}!impl\_name\_@{impl\_name\_}}
+\index{impl\_name\_@{impl\_name\_}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{impl\_name\_}{impl\_name\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556} 
+std\+::string\+\_\+view comppare\+::current\+\_\+state\+::impl\+\_\+name\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The name of the current implementation. 
+
+\Hypertarget{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84}\index{comppare::current\_state@{comppare::current\_state}!using\_plugin\_@{using\_plugin\_}}
+\index{using\_plugin\_@{using\_plugin\_}!comppare::current\_state@{comppare::current\_state}}
+\doxysubsubsection{\texorpdfstring{using\_plugin\_}{using\_plugin\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84} 
+bool comppare\+::current\+\_\+state\+::using\+\_\+plugin\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current state of plugin usage. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/internal/\mbox{\hyperlink{config_8hpp}{config.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,17 @@
+<map id="comppare::InputContext::OutputContext::print_header" name="comppare::InputContext::OutputContext::print_header">
+<area shape="rect" id="Node000001" title="Print the header for the output table." alt="" coords="5,110,167,166"/>
+<area shape="rect" id="Node000002" href="$classcomppare_1_1config.html#a746ad50b12f724824b3b62f146968a8d" title="Get the number of benchmark iterations." alt="" coords="220,5,384,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,107,213,55,225,50,227,55,216,60,129,112"/>
+<area shape="rect" id="Node000005" href="$classcomppare_1_1_input_context_1_1_output_context.html#a2c601f07b13e7d449a60485f9ae85d40" title="Get the implementation details for a specific implementation index." alt="" coords="222,70,383,126"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="166,120,206,113,207,118,167,125"/>
+<area shape="rect" id="Node000006" href="$classcomppare_1_1_input_context_1_1_output_context.html#a6546c5e3c964b54a204551b11a6c9d88" title="Get the name of a specific metric for a specific implementation index." alt="" coords="222,150,383,206"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="167,150,207,157,206,163,166,155"/>
+<area shape="rect" id="Node000007" href="$classcomppare_1_1config.html#ab1490e36efe896d0124486f7b4254fc1" title="Get the number of warmup iterations." alt="" coords="215,229,390,270"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="129,164,216,215,227,220,225,225,213,220,126,168"/>
+<area shape="rect" id="Node000003" href="$classcomppare_1_1config.html#a2913df9eb204fa9839adb38858d6cfd2" title="Get the singleton instance of the config class." alt="" coords="438,125,616,150"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="365,44,391,55,446,85,494,114,491,118,444,89,389,60,363,49"/>
+<area shape="rect" id="Node000004" href="$classcomppare_1_1config.html#a3b3362c3001d7972c21a9be1f1744ff5" title="Deleted copy constructor." alt="" coords="664,125,829,150"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="617,135,648,135,648,140,617,140"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="710,126,703,116,707,106,722,100,747,98,773,101,787,108,785,112,772,106,746,103,723,106,711,110,708,116,714,123"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="363,226,389,215,444,186,491,157,494,162,446,191,391,220,365,231"/>
+</map>

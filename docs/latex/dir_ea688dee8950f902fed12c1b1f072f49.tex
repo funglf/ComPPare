@@ -1,0 +1,211 @@
+\doxysection{examples/advanced\+\_\+demo/3-\/manual\+\_\+timing Directory Reference}
+\hypertarget{dir_ea688dee8950f902fed12c1b1f072f49}{}\label{dir_ea688dee8950f902fed12c1b1f072f49}\index{examples/advanced\_demo/3-\/manual\_timing Directory Reference@{examples/advanced\_demo/3-\/manual\_timing Directory Reference}}
+Directory dependency graph for 3-\/manual\+\_\+timing\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{dir_ea688dee8950f902fed12c1b1f072f49_dep}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_a837f43e7d90ebdad86f17817b6a7ea2}{build}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{manual__timing__demo_8cpp}{manual\+\_\+timing\+\_\+demo.\+cpp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item 1. Introduction
+\item 2. Quick Start
+\begin{DoxyItemize}
+\item 2.1. Build
+\item 2.2. Run
+\end{DoxyItemize}
+\item 3. What are we benchmarking
+\begin{DoxyItemize}
+\item 3.1. Necessity of Manual timing
+\end{DoxyItemize}
+\item 4. How to Manual Time
+\item 5. More control over Manual timing
+\item 6. Results
+\end{DoxyItemize}
+
+\doxysubsection*{1. Introduction}
+
+Manually time sections within a hotloop. Needed when for instance some setup overhead is required within the ROI itself.
+
+\doxysubsection*{2. Quick Start}
+
+\doxysubsubsection*{2.\+1. Build}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{make\ }
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{2.\+2. Run}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./manual\_timing\_demo\ -\/-\/warmups\ 100000\ -\/-\/iters\ 100000}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{3. What are we benchmarking}
+
+We want to evaluate the performance of a simple function that operates on a {\ttfamily std\+::vector\texorpdfstring{$<$}{<}int\texorpdfstring{$>$}{>}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ f(std::vector<int>\ \&v)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ v.clear();\ \ \ \ \ \ \textcolor{comment}{//\ clear\ vector}}
+\DoxyCodeLine{\ \ \ \ v.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});\ \ \ \ \textcolor{comment}{//\ resize\ vector}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}{random\_fill}}(v);\ \textcolor{comment}{//\ Randomly\ fill\ }}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}}(v);\ \ \ \ \ \ \textcolor{comment}{//\ square\ each\ element}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ This function performs four distinct operations on the vector. To better understand their relative cost, we run four separate benchmarks\+:
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily All} – the full function, including {\ttfamily clear}, {\ttfamily resize}, {\ttfamily random\+\_\+fill}, and {\ttfamily square}.
+\item {\ttfamily Resize} – only the resize operation.
+\item {\ttfamily Random Fill} – only the random filling of values.
+\item {\ttfamily Clear + Square} – the combination of clearing the vector and squaring its elements.
+\end{DoxyEnumerate}
+
+\doxysubsubsection*{3.\+1. Necessity of Manual timing}
+
+In many benchmarks, the function under test cannot be isolated cleanly. Often there is unavoidable setup or cleanup work inside the benchmark loop that you don’t actually want to measure.
+
+Suppose we benchmark {\ttfamily square} operating on contents of a vector. Since the operation is in-\/place, after one iteration the vector contents have already changed. Before the next iteration, we must reset the vector back to its original random values.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ bench\_square(std::vector<int>\ \&v)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Reset\ step\ (needed\ before\ every\ iteration)}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}{random\_fill}}(v);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ We\ only\ want\ to\ time\ the\ squaring\ step}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a09770669e2181c6a712ea4512ded4e36}{MANUAL\_TIMER\_START}};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}}(v);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a6cde3e9e2e72f32aeb69aba4a09f353f}{MANUAL\_TIMER\_END}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{4. How to Manual Time}
+
+By default, benchmarks measure the total runtime of the hotloop section. If you only want to measure part of the function (e.\+g. resize), you can use the provided manual timing macros\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily MANUAL\+\_\+\+TIMER\+\_\+\+START} – start measuring time.
+\item {\ttfamily MANUAL\+\_\+\+TIMER\+\_\+\+END} – stop measuring time.
+\end{DoxyItemize}
+
+The comppare framework will deal with it as usual after adding these macros.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{manual__timing__demo_8cpp_aab89992e7a5f0cf66eaaf80db861a3fc}{bench\_resize}}(std::vector<int>\ \&v)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};\ \ \ \textcolor{comment}{//\ Marks\ start\ of\ benchmark\ loop}}
+\DoxyCodeLine{\ \ \ \ v.clear();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Only\ measure\ the\ resize\ step}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a09770669e2181c6a712ea4512ded4e36}{MANUAL\_TIMER\_START}};}
+\DoxyCodeLine{\ \ \ \ v.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a6cde3e9e2e72f32aeb69aba4a09f353f}{MANUAL\_TIMER\_END}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}{random\_fill}}(v);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}}(v);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};\ \ \ \ \ \textcolor{comment}{//\ Marks\ end\ of\ benchmark\ loop}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{5. More control over Manual timing}
+
+Sometimes when we want finer control — for example, benchmarking multiple sections in the same iteration. In that case, you can directly measure durations yourself and report them using the {\ttfamily \doxylink{comppare_8hpp_a8293881eb66cf6e561c6533b3af71ea1}{SET\+\_\+\+ITERATION\+\_\+\+TIME()}} macro.
+
+\begin{quote}
+Note\+: you cannot use {\ttfamily MANUAL\+\_\+\+TIMER\+\_\+\+START/\+END} macros multiple times within same loop. \end{quote}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{manual__timing__demo_8cpp_a81cd33a18993398c27c4cdafb9298c5b}{bench\_clear\_square}}(std::vector<int>\ \&v)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ only\ time\ clear}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ clear\_start\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{\ \ \ \ v.clear();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ clear\_end\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ v.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_a841ffd0bd392b641b6ad49c1a8bf539b}{random\_fill}}(v);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ only\ time\ square}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ square\_start\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}}(v);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ square\_end\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ iter\_duration\ =\ (square\_end\ -\/\ square\_start)\ +\ (clear\_end\ -\/\ clear\_start);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Set\ iteration\ time}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a8293881eb66cf6e561c6533b3af71ea1}{SET\_ITERATION\_TIME}}(iter\_duration);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{6. Results}
+
+{\ttfamily All} is roughly equivalent to {\ttfamily Resize} + {\ttfamily Random Fill} + {\ttfamily Clear + Square} which is what we would expect!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=}
+\DoxyCodeLine{============\ ComPPare\ Framework\ ============}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Number\ of\ implementations:\ \ \ \ \ \ \ \ \ \ \ \ \ 4}
+\DoxyCodeLine{Warmup\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100000}
+\DoxyCodeLine{Benchmark\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ 100000}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ \ ROI\ µs/Iter\ \ \ \ \ \ \ \ \ \ \ \ Func\ µs\ \ \ \ \ \ \ \ \ \ \ \ Ovhd\ µs\ \ \ \ \ \ \ \ \ Max|err|[0]\ \ \ \ \ \ \ \ Mean|err|[0]\ \ \ \ \ \ \ Total|err|[0]}
+\DoxyCodeLine{All\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4.06\ \ \ \ \ \ \ \ \ \ \ 405684.08\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.21\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{Resize\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.05\ \ \ \ \ \ \ \ \ \ \ 394796.96\ \ \ \ \ \ \ \ \ \ \ 389873.24\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{Random\ Fill\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3.93\ \ \ \ \ \ \ \ \ \ \ 403436.54\ \ \ \ \ \ \ \ \ \ \ \ 10430.84\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{Clear\ +\ Square\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.07\ \ \ \ \ \ \ \ \ \ \ 400374.12\ \ \ \ \ \ \ \ \ \ \ 393651.59\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ }
+
+\end{DoxyCode}
+ 

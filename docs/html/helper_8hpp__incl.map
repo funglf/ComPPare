@@ -1,0 +1,20 @@
+<map id="include/comppare/internal/helper.hpp" name="include/comppare/internal/helper.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="147,5,316,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,80,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,49,87,90,85,85,184,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,94,157,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,49,160,86,156,82,205,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="262,168,349,193"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="226,47,217,82,217,101,222,118,240,141,263,158,260,162,236,145,217,121,212,102,211,82,220,46"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="231,94,310,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="244,45,260,79,256,81,239,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="334,94,394,120"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="266,44,332,83,329,88,263,49"/>
+<area shape="rect" id="Node000007" href="$config_8hpp.html" title="This file contains configuration settings for the ComPPare library." alt="" coords="418,94,606,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="302,44,455,87,453,92,301,49"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="478,123,355,165,354,160,476,118"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="442,168,502,193"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="508,121,488,155,484,153,503,119"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="526,168,578,193"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="521,119,540,153,535,155,516,121"/>
+</map>

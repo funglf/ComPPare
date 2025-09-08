@@ -456,7 +456,7 @@ The order of `Inputs...` and `Outputs...` must match the order in the `impl` sig
 
 
 ### 2.2.2. Setting Implementations for Framework <!-- omit from toc -->
----
+
 #### `set_reference` <!-- omit from toc -->
 
 Registers the “reference” implementation and returns its corresponding `Impl` descriptor for further configuration -- eg attaching to Plugins like Google Benchmark.
@@ -757,9 +757,8 @@ void SAXPY_DONOTOPTIMIZE(const float a, const float* x, const float* y)
 This `DoNotOptimize` call tells the compiler not to eliminate the temporary variable, so the operation itself won’t be optimized away.
 
 #### SAXPY_DONOTOPTIMIZE() in Assembly <!-- omit from toc -->
-When SAXPY_DONOTOPTIMIZE() is compiled in AArch64 with Optimisation `-O3`
+When SAXPY_DONOTOPTIMIZE() is compiled in AArch64 with Optimisation `-O3`:
 <!-- <details> -->
-<summary> Full AArch64 Assembly code of <code>SAXPY_DONOTOPTIMIZE()</code> with <code>-O3</code> optimization </summary>
 <pre><code class="language-asm">
 <!-- <span style="opacity:0.5; font-size:smaller; display:inline-block; width:3em; text-align:right;">1</span>       .section        __TEXT,__text,regular,pure_instructions
 <span style="opacity:0.5; font-size:smaller; display:inline-block; width:3em; text-align:right;">2</span>       .build_version macos, 14, 0     sdk_version 14, 4

@@ -1,0 +1,43 @@
+\doxysection{comppare\+::plugin\+::Valid\+Plugin Concept Reference}
+\hypertarget{conceptcomppare_1_1plugin_1_1_valid_plugin}{}\label{conceptcomppare_1_1plugin_1_1_valid_plugin}\index{comppare::plugin::ValidPlugin@{comppare::plugin::ValidPlugin}}
+
+
+Concept for a valid plugin class.  
+
+
+
+
+{\ttfamily \#include $<$plugin.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{template}<\ \textcolor{keyword}{class},\ \textcolor{keyword}{class}\ >\ \textcolor{keyword}{class\ }P,\ \textcolor{keyword}{class\ }InTup,\ \textcolor{keyword}{class\ }OutTup,\ \textcolor{keyword}{class\ }Func>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1plugin_1_1_valid_plugin}{comppare::plugin::ValidPlugin}}\ =\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{requires}\ \{\ \{\ P<InTup,\ OutTup>::instance()\ \}\ -\/>\ std::same\_as<std::shared\_ptr<P<InTup,\ OutTup>>>;\ \}\ \&\&}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ std::string\ \&name,\ Func\ \&\&user\_fn,\ \textcolor{keyword}{const}\ InTup\ \&inputs,\ OutTup\ \&outputs)\ \{\ std::declval<P<InTup,\ OutTup>\ \&>().register\_impl(name,\ user\_fn,\ inputs,\ outputs);\ \}\ \&\&}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::derived\_from<P<InTup,\ OutTup>,\ plugin::Plugin<InTup,\ OutTup>>}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for a valid plugin class. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em P} & The plugin class template. \\
+\hline
+{\em In\+Tup} & The input tuple type. \\
+\hline
+{\em Out\+Tup} & The output tuple type. \\
+\hline
+{\em Func} & The function type for the implementation.\\
+\hline
+\end{DoxyTemplParams}
+Requires that\+:
+\begin{DoxyEnumerate}
+\item {\ttfamily P\texorpdfstring{$<$}{<}In\+Tup, Out\+Tup\texorpdfstring{$>$}{>}} has a static method {\ttfamily instance()} returning a {\ttfamily std\+::shared\+\_\+ptr\texorpdfstring{$<$}{<}P\texorpdfstring{$<$}{<}In\+Tup, Out\+Tup\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}.
+\item {\ttfamily P\texorpdfstring{$<$}{<}In\+Tup, Out\+Tup\texorpdfstring{$>$}{>}} has a method {\ttfamily register\+\_\+impl} that can be called with the specified parameters.
+\item {\ttfamily P\texorpdfstring{$<$}{<}In\+Tup, Out\+Tup\texorpdfstring{$>$}{>}} is derived from {\ttfamily Plugin\texorpdfstring{$<$}{<}In\+Tup, Out\+Tup\texorpdfstring{$>$}{>}}. 
+\end{DoxyEnumerate}

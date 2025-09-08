@@ -1,0 +1,8 @@
+<map id="comppare::config::bench_iters" name="comppare::config::bench_iters">
+<area shape="rect" id="Node000001" title="Get the number of benchmark iterations." alt="" coords="5,22,170,62"/>
+<area shape="rect" id="Node000002" href="$classcomppare_1_1config.html#a2913df9eb204fa9839adb38858d6cfd2" title="Get the singleton instance of the config class." alt="" coords="218,29,396,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,40,202,40,202,45,170,45"/>
+<area shape="rect" id="Node000003" href="$classcomppare_1_1config.html#a3b3362c3001d7972c21a9be1f1744ff5" title="Deleted copy constructor." alt="" coords="444,29,608,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="396,40,428,40,428,45,396,45"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="490,31,483,21,487,11,502,5,526,3,553,5,567,12,564,17,552,10,526,8,503,10,490,15,488,20,494,27"/>
+</map>

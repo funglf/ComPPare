@@ -1,0 +1,7 @@
+<map id="examples/saxpy_googlebench/init_saxpy.hpp" name="examples/saxpy_googlebench/init_saxpy.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,202,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="35,94,92,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,48,79,81,74,79,91,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="116,94,174,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,45,134,79,129,81,111,48"/>
+</map>

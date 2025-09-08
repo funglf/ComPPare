@@ -1,0 +1,117 @@
+\doxysection{comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager Class Reference}
+\hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager}{}\label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+
+
+{\ttfamily \#include $<$nvbench.\+hpp$>$}
+
+
+
+Collaboration diagram for comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a14750150ee43890c6109bab1b69ee0fe}{nvbench\+\_\+manager}} ()=default
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_aa94f048fadeb65f4fb6a0bd394210e25}{\texorpdfstring{$\sim$}{\string~}nvbench\+\_\+manager}} ()=default
+\item 
+void \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af5965542bdc31d1acc16d6dc904307ab}{initialize}} (int \&argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+{\footnotesize template$<$typename Func, typename... Args$>$ }\\nvbench\+::benchmark\+\_\+base \& \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a9a59e3a1609e53ea9217422f34b0d0ca}{add\+\_\+nvbench}} (const char \texorpdfstring{$\ast$}{*}name, Func f, Args \&\&...args)
+\item 
+void \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a7da0678e729e31b40c991fae25d0aea2}{run}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab3ddb62eda1d12acfb891a4ae04b31fe}{print\+\_\+benchmark\+\_\+header}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a33476583349ba964eec42d017f8df3e2}{nvbench\+\_\+argc}}
+\item 
+char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab2055048228e018603c385c37097b2f6}{nvbench\+\_\+argv}}
+\item 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser}{comppare\+::plugin\+::\+Plugin\+Arg\+Parser}} \mbox{\hyperlink{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af783e8d9b52657a7c008d49b0309883b}{nvbench\+\_\+parser\+\_\+}} \{"{}-\/-\/nvbench"{}\}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a14750150ee43890c6109bab1b69ee0fe}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!nvbench\_manager@{nvbench\_manager}}
+\index{nvbench\_manager@{nvbench\_manager}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{nvbench\_manager()}{nvbench\_manager()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a14750150ee43890c6109bab1b69ee0fe} 
+comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::nvbench\+\_\+manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_aa94f048fadeb65f4fb6a0bd394210e25}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!````~nvbench\_manager@{\texorpdfstring{$\sim$}{\string~}nvbench\_manager}}
+\index{````~nvbench\_manager@{\texorpdfstring{$\sim$}{\string~}nvbench\_manager}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}nvbench\_manager()}{\string~nvbench\_manager()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_aa94f048fadeb65f4fb6a0bd394210e25} 
+comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::\texorpdfstring{$\sim$}{\string~}nvbench\+\_\+manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a9a59e3a1609e53ea9217422f34b0d0ca}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!add\_nvbench@{add\_nvbench}}
+\index{add\_nvbench@{add\_nvbench}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{add\_nvbench()}{add\_nvbench()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a9a59e3a1609e53ea9217422f34b0d0ca} 
+template$<$typename Func, typename... Args$>$ \\
+nvbench\+::benchmark\+\_\+base \& comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::add\+\_\+nvbench (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{Func}]{f}{, }\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af5965542bdc31d1acc16d6dc904307ab}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!initialize@{initialize}}
+\index{initialize@{initialize}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af5965542bdc31d1acc16d6dc904307ab} 
+void comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::initialize (\begin{DoxyParamCaption}\item[{int \&}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab3ddb62eda1d12acfb891a4ae04b31fe}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!print\_benchmark\_header@{print\_benchmark\_header}}
+\index{print\_benchmark\_header@{print\_benchmark\_header}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{print\_benchmark\_header()}{print\_benchmark\_header()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab3ddb62eda1d12acfb891a4ae04b31fe} 
+void comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::print\+\_\+benchmark\+\_\+header (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a7da0678e729e31b40c991fae25d0aea2}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!run@{run}}
+\index{run@{run}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a7da0678e729e31b40c991fae25d0aea2} 
+void comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a33476583349ba964eec42d017f8df3e2}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!nvbench\_argc@{nvbench\_argc}}
+\index{nvbench\_argc@{nvbench\_argc}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{nvbench\_argc}{nvbench\_argc}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_a33476583349ba964eec42d017f8df3e2} 
+int comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::nvbench\+\_\+argc\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab2055048228e018603c385c37097b2f6}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!nvbench\_argv@{nvbench\_argv}}
+\index{nvbench\_argv@{nvbench\_argv}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{nvbench\_argv}{nvbench\_argv}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_ab2055048228e018603c385c37097b2f6} 
+char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::nvbench\+\_\+argv\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af783e8d9b52657a7c008d49b0309883b}\index{comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}!nvbench\_parser\_@{nvbench\_parser\_}}
+\index{nvbench\_parser\_@{nvbench\_parser\_}!comppare::plugin::nvbenchplugin::nvbench\_manager@{comppare::plugin::nvbenchplugin::nvbench\_manager}}
+\doxysubsubsection{\texorpdfstring{nvbench\_parser\_}{nvbench\_parser\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager_af783e8d9b52657a7c008d49b0309883b} 
+\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin_arg_parser}{comppare\+::plugin\+::\+Plugin\+Arg\+Parser}} comppare\+::plugin\+::nvbenchplugin\+::nvbench\+\_\+manager\+::nvbench\+\_\+parser\+\_\+ \{"{}-\/-\/nvbench"{}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/plugin/nvbench/\mbox{\hyperlink{nvbench_8hpp}{nvbench.\+hpp}}\end{DoxyCompactItemize}

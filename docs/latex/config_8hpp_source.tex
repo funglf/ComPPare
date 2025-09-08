@@ -1,0 +1,164 @@
+\doxysection{config.\+hpp}
+\hypertarget{config_8hpp_source}{}\label{config_8hpp_source}\index{include/comppare/internal/config.hpp@{include/comppare/internal/config.hpp}}
+\mbox{\hyperlink{config_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Copyright\ 2025\ |\ Leong\ Fan\ FUNG\ |\ funglf\ |\ stanleyfunglf@gmail.com}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00006\ \textcolor{comment}{of\ this\ software\ and\ associated\ documentation\ files\ (the\ “Software”),\ to\ deal}}
+\DoxyCodeLine{00007\ \textcolor{comment}{in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00008\ \textcolor{comment}{to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00009\ \textcolor{comment}{copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00010\ \textcolor{comment}{furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{}}
+\DoxyCodeLine{00012\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{00013\ \textcolor{comment}{all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{}}
+\DoxyCodeLine{00015\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ “AS\ IS”,\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00016\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00017\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00018\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00020\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00021\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacecomppare}{comppare}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classcomppare_1_1config_a2e23a885c0735619f54bbf8a5e1131a9}{clock\_t}}\ =\ std::chrono::steady\_clock;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\_point\_t}}\ =\ std::chrono::time\_point<clock\_t>;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_abef70f55e51c803ba9147f29ca538e41}{config}}(\mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&\mbox{\hyperlink{classcomppare_1_1config_a9bcefe16bddabcafe6d2993d26a1a067}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&\mbox{\hyperlink{classcomppare_1_1config_a35f6c1987b526bac915fc7e5d63f56ae}{operator=}}(\mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ \mbox{\hyperlink{classcomppare_1_1config_ab1490e36efe896d0124486f7b4254fc1}{warmup\_iters}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890}{warmup\_iters\_}};\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a3f652923ccdafc020e3079c12fb777d8}{set\_warmup\_iters}}(uint64\_t\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890}{warmup\_iters\_}}\ =\ v;\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ \mbox{\hyperlink{classcomppare_1_1config_a746ad50b12f724824b3b62f146968a8d}{bench\_iters}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee}{bench\_iters\_}};\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_ad75d5706a66a2ef398540ef9cd1cfbab}{set\_bench\_iters}}(uint64\_t\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee}{bench\_iters\_}}\ =\ v;\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a8e202a56443204447b75868c9e299c2f}{reset\_roi\_us}}()\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ double(0.0);\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_af2bd76b13c10a79aa5505d696740dc4a}{set\_roi\_us}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\_point\_t}}\ \&start,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\_point\_t}}\ \&end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ std::chrono::duration<double,\ std::micro>(end\ -\/\ start).count();\ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a929f88a147976a5273182c6d9114d261}{set\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(end\ -\/\ start);\ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_ac6f2a136dab67ed1998703a57fa52593}{set\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ end\ -\/\ start;\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Rep,\ \textcolor{keyword}{typename}\ Period>}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a0ebd1d1ed37a9dccacf0aab4d7a24c7e}{set\_roi\_us}}(std::chrono::duration<Rep,\ Period>\ v)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ micros\ =\ std::chrono::duration<double,\ std::micro>(v).count();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ micros;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a544f14c20a980f3553b409fc804569d2}{set\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ v;\ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a1d86e73fca082406554a4b975c80d84d}{set\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(v);\ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Rep,\ \textcolor{keyword}{typename}\ Period>}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_aa378bec0b47f8604b670e802d066ab83}{increment\_roi\_us}}(std::chrono::duration<Rep,\ Period>\ v)}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ micros\ =\ std::chrono::duration<double,\ std::micro>(v).count();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ +=\ micros;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a4d081761ddd8afb5547af8092ee80434}{increment\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ +=\ v;\ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a4655866953a7a43f7925e2330afae9e9}{increment\_roi\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\ +=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(v);\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_ac23b48804e93f12fa28e9eebf041dc46}{set\_warmup\_us}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\_point\_t}}\ \&start,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1config_a4b41c0258077db70b33ebaa5ccee33d2}{time\_point\_t}}\ \&end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ std::chrono::duration<double,\ std::micro>(end\ -\/\ start).count();\ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_af6be797987c58fb1659c48aadbfdb6e0}{set\_warmup\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(end\ -\/\ start);\ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a0aa1f2fe171fc3d9e0cb10d7b8c76b55}{set\_warmup\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ start,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ end)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ end\ -\/\ start;\ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Rep,\ \textcolor{keyword}{typename}\ Period>}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_ac2b328d6fa3bef8ad4be1a56fc5ba879}{set\_warmup\_us}}(std::chrono::duration<Rep,\ Period>\ v)}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ micros\ =\ std::chrono::duration<double,\ std::micro>(v).count();}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ micros;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_a1fa133d5321fe720160ade909567f1d9}{set\_warmup\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ v;\ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_abaca1f816192d209ab0dabf74872d503}{set\_warmup\_us}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(v);\ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classcomppare_1_1config_a700e53e6f60921f8a97fc64e422f1ec8}{get\_roi\_us}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}};\ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classcomppare_1_1config_a9fbdaaa78cbc7240f0f0b9987c51ce76}{get\_warmup\_us}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}().\mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}};\ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{float}ing\_po\textcolor{keywordtype}{int}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ \&\mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\_tolerance}}()}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ tol\ =\ std::numeric\_limits<T>::epsilon()\ *\ 1e3;\ \textcolor{comment}{//\ Default\ tolerance}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tol;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <std::\textcolor{keywordtype}{float}ing\_po\textcolor{keywordtype}{int}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_abc73fde620203449ad4d8a3ea7b4a173}{set\_fp\_tolerance}}(T\ v)}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\_tolerance<T>}}()\ =\ v;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1config_ac6861c4582a0620d0163ac03fb314d19}{set\_all\_fp\_tolerance}}(\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ v)}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\_tolerance<float>}}()\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(v);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\_tolerance<double>}}()\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(v);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a91e094e77d9468f8361f2b9b99aff3c2}{fp\_tolerance<long\ double>}}()\ =\ v;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1config_a31fa621ef8904e5daa24ed0ea6d3e991}{config}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ \&\mbox{\hyperlink{classcomppare_1_1config_a2913df9eb204fa9839adb38858d6cfd2}{instance}}()}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1config_a3b3362c3001d7972c21a9be1f1744ff5}{config}}\ inst;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inst;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classcomppare_1_1config_a46ea8d4a78e26a55a39fc36ac60f6cf0}{roi\_}}\{0.0\};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classcomppare_1_1config_abdeb375eeab213319100008c0cdaf80b}{warmup\_}}\{0.0\};}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{classcomppare_1_1config_a8ef3ea7774322ebc5491421ba2e0d890}{warmup\_iters\_}}\{100\};}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{classcomppare_1_1config_a53249995582ed6e1a45c079a639e87ee}{bench\_iters\_}}\{100\};}
+\DoxyCodeLine{00228\ \ \ \ \ \};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ \ Singleton\ Class\ for\ the\ current\ state}}
+\DoxyCodeLine{00232\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1current__state_a1d662267558f1ba0c5e21cc6335c5a2a}{current\_state}}(\mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&\mbox{\hyperlink{classcomppare_1_1current__state_a9198d2a05882babc2d6625bbe22751e0}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&\mbox{\hyperlink{classcomppare_1_1current__state_a4b5b22990b57b7994136996ec248b234}{operator=}}(\mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1current__state_ae90f9cbfd77a116d5ff05ca13b0e0418}{using\_plugin}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}}().\mbox{\hyperlink{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84}{using\_plugin\_}};\ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1current__state_a1ef5f6becff4320be468fa5937217a5f}{set\_using\_plugin}}(\textcolor{keywordtype}{bool}\ v)\ \{\ \mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}}().\mbox{\hyperlink{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84}{using\_plugin\_}}\ =\ v;\ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1current__state_afe29cab3a8553573fbd377996bd84ea5}{impl\_name}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}}().\mbox{\hyperlink{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556}{impl\_name\_}};\ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classcomppare_1_1current__state_a5ff1f3fdbc5b6b55113aa6606c9ce621}{set\_impl\_name}}(std::string\_view\ name)\ \{\ \mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}}().\mbox{\hyperlink{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556}{impl\_name\_}}\ =\ name;\ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classcomppare_1_1current__state_ab9d33887a9a377d9eff7a6a8623bf83a}{current\_state}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ \&\mbox{\hyperlink{classcomppare_1_1current__state_a1a158bf35890c1062d3319a7230b5ba9}{instance}}()}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classcomppare_1_1current__state_a4921a9d62504a72461ae0d42956d899f}{current\_state}}\ inst;}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ inst;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classcomppare_1_1current__state_aacf8ac8129140c36ce4b2a23bebbfa84}{using\_plugin\_}}\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ std::string\_view\ \mbox{\hyperlink{classcomppare_1_1current__state_ac9b2a3690e5108a3d3055f5ece0d3556}{impl\_name\_}};}
+\DoxyCodeLine{00279\ \ \ \ \ \};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \}}
+
+\end{DoxyCode}

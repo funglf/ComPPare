@@ -1,0 +1,31 @@
+\doxysection{saxpy\+\_\+cpu.\+hpp}
+\hypertarget{saxpy__googlebench_2saxpy__cpu_8hpp_source}{}\label{saxpy__googlebench_2saxpy__cpu_8hpp_source}\index{examples/saxpy\_googlebench/saxpy\_cpu.hpp@{examples/saxpy\_googlebench/saxpy\_cpu.hpp}}
+\mbox{\hyperlink{saxpy__googlebench_2saxpy__cpu_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy_2saxpy__cpu_8hpp_a8672c519498ebe4b5f93ebee3adb4e87}{cpu\_std}}(\textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out,}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ name);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{saxpy_2saxpy__cpu_8hpp_aee7eae634c0f91f6ebb4537c36907a5c}{cpu\_par}}(\textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\&\ name);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#if\ (HAVE\_NVHPC)}}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ gpu\_std\_par(\textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iters,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \&roi\_us);}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,11 @@
+<map id="include/comppare/plugin/plugin.hpp" name="include/comppare/plugin/plugin.hpp">
+<area shape="rect" id="Node000001" title="This file contains the base Plugin class and concept of a valid Plugin class for the ComPPare framewo..." alt="" coords="34,5,195,46"/>
+<area shape="rect" id="Node000002" href="$comppare_8hpp.html" title="This file is the main include file for the ComPPare framework." alt="" coords="10,198,219,223"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,56,33,74,17,95,8,122,10,134,17,148,28,164,43,176,77,195,75,199,40,181,24,167,12,151,5,136,3,122,12,93,29,70,52,52"/>
+<area shape="rect" id="Node000003" href="$google__benchmark_8hpp.html" title="This file contains the Google Benchmark plugin for the ComPPare framework." alt="" coords="26,94,202,150"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,61,117,93,112,93,112,61"/>
+<area shape="rect" id="Node000004" href="$nvbench_8hpp.html" title=" " alt="" coords="227,102,388,142"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="170,51,268,99,266,103,167,56"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="117,165,117,197,112,197,112,165"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="251,151,142,200,140,195,249,146"/>
+</map>

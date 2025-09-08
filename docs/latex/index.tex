@@ -1,0 +1,279 @@
+\chapter{Com\+PPare }
+\hypertarget{index}{}\label{index}\index{ComPPare@{ComPPare}}
+\label{index_md__r_e_a_d_m_e}%
+\Hypertarget{index_md__r_e_a_d_m_e}%
+
+
+{\bfseries{Header‑only benchmarking and validation for C++20 code.}}
+
+Com\+PPare lets you time and cross‑check any number of host‑side implementations—\+CPU, Open\+MP, CUDA, SYCL, TBB, etc.\+—that share the same inputs and outputs. It is intended for developers who are porting functions into new framework or hardware, allowing for standalone development and testing.
+
+\DoxyHorRuler{0}
+
+
+\doxysection*{Purpose}
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Performance comparison}}\+: Measure the total call time, an inner region‑of‑interest (ROI) that you define, and the residual overhead (setup, transfers).
+\item {\bfseries{Validate results}}\+: Report maximum, mean and total absolute error versus a designated reference implementation and flag discrepancies.
+\item {\bfseries{Streamline porting}}\+: Run the same data set through multiple versions of a function.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+\doxysection*{Key capabilities}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Capability  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Capability  }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-2}
+\endhead
+Header‑only  &Copy headers, or include it, and compile with C++20 or newer.  \\\cline{1-2}
+Any host backend  &Accepts any function pointer that runs on the host.  \\\cline{1-2}
+Detailed timing  &Separates overall call time, your ROI time, and setup/transfer overhead.  \\\cline{1-2}
+Built-\/in error comparison  &For common data types, automatically choose the correct method and compares against reference function  \\\cline{1-2}
+\end{longtabu}
+
+
+\doxysection*{Install}
+
+\doxysubsection*{1. Clone repository}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/funglf/ComPPare.git\ -\/-\/recursive}
+
+\end{DoxyCode}
+ \doxysubsubsection*{If submodules like google benchmark/ nvbench is not needed\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/funglf/ComPPare.git}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{2. (Optional) Build Google Benchmark}
+
+See \href{https://github.com/google/benchmark/blob/b20cea674170b2ba45da0dfaf03953cdea473d0d/README.md}{\texttt{Google Benchmark Instructions}}
+
+\doxysubsection*{3. Include Com\+PPare}
+
+In your C++ code, simply include the comppare header file by\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{comppare_8hpp}{comppare/comppare.hpp}}>}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\doxysection*{Quick Start}
+
+\doxysubsection*{1. Adopt the required function signature}
+
+{\itshape Function output must be {\ttfamily void}} and consists of the input, then output types 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ impl(\textcolor{keyword}{const}\ Inputs\&...\ in,\ \ \ \ \ \textcolor{comment}{//\ read‑only\ inputs}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Outputs\&...\ \ \ \ \ \ out);\ \ \ \ \ \textcolor{comment}{//\ outputs\ compared\ to\ reference}}
+
+\end{DoxyCode}
+
+
+In order to benchmark specific regions of code, following Macros {\ttfamily HOTLOOPSTART}, {\ttfamily HOTLOOPEND} are needed\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ impl(\textcolor{keyword}{const}\ Inputs\&...\ in,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Outputs\&...\ \ \ \ \ \ out);}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ setup\ or\ overhead\ you\ DO\ NOT\ want\ to\ benchmark\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ -\/-\/\ memory\ allocation,\ data\ transfer,\ etc.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};\ \textcolor{comment}{//\ Macro\ of\ start\ of\ Benchmarking\ Region\ of\ Interest}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...\ perform\ core\ computation\ here\ ...}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};\ \ \ \textcolor{comment}{//\ Macro\ of\ end\ of\ Benchmarking\ Region\ of\ Interest}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{SAXPY function example signatures}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ saxpy\_cpu(\textcolor{comment}{/*Input\ types*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Output\ types*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Comparing\ with\ another\ function\ with\ the\ exact\ same\ signature}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ saxpy\_gpu(\textcolor{comment}{/*Input\ types*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Output\ types*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out)}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{2. Create a comparison object}
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Describe the types}} — list the {\itshape input} types first, then the {\itshape output} types\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ }Cmp\ =\ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacecomppare}{comppare}}::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*Define\ Input\ Pack\ Types\ same\ as\ the\ function*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ InputContext<}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ float,\ \ \textcolor{comment}{/*float\ a*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>,\ \textcolor{comment}{/*std::vector<float>\ x*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \ \textcolor{comment}{/*std::vector<float>\ y*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ >::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Define\ Output\ Pack\ types\ same\ as\ the\ function*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OutputContext<}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \ \textcolor{comment}{/*std::vector<float>\ y\_out*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ >;}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Pass the input data}} — constructs framework object with input data that will be reused for every implementation\+:
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Cmp\ cmp(a,\ x,\ y);\ \ \ \textcolor{comment}{//\ a:\ float,\ x:\ input\ vector\ x,\ y:\ input\ vector\ y}}
+
+\end{DoxyCode}
+ \begin{quote}
+Note\+: you can use move semantics here. All inputs are perfectly forwarded. eg. {\ttfamily Cmp cmp(a, std\+::move(x), std\+::move(y));} \end{quote}
+
+
+\doxysubsection*{3. Register implementations}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmp.set\_reference(\textcolor{stringliteral}{"{}cpu\ serial"{}},\ saxpy\_cpu);\ \ \textcolor{comment}{//\ setting\ reference}}
+\DoxyCodeLine{cmp.add(\textcolor{stringliteral}{"{}gpu\ kernel"{}},\ \ saxpy\_gpu);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ any\ number\ of\ additional\ functions}}
+
+\end{DoxyCode}
+
+
+\doxysubsection*{4. Run and inspect}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmp.run(argc,\ argv);}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{Sample report\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=}
+\DoxyCodeLine{============\ ComPPare\ Framework\ ============}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Number\ of\ implementations:\ \ \ \ \ \ \ \ \ \ \ \ \ 3}
+\DoxyCodeLine{Warmup\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{Benchmark\ iterations:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100}
+\DoxyCodeLine{=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*}
+\DoxyCodeLine{}
+\DoxyCodeLine{Implementation\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Func\ µs\ \ \ \ \ \ \ \ \ \ \ \ \ ROI\ µs\ \ \ \ \ \ \ \ \ \ \ \ Ovhd\ µs\ \ \ \ \ \ \ \ \ Max|err|[0]\ \ \ \ \ \ \ \ Mean|err|[0]\ \ \ \ \ \ \ Total|err|[0]}
+\DoxyCodeLine{cpu\ serial\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 38.01\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 15.97\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 22.05\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00\ \ \ \ \ \ \ \ \ \ \ \ 0.00e+00}
+\DoxyCodeLine{gpu\ kernel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 73151.41\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.07\ \ \ \ \ \ \ \ \ \ \ \ 73150.34\ \ \ \ \ \ \ \ \ \ \ \ 3.30e+06\ \ \ \ \ \ \ \ \ \ \ \ 1.66e+06\ \ \ \ \ \ \ \ \ \ \ \ 1.70e+09\ \ <-\/-\/\ FAIL}
+
+\end{DoxyCode}
+ \doxysubsection*{Complete example with SAXPY}
+
+(See SAXPY Full Example)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{comppare_8hpp}{comppare/comppare.hpp}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Serial\ reference}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ saxpy\_cpu(\textcolor{comment}{/*Input\ pack*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ a,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&x,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<float>\ \&y\_in,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Output\ pack*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>\ \&y\_out)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ x.size();}
+\DoxyCodeLine{\ \ \ \ y\_out.resize(N);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ N;\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ y\_out[i]\ =\ a\ *\ x[i]\ +\ y\_in[i];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ OpenMP\ variant}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ saxpy\_gpu(\textcolor{comment}{/*\ same\ signature\ */})\{...\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **argv)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ 1.1f;}
+\DoxyCodeLine{\ \ \ \ std::vector<float>\ x(1000,\ 2.2);\ \textcolor{comment}{//\ Vector\ of\ size\ 1000\ filled\ with\ 2.2}}
+\DoxyCodeLine{\ \ \ \ std::vector<float>\ y(1000,\ 3.3);\ \textcolor{comment}{//\ Vector\ of\ size\ 1000\ filled\ with\ 3.3}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ }Cmp\ =\ }
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacecomppare}{comppare}}::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{/*Define\ Input\ Pack\ Types\ same\ as\ the\ function*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ InputContext<float,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<float>>::}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Define\ Output\ Pack\ types\ same\ as\ the\ function*/}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OutputContext<std::vector<float>>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ Create\ Instance\ of\ the\ comparison\ framework\ with\ input\ data}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ a\ -\/-\/\ float}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ x\ -\/-\/\ std::vector<float>}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ y\ -\/-\/\ std::vector<float>}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ Cmp\ cmp(a,\ x,\ y);\ \textcolor{comment}{//\ cmp\ is\ the\ instance}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Set\ reference\ implementation}}
+\DoxyCodeLine{\ \ \ \ cmp.set\_reference(\textcolor{stringliteral}{"{}cpu\ serial"{}},\ \textcolor{comment}{/*Function*/}\ saxpy\_cpu);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Add\ implementations\ to\ compare}}
+\DoxyCodeLine{\ \ \ \ cmp.add(\textcolor{stringliteral}{"{}gpu\ kernel"{}},\ \textcolor{comment}{/*Function*/}\ saxpy\_gpu);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Run\ the\ comparison\ with\ specified\ iterations\ and\ tolerance}}
+\DoxyCodeLine{\ \ \ \ cmp.run(argc,\ argv);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ 

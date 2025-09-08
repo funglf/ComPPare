@@ -1,0 +1,20 @@
+<map id="examples/saxpy_googlebench/init_saxpy.cpp" name="examples/saxpy_googlebench/init_saxpy.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="240,5,436,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,94,93,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,49,108,92,107,87,265,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="116,94,176,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,49,191,90,189,85,289,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="200,94,279,120"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="316,48,268,86,265,82,312,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="303,94,374,120"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="341,46,341,78,336,78,336,46"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="431,168,488,193"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="356,45,443,154,438,157,352,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="449,94,513,120"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="375,44,447,84,444,88,373,49"/>
+<area shape="rect" id="Node000008" href="$saxpy__googlebench_2init__saxpy_8hpp.html" title=" " alt="" coords="537,94,641,120"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="402,44,537,86,535,91,400,49"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="568,123,496,162,494,157,566,118"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="560,168,618,193"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="592,120,592,152,586,152,586,120"/>
+</map>

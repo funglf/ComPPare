@@ -1,0 +1,28 @@
+\doxysection{comppare\+::internal\+::concepts\+::String Concept Reference}
+\hypertarget{conceptcomppare_1_1internal_1_1concepts_1_1_string}{}\label{conceptcomppare_1_1internal_1_1concepts_1_1_string}\index{comppare::internal::concepts::String@{comppare::internal::concepts::String}}
+
+
+Concept for a string type.  
+
+
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_string}{comppare::internal::concepts::String}}\ =\ \ std::same\_as<std::remove\_cvref\_t<T>,\ std::string>}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for a string type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}

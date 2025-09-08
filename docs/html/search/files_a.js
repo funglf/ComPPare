@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['readme_2emd_0',['README.md',['../examples_2advanced__demo_21-custom__error__policy_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2advanced__demo_22-google__benchmark_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2advanced__demo_23-manual__timing_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2advanced__demo_24-_do_not_optimize_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2advanced__demo_25-nvbench_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2advanced__demo_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2max__reduction_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2saxpy_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../examples_2saxpy__googlebench_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../_r_e_a_d_m_e_8md.html',1,'(Global Namespace)']]]
+];

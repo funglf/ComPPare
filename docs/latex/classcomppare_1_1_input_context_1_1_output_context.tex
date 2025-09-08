@@ -1,0 +1,789 @@
+\doxysection{comppare\+::Input\+Context\texorpdfstring{$<$}{<} Inputs \texorpdfstring{$>$}{>}\+::Output\+Context\texorpdfstring{$<$}{<} Specs \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classcomppare_1_1_input_context_1_1_output_context}{}\label{classcomppare_1_1_input_context_1_1_output_context}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+
+
+\doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context} class template to hold output parameters and manage implementations.  
+
+
+
+
+{\ttfamily \#include $<$comppare.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}}
+\begin{DoxyCompactList}\small\item\em Internal container representing one registered implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... Ins$>$ }\\\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{Output\+Context}} (Ins \&\&...ins)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a3be1304a484dba7b32a145956f5e455b}{Output\+Context}} (const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \& \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ac8b9c1c3151752ae9fca73b6de867bb6}{operator=}} (const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a13fd5d5a917916a9d3fb3c7d07f8daf4}{Output\+Context}} (\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \&\&other)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \& \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_acdfa8a132039f0bdce619d97e17ee089}{operator=}} (\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \&\&other)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename F$>$ \newline
+requires std\+::invocable$<$F, const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...$>$}\\\mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} \& \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_aef22db63e614b333148d4f049cdff6cc}{set\+\_\+reference}} (std\+::string name, F \&\&f)
+\begin{DoxyCompactList}\small\item\em Set a reference implementation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename F$>$ \newline
+requires std\+::invocable$<$F, const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...$>$}\\\mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} \& \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a8ef67635544e4d6c9ead450f888d5a31}{add}} (std\+::string name, F \&\&f)
+\begin{DoxyCompactList}\small\item\em Add a new implementation to the comparison framework. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_af888e9bd17f8b193971ca4ee33c94c7a}{get\+\_\+reference\+\_\+output}} () const
+\begin{DoxyCompactList}\small\item\em Get the reference output by pointer. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a78513b44f9e89a79ad9bcada6ee763b1}{get\+\_\+output}} (const size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Get the output for a specific implementation by pointer. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afe2dfa8b58666743bae2f070fcd2bac2}{get\+\_\+output}} (const std\+::string\+\_\+view name) const
+\begin{DoxyCompactList}\small\item\em Get the output for a specific implementation by name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a5b6436eaaf757a4f11e6be6dc39a13da}{get\+\_\+reference\+\_\+output}} (\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...outs) const
+\begin{DoxyCompactList}\small\item\em Copies the reference output into provided pointer to variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a493ea93b1405bf0805156707eb235fc1}{get\+\_\+output}} (const size\+\_\+t idx, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...outs) const
+\begin{DoxyCompactList}\small\item\em Copies the outputs of a specific implementation by index into provided pointer to variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ae63897a841dc60c80fa8ddd328fed7c3}{get\+\_\+output}} (const std\+::string\+\_\+view name, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...outs) const
+\begin{DoxyCompactList}\small\item\em Copies the outputs of a specific implementation by name into provided pointer to variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abdec747f59747814af608ebc61f4a167}{run}} (int argc=0, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv=nullptr)
+\begin{DoxyCompactList}\small\item\em Runs the comparison for all added implementations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename S$>$ }\\using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}} = typename \mbox{\hyperlink{structcomppare_1_1spec}{spec}}$<$S$>$\+::value\+\_\+t
+\begin{DoxyCompactList}\small\item\em Extracts the value type from a spec. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename S$>$ }\\using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a0959453431e22dc527eaf4c50e0c2ac4}{pol\+\_\+t}} = typename \mbox{\hyperlink{structcomppare_1_1spec}{spec}}$<$S$>$\+::policy\+\_\+t
+\begin{DoxyCompactList}\small\item\em Extracts the policy type from a spec. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}} = std\+::function$<$void(const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...)$>$
+\begin{DoxyCompactList}\small\item\em Alias for the function signature of a user-\/provided implementation. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}} = std\+::tuple$<$Inputs...$>$
+\begin{DoxyCompactList}\small\item\em Tuple type holding all input arguments. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} = std\+::tuple$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$...$>$
+\begin{DoxyCompactList}\small\item\em Tuple type holding all output values (one element per spec). \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} = std\+::tuple$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a0959453431e22dc527eaf4c50e0c2ac4}{pol\+\_\+t}}$<$Specs$>$...$>$
+\begin{DoxyCompactList}\small\item\em Tuple type holding the error/policy object associated with each output spec. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} = std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}$>$
+\begin{DoxyCompactList}\small\item\em Shared pointer to an output tuple. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ac2bc999ec613384464e352388b204148}{register\+\_\+plugin}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{plugin\+::\+Plugin}}$<$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} $>$ $>$ \&p)
+\begin{DoxyCompactList}\small\item\em Register a plugin for the output context. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a85b7b80f001a9dff399f22ee8e7d01ef}{print\+\_\+header}} () const
+\begin{DoxyCompactList}\small\item\em Print the header for the output table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a02caa5ba8fe7795a49177c91a421e9ea}{compute\+\_\+errors}} (\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&errs, const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&test, const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&ref)
+\begin{DoxyCompactList}\small\item\em Compute the error metrics for each output specification. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a740b4dc6b507cdc91df5e96e35a19bda}{any\+\_\+fail}} (const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&errs) const
+\begin{DoxyCompactList}\small\item\em Check if any of the error policies indicate a failure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a0756e3b401c707b513cd9408a3aca658}{print\+\_\+metrics}} (const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&errs) const
+\begin{DoxyCompactList}\small\item\em Print the metrics for each output specification. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a2b223da0accd2e5946d983bd70049a2a}{get\+\_\+output\+\_\+by\+\_\+index\+\_\+}} (const size\+\_\+t idx) const
+\begin{DoxyCompactList}\small\item\em Get the output by index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ad2be156e5e52eec6e374b8d51b246751}{get\+\_\+output\+\_\+by\+\_\+name\+\_\+}} (const std\+::string\+\_\+view name) const
+\begin{DoxyCompactList}\small\item\em Get the output by implementation name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a3ef55c765cda265d00f75dc1736f2001}{unpack\+\_\+output\+\_\+}} (const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&outtup, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...outs) const
+\begin{DoxyCompactList}\small\item\em Unpack the output tuple into the provided output pointers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t I$>$ }\\static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a2c601f07b13e7d449a60485f9ae85d40}{spec\+\_\+metric\+\_\+count}} ()
+\begin{DoxyCompactList}\small\item\em Get the implementation details for a specific implementation index. \end{DoxyCompactList}\item 
+{\footnotesize template$<$std\+::size\+\_\+t I$>$ }\\static constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a6546c5e3c964b54a204551b11a6c9d88}{spec\+\_\+metric\+\_\+name}} (std\+::size\+\_\+t m)
+\begin{DoxyCompactList}\small\item\em Get the name of a specific metric for a specific implementation index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a418eb99b3b0ec410f7126a366471f9b1}{inputs\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Tuple instance storing all current input arguments. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} $>$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ad9a0f7beefbeb5a2687fbe22ee4b8923}{outputs\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Storage for reference and comparison outputs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a353dd15f5b2a72d246383d073ef7b568}{policies\+\_\+ref\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Tuple of policy objects for the reference outputs. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{plugin\+::\+Plugin}}$<$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} $>$ $>$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_af163a05c6fa0ced672d7c2a034c44d07}{plugin\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Shared pointer to the plugin instance. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} $>$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_ace1943e8099b195b26e0ae85d1ba3dd0}{impls\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Vector to hold all implementations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a0408381c56b78507e451f32c4613b61c}{NUM\+\_\+\+OUT}} = sizeof...(Specs)
+\begin{DoxyCompactList}\small\item\em Number of output specifications. \end{DoxyCompactList}\item 
+static constexpr int \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_adfe6b6aaa6a49b2f538619d8ee8747a4}{PRINT\+\_\+\+COL\+\_\+\+WIDTH}} = 20
+\begin{DoxyCompactList}\small\item\em Set the width of the print columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename... Inputs$>$\newline
+template$<$Out\+Spec... Specs$>$\newline
+class comppare\+::\+Input\+Context$<$ Inputs $>$\+::\+Output\+Context$<$ Specs $>$}
+\doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context} class template to hold output parameters and manage implementations. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Specs} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!Func@{Func}}
+\index{Func@{Func}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{Func}{Func}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Func = std\+::function$<$void(const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...)$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Alias for the function signature of a user-\/provided implementation. 
+
+The function must take all input arguments by const reference, and all output arguments by non-\/const reference. The framework invokes this function to compare multiple implementations on the same input.
+
+Example signature\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ f(\textcolor{keyword}{const}\ In1\&,\ \textcolor{keyword}{const}\ In2\&,\ ...,\ Out1\&,\ Out2\&...);}
+
+\end{DoxyCode}
+ \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!InTup@{InTup}}
+\index{InTup@{InTup}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{InTup}{InTup}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+In\+Tup = std\+::tuple$<$Inputs...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tuple type holding all input arguments. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!OutPtr@{OutPtr}}
+\index{OutPtr@{OutPtr}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{OutPtr}{OutPtr}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Out\+Ptr = std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shared pointer to an output tuple. 
+
+Used to manage lifetime of output results across multiple implementations. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!OutTup@{OutTup}}
+\index{OutTup@{OutTup}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{OutTup}{OutTup}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Out\+Tup = std\+::tuple$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tuple type holding all output values (one element per spec). 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a0959453431e22dc527eaf4c50e0c2ac4}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!pol\_t@{pol\_t}}
+\index{pol\_t@{pol\_t}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{pol\_t}{pol\_t}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a0959453431e22dc527eaf4c50e0c2ac4} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$typename S$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::pol\+\_\+t = typename \mbox{\hyperlink{structcomppare_1_1spec}{spec}}$<$S$>$\+::policy\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extracts the policy type from a spec. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em S} & The output spec type. \\
+\hline
+\end{DoxyTemplParams}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!PolicyTup@{PolicyTup}}
+\index{PolicyTup@{PolicyTup}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{PolicyTup}{PolicyTup}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Policy\+Tup = std\+::tuple$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a0959453431e22dc527eaf4c50e0c2ac4}{pol\+\_\+t}}$<$Specs$>$...$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tuple type holding the error/policy object associated with each output spec. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!val\_t@{val\_t}}
+\index{val\_t@{val\_t}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{val\_t}{val\_t}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$typename S$>$ \\
+using \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::val\+\_\+t = typename \mbox{\hyperlink{structcomppare_1_1spec}{spec}}$<$S$>$\+::value\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extracts the value type from a spec. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em S} & The output spec type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-constructors}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!OutputContext@{OutputContext}}
+\index{OutputContext@{OutputContext}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{OutputContext()}{OutputContext()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$typename... Ins$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\+::\+Output\+Context$<$ Specs $>$\+::\+Output\+Context (\begin{DoxyParamCaption}\item[{Ins \&\&...}]{ins}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Construct a new \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Ins} & The types of the input arguments \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em ins} & The input arguments\\
+\hline
+\end{DoxyParams}
+This constructor initializes the \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context} with the provided input arguments. The inputs are perfectly forwarded to allow for move and copy semantics. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a3be1304a484dba7b32a145956f5e455b}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!OutputContext@{OutputContext}}
+\index{OutputContext@{OutputContext}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{OutputContext()}{OutputContext()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a3be1304a484dba7b32a145956f5e455b} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\+::\+Output\+Context$<$ Specs $>$\+::\+Output\+Context (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}$<$ Specs $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy constructor. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a13fd5d5a917916a9d3fb3c7d07f8daf4}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!OutputContext@{OutputContext}}
+\index{OutputContext@{OutputContext}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{OutputContext()}{OutputContext()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a13fd5d5a917916a9d3fb3c7d07f8daf4} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\+::\+Output\+Context$<$ Specs $>$\+::\+Output\+Context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}$<$ Specs $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move constructor. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a8ef67635544e4d6c9ead450f888d5a31}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!add@{add}}
+\index{add@{add}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a8ef67635544e4d6c9ead450f888d5a31} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$typename F$>$ \newline
+requires std\+::invocable$<$F, const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...$>$\\
+\mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} \& \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::add (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{F \&\&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a new implementation to the comparison framework. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em F} & The type of the function \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the implementation \\
+\hline
+{\em f} & The function to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The implementation instance
+\end{DoxyReturn}
+This function adds a new implementation to the comparison framework. The function will be run and compared against the reference implementation. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a740b4dc6b507cdc91df5e96e35a19bda}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!any\_fail@{any\_fail}}
+\index{any\_fail@{any\_fail}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{any\_fail()}{any\_fail()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a740b4dc6b507cdc91df5e96e35a19bda} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+bool \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::any\+\_\+fail (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&}]{errs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check if any of the error policies indicate a failure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em errs} & The tuple of error policies to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if any policy indicates a failure, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a02caa5ba8fe7795a49177c91a421e9ea}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!compute\_errors@{compute\_errors}}
+\index{compute\_errors@{compute\_errors}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{compute\_errors()}{compute\_errors()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a02caa5ba8fe7795a49177c91a421e9ea} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::compute\+\_\+errors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&}]{errs}{, }\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&}]{test}{, }\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&}]{ref}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Compute the error metrics for each output specification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em errs} & The tuple of error policies. \\
+\hline
+{\em test} & The test output. \\
+\hline
+{\em ref} & The reference output. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a78513b44f9e89a79ad9bcada6ee763b1}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output@{get\_output}}
+\index{get\_output@{get\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output()}{get\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a78513b44f9e89a79ad9bcada6ee763b1} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the output for a specific implementation by pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The index of the implementation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the output of the implementation
+\end{DoxyReturn}
+This function returns a shared pointer to the output of the implementation at the specified index. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a493ea93b1405bf0805156707eb235fc1}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output@{get\_output}}
+\index{get\_output@{get\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output()}{get\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a493ea93b1405bf0805156707eb235fc1} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx}{, }\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...}]{outs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copies the outputs of a specific implementation by index into provided pointer to variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outs} & One pointer per output element. Each pointer must point to writable storage of the corresponding output type.\\
+\hline
+\end{DoxyParams}
+Internally, this looks up the output tuple at the specified index, and unpacks its elements into the provided pointers. This allows callers to access values without dealing with {\ttfamily std\+::tuple} directly. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_afe2dfa8b58666743bae2f070fcd2bac2}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output@{get\_output}}
+\index{get\_output@{get\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output()}{get\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_afe2dfa8b58666743bae2f070fcd2bac2} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the output for a specific implementation by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the implementation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the output of the implementation
+\end{DoxyReturn}
+This function returns a shared pointer to the output of the implementation with the specified name. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ae63897a841dc60c80fa8ddd328fed7c3}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output@{get\_output}}
+\index{get\_output@{get\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output()}{get\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ae63897a841dc60c80fa8ddd328fed7c3} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view}]{name}{, }\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...}]{outs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copies the outputs of a specific implementation by name into provided pointer to variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outs} & One pointer per output element. Each pointer must point to writable storage of the corresponding output type.\\
+\hline
+\end{DoxyParams}
+Internally, this looks up the output tuple at the specified name, and unpacks its elements into the provided pointers. This allows callers to access values without dealing with {\ttfamily std\+::tuple} directly. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a2b223da0accd2e5946d983bd70049a2a}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output\_by\_index\_@{get\_output\_by\_index\_}}
+\index{get\_output\_by\_index\_@{get\_output\_by\_index\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output\_by\_index\_()}{get\_output\_by\_index\_()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a2b223da0accd2e5946d983bd70049a2a} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output\+\_\+by\+\_\+index\+\_\+ (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the output by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The index of the output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to the output tuple. 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ad2be156e5e52eec6e374b8d51b246751}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_output\_by\_name\_@{get\_output\_by\_name\_}}
+\index{get\_output\_by\_name\_@{get\_output\_by\_name\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_output\_by\_name\_()}{get\_output\_by\_name\_()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ad2be156e5e52eec6e374b8d51b246751} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+output\+\_\+by\+\_\+name\+\_\+ (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get the output by implementation name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the implementation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to the output tuple. 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_af888e9bd17f8b193971ca4ee33c94c7a}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_reference\_output@{get\_reference\_output}}
+\index{get\_reference\_output@{get\_reference\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_reference\_output()}{get\_reference\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_af888e9bd17f8b193971ca4ee33c94c7a} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+reference\+\_\+output (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the reference output by pointer. 
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to the reference output tuple
+\end{DoxyReturn}
+This function returns a shared pointer to the output of the reference implementation. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a5b6436eaaf757a4f11e6be6dc39a13da}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!get\_reference\_output@{get\_reference\_output}}
+\index{get\_reference\_output@{get\_reference\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{get\_reference\_output()}{get\_reference\_output()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a5b6436eaaf757a4f11e6be6dc39a13da} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::get\+\_\+reference\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...}]{outs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copies the reference output into provided pointer to variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outs} & One pointer per output element. Each pointer must point to writable storage of the corresponding output type.\\
+\hline
+\end{DoxyParams}
+Internally, this looks up the output tuple at index 0 (the reference), and unpacks its elements into the provided pointers. This allows callers to access values without dealing with {\ttfamily std\+::tuple} directly. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ac8b9c1c3151752ae9fca73b6de867bb6}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ac8b9c1c3151752ae9fca73b6de867bb6} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \& \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}$<$ Specs $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy assignment operator. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_acdfa8a132039f0bdce619d97e17ee089}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_acdfa8a132039f0bdce619d97e17ee089} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \& \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}$<$ Specs $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move assignment operator. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a85b7b80f001a9dff399f22ee8e7d01ef}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!print\_header@{print\_header}}
+\index{print\_header@{print\_header}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{print\_header()}{print\_header()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a85b7b80f001a9dff399f22ee8e7d01ef} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::print\+\_\+header (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Print the header for the output table. 
+
+This includes the framework title, number of implementations, warmup iterations, and benchmark iterations. It also prints the column headers for the output table. The metric headers are printed dynamically based on the number of output specs. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a0756e3b401c707b513cd9408a3aca658}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!print\_metrics@{print\_metrics}}
+\index{print\_metrics@{print\_metrics}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{print\_metrics()}{print\_metrics()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a0756e3b401c707b513cd9408a3aca658} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::print\+\_\+metrics (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \&}]{errs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Print the metrics for each output specification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em errs} & The tuple of error policies containing the metrics to print. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ac2bc999ec613384464e352388b204148}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!register\_plugin@{register\_plugin}}
+\index{register\_plugin@{register\_plugin}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{register\_plugin()}{register\_plugin()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ac2bc999ec613384464e352388b204148} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::register\+\_\+plugin (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{plugin\+::\+Plugin}}$<$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} $>$ $>$ \&}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Register a plugin for the output context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The shared pointer to the plugin to register. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_abdec747f59747814af608ebc61f4a167}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!run@{run}}
+\index{run@{run}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_abdec747f59747814af608ebc61f4a167} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::run (\begin{DoxyParamCaption}\item[{int}]{argc}{ = {\ttfamily 0}, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Runs the comparison for all added implementations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command line arguments \\
+\hline
+{\em argv} & Array of command line arguments \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_aef22db63e614b333148d4f049cdff6cc}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!set\_reference@{set\_reference}}
+\index{set\_reference@{set\_reference}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{set\_reference()}{set\_reference()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_aef22db63e614b333148d4f049cdff6cc} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$typename F$>$ \newline
+requires std\+::invocable$<$F, const Inputs \&..., \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$Specs$>$ \&...$>$\\
+\mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} \& \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::set\+\_\+reference (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{F \&\&}]{f}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a reference implementation. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em F} & The type of the function \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the implementation \\
+\hline
+{\em f} & The function to execute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The implementation instance
+\end{DoxyReturn}
+This function sets a reference implementation to the comparison framework. The reference implementation is always the first one added and is used as the baseline for comparison. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a2c601f07b13e7d449a60485f9ae85d40}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!spec\_metric\_count@{spec\_metric\_count}}
+\index{spec\_metric\_count@{spec\_metric\_count}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{spec\_metric\_count()}{spec\_metric\_count()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a2c601f07b13e7d449a60485f9ae85d40} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$std\+::size\+\_\+t I$>$ \\
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::spec\+\_\+metric\+\_\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Get the implementation details for a specific implementation index. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I} & The implementation index. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+std\+::size\+\_\+t The number of metrics for the implementation. 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a6546c5e3c964b54a204551b11a6c9d88}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!spec\_metric\_name@{spec\_metric\_name}}
+\index{spec\_metric\_name@{spec\_metric\_name}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{spec\_metric\_name()}{spec\_metric\_name()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a6546c5e3c964b54a204551b11a6c9d88} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$std\+::size\+\_\+t I$>$ \\
+constexpr std\+::string\+\_\+view \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::spec\+\_\+metric\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{m}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Get the name of a specific metric for a specific implementation index. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I} & The implementation index. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em m} & The metric index of the output policy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string\+\_\+view The name of the metric. 
+\end{DoxyReturn}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a3ef55c765cda265d00f75dc1736f2001}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!unpack\_output\_@{unpack\_output\_}}
+\index{unpack\_output\_@{unpack\_output\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{unpack\_output\_()}{unpack\_output\_()}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a3ef55c765cda265d00f75dc1736f2001} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+void \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::unpack\+\_\+output\+\_\+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} \&}]{outtup}{, }\item[{\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a9a558f1f7b6670f492b6a9efa9b93dd7}{val\+\_\+t}}$<$ Specs $>$ \texorpdfstring{$\ast$}{*}...}]{outs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Unpack the output tuple into the provided output pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outtup} & The output tuple to unpack. \\
+\hline
+{\em outs} & The output pointers to fill. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-variable-members}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ace1943e8099b195b26e0ae85d1ba3dd0}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!impls\_@{impls\_}}
+\index{impls\_@{impls\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{impls\_}{impls\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ace1943e8099b195b26e0ae85d1ba3dd0} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+std\+::vector$<$\mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}}$>$ \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::impls\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vector to hold all implementations. 
+
+This vector is used to store all the different implementations of the operation being benchmarked. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a418eb99b3b0ec410f7126a366471f9b1}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!inputs\_@{inputs\_}}
+\index{inputs\_@{inputs\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{inputs\_}{inputs\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a418eb99b3b0ec410f7126a366471f9b1} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::inputs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tuple instance storing all current input arguments. 
+
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a0408381c56b78507e451f32c4613b61c}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!NUM\_OUT@{NUM\_OUT}}
+\index{NUM\_OUT@{NUM\_OUT}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{NUM\_OUT}{NUM\_OUT}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a0408381c56b78507e451f32c4613b61c} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+size\+\_\+t \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+NUM\+\_\+\+OUT = sizeof...(Specs)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Number of output specifications. 
+
+This is equal to the number of outputs of a function.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://en.cppreference.com/w/cpp/language/sizeof....html}{\texttt{https\+://en.\+cppreference.\+com/w/cpp/language/sizeof....\+html}} 
+\end{DoxySeeAlso}
+\Hypertarget{classcomppare_1_1_input_context_1_1_output_context_ad9a0f7beefbeb5a2687fbe22ee4b8923}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!outputs\_@{outputs\_}}
+\index{outputs\_@{outputs\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{outputs\_}{outputs\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_ad9a0f7beefbeb5a2687fbe22ee4b8923} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+std\+::vector$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a250f671a03d75d44c522b2071f47f399}{Out\+Ptr}}$>$ \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::outputs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Storage for reference and comparison outputs. 
+
+Each implementation’s outputs are stored here as shared pointer to tuples. The first implementation is treated as the reference. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_af163a05c6fa0ced672d7c2a034c44d07}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!plugin\_@{plugin\_}}
+\index{plugin\_@{plugin\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{plugin\_}{plugin\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_af163a05c6fa0ced672d7c2a034c44d07} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classcomppare_1_1plugin_1_1_plugin}{plugin\+::\+Plugin}}$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}$>$ $>$ \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::plugin\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shared pointer to the plugin instance. 
+
+This pointer is used to store the plugin instance and ensure only one plugin is registered. It is shared across all implementations within the output context. \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_a353dd15f5b2a72d246383d073ef7b568}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!policies\_ref\_@{policies\_ref\_}}
+\index{policies\_ref\_@{policies\_ref\_}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{policies\_ref\_}{policies\_ref\_}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_a353dd15f5b2a72d246383d073ef7b568} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a617477d83d9751fa1114acdb94da2745}{Policy\+Tup}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::policies\+\_\+ref\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tuple of policy objects for the reference outputs. 
+
+Each policy governs how the corresponding output is validated \Hypertarget{classcomppare_1_1_input_context_1_1_output_context_adfe6b6aaa6a49b2f538619d8ee8747a4}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}!PRINT\_COL\_WIDTH@{PRINT\_COL\_WIDTH}}
+\index{PRINT\_COL\_WIDTH@{PRINT\_COL\_WIDTH}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$}}
+\doxysubsubsection{\texorpdfstring{PRINT\_COL\_WIDTH}{PRINT\_COL\_WIDTH}}
+{\footnotesize\ttfamily \label{classcomppare_1_1_input_context_1_1_output_context_adfe6b6aaa6a49b2f538619d8ee8747a4} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+int \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+PRINT\+\_\+\+COL\+\_\+\+WIDTH = 20\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Set the width of the print columns. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/\mbox{\hyperlink{comppare_8hpp}{comppare.\+hpp}}\end{DoxyCompactItemize}

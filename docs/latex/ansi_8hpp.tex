@@ -1,0 +1,206 @@
+\doxysection{include/comppare/internal/ansi.hpp File Reference}
+\hypertarget{ansi_8hpp}{}\label{ansi_8hpp}\index{include/comppare/internal/ansi.hpp@{include/comppare/internal/ansi.hpp}}
+
+
+This file contains utilities for applying ANSI styles and colors to console output.  
+
+
+Include dependency graph for ansi.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ansi_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ansi_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1internal_1_1ansi_1_1_scoped_ansi_wrapper}{comppare\+::internal\+::ansi\+::\+Scoped\+Ansi\+Wrapper$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Applying ANSI styles/colors to a value in a scope. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1internal_1_1ansi}{comppare\+::internal\+::ansi}}
+\begin{DoxyCompactList}\small\item\em Utilities for applying ANSI styles and colors to console output. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacecomppare}{comppare}}
+\begin{DoxyCompactList}\small\item\em Com\+PPare framework main namespace. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1internal}{comppare\+::internal}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ansi_8hpp_a4162b8643b647a8c96370331086e68a2}{ANSI\+\_\+\+DEFINE}}(NAME,  ON,  OFF)
+\begin{DoxyCompactList}\small\item\em Macro to define ANSI escape codes for text styling and colors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains utilities for applying ANSI styles and colors to console output. 
+
+\begin{DoxyAuthor}{Author}
+Leong Fan FUNG (funglf) \href{mailto:stanleyfunglf@gmail.com}{\texttt{stanleyfunglf@gmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+MIT License 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+LICENSE For full license text.
+\end{DoxySeeAlso}
+\doxysubsubsection*{Usage}
+
+This file supports two usage patterns for formatting console output with ANSI escape codes\+:
+
+\doxysubsubsubsection*{1. Persistent toggles}
+
+
+\begin{DoxyItemize}
+\item Applied with stream insertion ({\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}).
+\item Remain active until explicitly turned off with the corresponding {\ttfamily \+\_\+\+OFF} code.
+\item Examples\+: {\ttfamily BOLD} / {\ttfamily BOLD\+\_\+\+OFF}, {\ttfamily RED\+\_\+} / {\ttfamily RED\+\_\+\+OFF}.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ comppare::internal::ansi::BOLD}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::RED}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Bold\ Red"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::RED\_OFF}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::BOLD\_OFF}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ Back\ to\ normal"{}};}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{2. Scoped wrappers}
+
+
+\begin{DoxyItemize}
+\item Applied with function-\/call syntax, e.\+g. {\ttfamily RED("{}\+Red"{})}.
+\item Wrap the string with an "{}on"{} and "{}off"{} code automatically.
+\item Useful for one-\/off highlighted messages.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ \textcolor{stringliteral}{"{}Normal\ Colour"{}}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ comppare::internal::ansi::RED(\textcolor{stringliteral}{"{}Red"{}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}Normal\ Colour"{}}\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+
+\end{DoxyCode}
+
+
+\doxysubsubsubsection*{3. Reset code}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily RESET} can be used to reset all styles and colors to default. std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} comppare\+::internal\+::ansi\+::\+BOLD \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} comppare\+::internal\+::ansi\+::\+RED \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}\+Bold Red"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} comppare\+::internal\+::ansi\+::\+RESET \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{} Back to normal"{}; 
+\end{DoxyItemize}
+
+\label{doc-define-members}
+\Hypertarget{ansi_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ansi_8hpp_a4162b8643b647a8c96370331086e68a2}\index{ansi.hpp@{ansi.hpp}!ANSI\_DEFINE@{ANSI\_DEFINE}}
+\index{ANSI\_DEFINE@{ANSI\_DEFINE}!ansi.hpp@{ansi.hpp}}
+\doxysubsubsection{\texorpdfstring{ANSI\_DEFINE}{ANSI\_DEFINE}}
+{\footnotesize\ttfamily \label{ansi_8hpp_a4162b8643b647a8c96370331086e68a2} 
+\#define ANSI\+\_\+\+DEFINE(\begin{DoxyParamCaption}\item[{}]{NAME}{, }\item[{}]{ON}{, }\item[{}]{OFF}{}\end{DoxyParamCaption})}
+
+
+
+Macro to define ANSI escape codes for text styling and colors. 
+
+This macro generates a {\itshape pair of classes} and its {\itshape instances} to represent an ANSI style or color. The resulting API supports both\+:
+\begin{DoxyItemize}
+\item {\bfseries{Persistent toggles}} (turn style/color on or off in the stream)
+\item {\bfseries{Scoped wrappers}} (apply ON/\+OFF just around a single value)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+ \doxysubsubsubsection*{Implementation Details}
+
+Example with the style {\ttfamily BOLD}\+:
+\begin{DoxyEnumerate}
+\item {\bfseries{On Off codes}}
+\begin{DoxyItemize}
+\item {\ttfamily NAME\#\#\+\_\+\+ON\+\_\+\+CODE} → string literal for enabling ({\ttfamily "{}\textbackslash{}033\mbox{[}1m"{}})
+\item {\ttfamily NAME\#\#\+\_\+\+OFF\+\_\+\+CODE} → string literal for disabling ({\ttfamily "{}\textbackslash{}033\mbox{[}22m"{}}) ECMA-\/48 “\+Select Graphic Rendition” (SGR) sequences are defined here\+: \href{https://man7.org/linux/man-pages/man4/console_codes.4.html}{\texttt{https\+://man7.\+org/linux/man-\/pages/man4/console\+\_\+codes.\+4.\+html}}
+\end{DoxyItemize}
+\item {\bfseries{ON class}} ({\ttfamily NAME\#\#\+\_\+\+ON\+\_\+t})
+\begin{DoxyItemize}
+\item {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} — inserts the ON code directly into an {\ttfamily ostream}
+\item {\ttfamily operator()} — wraps a value in a {\ttfamily Scoped\+Ansi\+Wrapper}, which streams {\ttfamily ON + value + OFF} automatically
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }BOLD\_ON\_t\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Toggle\ on:\ std::cout\ <<\ BOLD\ <<\ "{}bold"{};}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ BOLD\_ON\_t);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Scoped:\ std::cout\ <<\ BOLD("{}bold"{});}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{template}<Streamable\ T>}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{auto}\ operator()(T\&\&\ v)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{Instance\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ BOLD\_ON\_t\ BOLD\{\};}
+
+\end{DoxyCode}
+ Users actually call this {\itshape instance}, not the class itself\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ BOLD;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ BOLD\_ON\_t::operator<<}}
+\DoxyCodeLine{std::cout\ <<\ BOLD(\textcolor{stringliteral}{"{}msg"{}});\ \ \textcolor{comment}{//\ BOLD\_ON\_t::operator()}}
+
+\end{DoxyCode}
+
+\item {\bfseries{OFF class}} ({\ttfamily NAME\#\#\+\_\+\+OFF\+\_\+t})
+\begin{DoxyItemize}
+\item {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} — inserts the OFF code directly into an {\ttfamily ostream}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }BOLD\_OFF\_t\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Toggle\ off:\ std::cout\ <<\ BOLD\_OFF\ <<\ "{}normal"{};}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ operator<<(std::ostream\&,\ BOLD\_OFF\_t);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+{\bfseries{Instance\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ BOLD\_OFF\_t\ BOLD\_OFF\{\};}
+
+\end{DoxyCode}
+ Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ BOLD\_OFF;\ \textcolor{comment}{//\ BOLD\_OFF\_t::operator<<}}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Parameters}
+{\em NAME} & The identifier to generate ({\ttfamily BOLD}, {\ttfamily RED}, etc.) \\
+\hline
+{\em ON} & Numeric ANSI code to enable \\
+\hline
+{\em OFF} & Numeric ANSI code to disable/reset \\
+\hline
+\end{DoxyParams}

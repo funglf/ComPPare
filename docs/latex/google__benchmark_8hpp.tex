@@ -1,0 +1,109 @@
+\doxysection{include/comppare/plugin/google\+\_\+benchmark/google\+\_\+benchmark.hpp File Reference}
+\hypertarget{google__benchmark_8hpp}{}\label{google__benchmark_8hpp}\index{include/comppare/plugin/google\_benchmark/google\_benchmark.hpp@{include/comppare/plugin/google\_benchmark/google\_benchmark.hpp}}
+
+
+This file contains the Google Benchmark plugin for the Com\+PPare framework.  
+
+
+Include dependency graph for google\+\_\+benchmark.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{google__benchmark_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{google__benchmark_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state}{comppare\+::plugin\+::google\+\_\+benchmark\+::state}}
+\begin{DoxyCompactList}\small\item\em State class to manage the benchmark state. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager}{comppare\+::plugin\+::google\+\_\+benchmark\+::google\+\_\+benchmark\+\_\+manager}}
+\begin{DoxyCompactList}\small\item\em Manager class for Google Benchmark integration. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1_google_benchmark_plugin}{comppare\+::plugin\+::google\+\_\+benchmark\+::\+Google\+Benchmark\+Plugin$<$ In\+Tup, Out\+Tup $>$}}
+\begin{DoxyCompactList}\small\item\em Google Benchmark plugin for the Com\+PPare framework. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare}{comppare}}
+\begin{DoxyCompactList}\small\item\em Com\+PPare framework main namespace. \end{DoxyCompactList}\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1plugin}{comppare\+::plugin}}
+\item 
+namespace \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark}{comppare\+::plugin\+::google\+\_\+benchmark}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{google__benchmark_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}{PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}}
+\begin{DoxyCompactList}\small\item\em Macro to benchmark a function using Google Benchmark. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{google__benchmark_8hpp_a3044f3554270625fb7743eba81014ac5}{PLUGIN\+\_\+\+SET\+\_\+\+ITERATION\+\_\+\+TIME}}(TIME)
+\begin{DoxyCompactList}\small\item\em Macro to set the iteration time for a benchmark. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{conceptcomppare_1_1internal_1_1concepts_1_1_floating_point}{comppare\+::internal\+::concepts\+::\+Floating\+Point}} T$>$ }\\void \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark_a2892805822e4a27405a97111b08f8983}{comppare\+::plugin\+::google\+\_\+benchmark\+::\+Set\+Iteration\+Time}} (T time)
+\begin{DoxyCompactList}\small\item\em Set the iteration time for the current benchmark. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Rep, typename Period$>$ }\\void \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark_a61890d307755c366a002a17d1040f8ce}{comppare\+::plugin\+::google\+\_\+benchmark\+::\+Set\+Iteration\+Time}} (std\+::chrono\+::duration$<$ Rep, Period $>$ time)
+\begin{DoxyCompactList}\small\item\em Set the iteration time for the current benchmark. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the Google Benchmark plugin for the Com\+PPare framework. 
+
+\begin{DoxyAuthor}{Author}
+Leong Fan FUNG (funglf) \href{mailto:stanleyfunglf@gmail.com}{\texttt{stanleyfunglf@gmail.\+com}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+MIT License 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+LICENSE For full license text. 
+\end{DoxySeeAlso}
+
+
+\label{doc-define-members}
+\Hypertarget{google__benchmark_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{google__benchmark_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867}\index{google\_benchmark.hpp@{google\_benchmark.hpp}!PLUGIN\_HOTLOOP\_BENCH@{PLUGIN\_HOTLOOP\_BENCH}}
+\index{PLUGIN\_HOTLOOP\_BENCH@{PLUGIN\_HOTLOOP\_BENCH}!google\_benchmark.hpp@{google\_benchmark.hpp}}
+\doxysubsubsection{\texorpdfstring{PLUGIN\_HOTLOOP\_BENCH}{PLUGIN\_HOTLOOP\_BENCH}}
+{\footnotesize\ttfamily \label{google__benchmark_8hpp_a3e87ddf7653b3ff4c0debbb366ec1867} 
+\#define PLUGIN\+\_\+\+HOTLOOP\+\_\+\+BENCH}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ benchmark::State\ \&st\ =\ \mbox{\hyperlink{classcomppare_1_1plugin_1_1google__benchmark_1_1state_afd2af046ec75962ce442f0f557e1e270}{comppare::plugin::google\_benchmark::state::get\_state}}();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ for\ (\textcolor{keyword}{auto}\ \_\ :\ st)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ hotloop\_body();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Macro to benchmark a function using Google Benchmark. 
+
+\Hypertarget{google__benchmark_8hpp_a3044f3554270625fb7743eba81014ac5}\index{google\_benchmark.hpp@{google\_benchmark.hpp}!PLUGIN\_SET\_ITERATION\_TIME@{PLUGIN\_SET\_ITERATION\_TIME}}
+\index{PLUGIN\_SET\_ITERATION\_TIME@{PLUGIN\_SET\_ITERATION\_TIME}!google\_benchmark.hpp@{google\_benchmark.hpp}}
+\doxysubsubsection{\texorpdfstring{PLUGIN\_SET\_ITERATION\_TIME}{PLUGIN\_SET\_ITERATION\_TIME}}
+{\footnotesize\ttfamily \label{google__benchmark_8hpp_a3044f3554270625fb7743eba81014ac5} 
+\#define PLUGIN\+\_\+\+SET\+\_\+\+ITERATION\+\_\+\+TIME(\begin{DoxyParamCaption}\item[{}]{TIME}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{namespacecomppare_1_1plugin_1_1google__benchmark_a2892805822e4a27405a97111b08f8983}{comppare::plugin::google\_benchmark::SetIterationTime}}(TIME);}
+
+\end{DoxyCode}
+
+
+Macro to set the iteration time for a benchmark. 
+

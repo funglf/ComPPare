@@ -1,0 +1,301 @@
+\doxysection{examples/advanced\+\_\+demo/2-\/google\+\_\+benchmark Directory Reference}
+\hypertarget{dir_5a380b290769fe5d3c5c99566e4dfa58}{}\label{dir_5a380b290769fe5d3c5c99566e4dfa58}\index{examples/advanced\_demo/2-\/google\_benchmark Directory Reference@{examples/advanced\_demo/2-\/google\_benchmark Directory Reference}}
+Directory dependency graph for 2-\/google\+\_\+benchmark\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{dir_5a380b290769fe5d3c5c99566e4dfa58_dep}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_484946792f1903ccfdb2a503f0aa2fd9}{build}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{google__benchmark__demo_8cpp}{google\+\_\+benchmark\+\_\+demo.\+cpp}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+\begin{DoxyItemize}
+\item 1. Introduction
+\item 2. Quick Start
+\begin{DoxyItemize}
+\item 2.1. Build
+\item 2.2. Run
+\item 2.3. Troubleshoot
+\begin{DoxyItemize}
+\item 2.3.1. CMake cannot find Benchmark
+\item 2.3.2. Undefined Symbols in \`{}make\`{} stage
+\item 2.3.3. CMake could not find Open\+MP\textbackslash{}\+\_\+\+CXX
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item 3. Google Benchmark on top of Com\+PPare
+\begin{DoxyItemize}
+\item 3.1. How to use
+\item 3.2. Advantages
+\begin{DoxyItemize}
+\item 3.2.1. Less Code Change
+\item 3.2.2. Additional Correctness Comparison
+\end{DoxyItemize}
+\item 3.3. Limitations
+\begin{DoxyItemize}
+\item 3.3.1. Unable to use Full Extent of Google Benchmark\textquotesingle{}s capabilities
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\doxysubsection*{1. Introduction}
+
+Google Benchmark is a provided external plugin with a some simple steps.
+
+\doxysubsection*{2. Quick Start}
+
+\doxysubsubsection*{2.\+1. Build}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{make\ }
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{2.\+2. Run}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./google\_benchmark\_demo}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{2.\+3. Troubleshoot}
+
+\doxysubsubsubsection*{2.\+3.\+1. CMake cannot find Benchmark}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CMake\ Error\ at\ CMakeLists.txt:7\ (find\_package):}
+\DoxyCodeLine{\ \ Could\ not\ find\ a\ package\ configuration\ file\ provided\ by\ "{}benchmark"{}\ with}
+
+\end{DoxyCode}
+ {\bfseries{Solution 1 -- build submodule benchmark}} Follow Guide provided by Google Benchmark at \href{https://github.com/google/benchmark/blob/main/README.md}{\texttt{Link}} to build Google Benchmark
+
+{\bfseries{Solution 2 -- Provide Absolute path of your own benchmark build}} To provide the location of another benchmark build, we need to provide CMake with the path via\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DCMAKE\_PREFIX\_PATH=/your/path/to/benchmark/build\ \#Change\ to\ your\ path}
+
+\end{DoxyCode}
+ ~\newline
+
+
+Alternatively, you can edit the CMake\+Lists.\+txt file, although this is not recommended\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{BENCHMARK\_ROOT=/your/path/to/benchmark/build\ \#Change\ to\ your\ path}
+\DoxyCodeLine{cd\ /your/path/to/ComPPare/examples/advanced\_demo/2-\/google\_benchmark\ \#\ change\ dir\ to\ root\ of\ this\ example}
+\DoxyCodeLine{sed\ -\/i.bak\ "{}s\#\(\backslash\)\$\{CMAKE\_SOURCE\_DIR\}/../../../benchmark/build\#\$\{BENCHMARK\_ROOT\}\#g"{}\ CMakeLists.txt}
+
+\end{DoxyCode}
+ If you are satisfied with the change, you can delete the Original CMake\+Lists.\+txt by\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rm\ CMakeLists.txt.bak}
+
+\end{DoxyCode}
+ If not satisfied with the change and want to revert to the original file\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rm\ CMakeLists.txt}
+\DoxyCodeLine{mv\ CMakeLists.txt.bak\ CMakeLists.txt}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\doxysubsubsubsection*{2.\+3.\+2. Undefined Symbols in {\ttfamily make} stage}
+
+Usually a long list of functions are listed with Undefined symbols\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Undefined\ symbols\ for\ architecture\ arm64:}
+\DoxyCodeLine{\ \ "{}benchmark::internal::RegisterBenchmarkInternal(\ ...}
+\DoxyCodeLine{\ \ ...}
+\DoxyCodeLine{9](sysinfo.cc.o)}
+\DoxyCodeLine{\ \ \ NOTE:\ a\ missing\ vtable\ usually\ means\ the\ first\ non-\/inline\ virtual\ member\ function\ has\ no\ definition.}
+\DoxyCodeLine{ld:\ symbol(s)\ not\ found\ for\ architecture\ arm64}
+
+\end{DoxyCode}
+ This is most likely being benchmark and the current demo is built with a different compiler -- in this case, benchmark is built with Apple Clang, while the demo is built with GNU g++.
+
+Try to rebuild both benchmark and current demo with the keeping the compiler the same.
+
+\doxysubsubsubsection*{2.\+3.\+3. CMake could not find Open\+MP\+\_\+\+CXX}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Could\ NOT\ find\ OpenMP\_CXX\ (missing:\ OpenMP\_CXX\_FLAGS\ OpenMP\_CXX\_LIB\_NAMES)}
+
+\end{DoxyCode}
+ This is most probably due to the compiler you are using not supporting Open\+MP, for instance Apple\+Clang. Manually define compilers that supports Open\+MP such as the GNU C++ compiler\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DCMAKE\_CXX\_COMPILER=g++}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note for Apple Users\+:}}
+
+{\bfseries{{\ttfamily g++} is actually {\ttfamily Apple\+Clang}}} , if you do\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{g++\ -\/-\/version}
+\DoxyCodeLine{>>>\ Apple\ clang\ version\ 15.0.0\ (clang-\/1500.3.9.4)}
+
+\end{DoxyCode}
+ Instead, you would have to install actual \href{https://formulae.brew.sh/formula/gcc}{\texttt{GNU g++ with homebrew}}
+
+\doxysubsection*{3. Google Benchmark on top of Com\+PPare}
+
+\doxysubsubsection*{3.\+1. How to use}
+
+{\bfseries{Original Code}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{manual__timing__demo_8cpp_ae8bed53ca3e2e3ad48667974d5ce6fb0}{square}}(\textcolor{keyword}{const}\ std::vector<int>\ \&vec,\ std::vector<int>\ \&out)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ out.resize(vec.size());}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vec.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ out[i]\ =\ vec[i]\ *\ vec[i];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Com\+PPare}} As per usual, simply add the macros to the original code 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ ComPPare\_square(\textcolor{keyword}{const}\ std::vector<int>\ \&vec,\ std::vector<int>\ \&out)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ out.resize(vec.size());}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a03adebee29527207e43a1b362d77fe65}{HOTLOOPSTART}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vec.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ out[i]\ =\ vec[i]\ *\ vec[i];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{comppare_8hpp_a3f983d0c821f40a98683debcc90a1e97}{HOTLOOPEND}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+To attach to google benchmark, when adding the function, simply add {\ttfamily .google\+\_\+benchmark()}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{compare.add(\textcolor{stringliteral}{"{}square"{}},\ ComPPare\_square).google\_benchmark()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ -\/>Unit(benchmark::kMillisecond);\ \textcolor{comment}{//\ And\ any\ other\ Google\ Benchmark\ Arguments}}
+
+\end{DoxyCode}
+
+
+\doxysubsubsection*{3.\+2. Advantages}
+
+\doxysubsubsubsection*{3.\+2.\+1. Less Code Change}
+
+{\bfseries{Google Benchmark}} Minimal example of using Google Benchmark incurs a substantial code change with the initialization moved into the function itself.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ GB\_square(benchmark::State\&\ state)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Declare\ Variables\ */}}
+\DoxyCodeLine{\ \ \ \ std::vector<float>\ out,\ vec;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Initialize\ Variables\ */}}
+\DoxyCodeLine{\ \ \ \ vec.resize(100);}
+\DoxyCodeLine{\ \ \ \ out.resize(100);}
+\DoxyCodeLine{\ \ \ \ std::iota(vec.begin(),\ vec.end(),\ 1);\ \textcolor{comment}{//\ Or\ your\ desiered\ way\ of\ initializing}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \_\ :\ state)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vec.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ out[i]\ =\ vec[i]\ *\ vec[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ As shown, to write a function for Google Benchmark requires a certain degree of code addition. As for Com\+PPare, only 2 macros are needed for a basic case.
+
+\begin{quote}
+Note on Setup in Google Benchmark\+:
+
+You can do a setup and teardown function in Google Benchmark to encapsulate them. They will still be invoked once per Benchmark/\+Implementation. \href{https://github.com/google/benchmark/blob/main/docs/user_guide.md\#setupteardown}{\texttt{(See here)}} \end{quote}
+
+
+\doxysubsubsubsection*{3.\+2.\+2. Additional Correctness Comparison}
+
+Com\+PPare\textquotesingle{}s defining difference is being able to test for correctness. Apart from pure benchmarking.
+
+\doxysubsubsection*{3.\+3. Limitations}
+
+\doxysubsubsubsection*{3.\+3.\+1. Unable to use Full Extent of Google Benchmark\textquotesingle{}s capabilities}
+
+Google Benchmark supports great capabilities such as Passing Arguments.
+
+{\bfseries{Passing Arguments}} Google Benchmark supports passing arguments by\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ GB\_square(benchmark::State\&\ state)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}}\ =\ state.range(0);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Declare\ Variables\ */}}
+\DoxyCodeLine{\ \ \ \ std::vector<float>\ out,\ vec;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Initialize\ Variables\ */}}
+\DoxyCodeLine{\ \ \ \ vec.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{\ \ \ \ out.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{\ \ \ \ std::iota(vec.begin(),\ vec.end(),\ 1);\ \textcolor{comment}{//\ Or\ your\ desiered\ way\ of\ initializing}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \_\ :\ state)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ vec.size();\ ++i)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ out[i]\ =\ vec[i]\ *\ vec[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{BENCHMARK(GB\_square)-\/>Arg(1\ <<\ 8)-\/>Arg(1\ <<\ 16)}
+
+\end{DoxyCode}
+ Where in this case, we are benchmarking the vector sizes of 2\texorpdfstring{$^\wedge$}{\string^}8 and 2\texorpdfstring{$^\wedge$}{\string^}16. However, in comppare, we cannot do this as our function is not written for Google Benchmark.
+
+Instead, you will have to write your own input cases with different sizes\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{dummy_2main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argcv)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ uint64\_t\ \mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}}\ =\ std::stuoll(argv[1]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::vector<float>\ out,\ vec;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Initialize\ Variables\ */}}
+\DoxyCodeLine{\ \ \ \ vec.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{\ \ \ \ out.resize(\mbox{\hyperlink{manual__timing__demo_8cpp_a0240ac851181b84ac374872dc5434ee4}{N}});}
+\DoxyCodeLine{\ \ \ \ std::iota(vec.begin(),\ vec.end(),\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ ComPPare\ section}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ \ \ \ 1.\ Create\ comppare\ instance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ \ \ \ 2.\ Add\ functions}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ \ \ \ 3.\ Run}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ */}\ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ Other functionality include multithreading support, filtering out benchmark cases in command line, memory usage etc.
+
+\begin{quote}
+Google Benchmark and Com\+PPare has different purpose in the for code optimisation. Com\+PPare is for correctness testing while being able to run microbenchmarks when prototyping; Google Benchmark is only for benchmark with more complete capabilities. To Fully use the extent of capabilities of Google Benchmark, writing specifically for Google Benchmark is otherwise suggested. \end{quote}

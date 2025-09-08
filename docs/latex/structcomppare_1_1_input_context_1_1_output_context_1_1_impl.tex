@@ -1,0 +1,179 @@
+\doxysection{comppare\+::Input\+Context\texorpdfstring{$<$}{<} Inputs \texorpdfstring{$>$}{>}\+::Output\+Context\texorpdfstring{$<$}{<} Specs \texorpdfstring{$>$}{>}\+::Impl Struct Reference}
+\hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{}\label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+
+
+Internal container representing one registered implementation.  
+
+
+
+
+Collaboration diagram for comppare\+::Input\+Context\texorpdfstring{$<$}{<} Inputs \texorpdfstring{$>$}{>}\+::Output\+Context\texorpdfstring{$<$}{<} Specs \texorpdfstring{$>$}{>}\+::Impl\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{structcomppare_1_1_input_context_1_1_output_context_1_1_impl__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+decltype(auto) \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a430c804bf27b5ae7af2e4c31b1b8e4f9}{google\+\_\+benchmark}} ()
+\begin{DoxyCompactList}\small\item\em Attach the Google Benchmark plugin. \end{DoxyCompactList}\item 
+decltype(auto) \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_acda15f689294e81ee36cbb8dd466897d}{nvbench}} ()
+\begin{DoxyCompactList}\small\item\em Attach the nvbench plugin. \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ class, class $>$ class Plugin$>$ \newline
+requires \mbox{\hyperlink{conceptcomppare_1_1plugin_1_1_valid_plugin}{comppare\+::plugin\+::\+Valid\+Plugin}}$<$Plugin, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}}$>$}\\decltype(auto) \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae528f139ca8af7e60d227e156476d7a4}{attach}} ()
+\begin{DoxyCompactList}\small\item\em Attach a plugin to the output context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_aa759dca77c451182e117c656548c458b}{name}}
+\begin{DoxyCompactList}\small\item\em Name of the implementation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}} \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ac68732283f0ac63e0b36ff8c6345b2c8}{fn}}
+\begin{DoxyCompactList}\small\item\em The user-\/provided function implementing the operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a1715e67cb0da765057eff5d884801aab}{inputs\+\_\+ptr}}
+\begin{DoxyCompactList}\small\item\em Pointer to the input tuple {\ttfamily inputs\+\_\+}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_af630add7f3910fb7fa31f66693d8f855}{parent\+\_\+ctx}}
+\begin{DoxyCompactList}\small\item\em Reference to the owning {\ttfamily \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}. This allows the implementation to register plugins. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}} $>$ \mbox{\hyperlink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae622d35ab1b62b5185a6563ff50ce5bb}{plugin\+\_\+output}} = nullptr
+\begin{DoxyCompactList}\small\item\em Unique pointer to the output tuple for plugin runs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename... Inputs$>$\newline
+template$<$Out\+Spec... Specs$>$\newline
+struct comppare\+::\+Input\+Context$<$ Inputs $>$\+::\+Output\+Context$<$ Specs $>$\+::\+Impl}
+Internal container representing one registered implementation. 
+
+Each {\ttfamily \doxylink{structcomppare_1_1_input_context_1_1_output_context_1_1_impl}{Impl}} bundles together\+:
+\begin{DoxyItemize}
+\item the {\itshape user function} ({\ttfamily fn}) under a given name,
+\item a pointer to the input tuple,
+\item a back-\/reference to the owning {\ttfamily \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}},
+\item and optionally, plugin-\/managed output storage.
+\end{DoxyItemize}
+
+This allows the framework to keep track of multiple competing implementations of the same operation (e.\+g. reference vs optimized), and to attach correctness/performance plugins such as Google Benchmark or NVBench. 
+
+\label{doc-func-members}
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae528f139ca8af7e60d227e156476d7a4}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!attach@{attach}}
+\index{attach@{attach}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae528f139ca8af7e60d227e156476d7a4} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+template$<$template$<$ class, class $>$ class Plugin$>$ \newline
+requires \mbox{\hyperlink{conceptcomppare_1_1plugin_1_1_valid_plugin}{comppare\+::plugin\+::\+Valid\+Plugin}}$<$Plugin, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}, \mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}}$>$\\
+decltype(auto) \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Attach a plugin to the output context. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Plugin} & The plugin type to attach. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The return of the plugin\textquotesingle{}s {\ttfamily register\+\_\+impl} method.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+decltype(auto) is used to preserve the return type of the plugin\textquotesingle{}s register\+\_\+impl method. When using {\ttfamily auto}, the return type would remove its reference-\/ness and const-\/ness; while decltype(auto) preserves it. Reference\+: Effective Modern C++ Item 3\+: Understand decltype 
+\end{DoxyNote}
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a430c804bf27b5ae7af2e4c31b1b8e4f9}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!google\_benchmark@{google\_benchmark}}
+\index{google\_benchmark@{google\_benchmark}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{google\_benchmark()}{google\_benchmark()}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a430c804bf27b5ae7af2e4c31b1b8e4f9} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+decltype(auto) \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::google\+\_\+benchmark (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Attach the Google Benchmark plugin. 
+
+This function adds the Google Benchmark plugin for the current implementation. \Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_acda15f689294e81ee36cbb8dd466897d}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!nvbench@{nvbench}}
+\index{nvbench@{nvbench}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{nvbench()}{nvbench()}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_acda15f689294e81ee36cbb8dd466897d} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+decltype(auto) \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::nvbench (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Attach the nvbench plugin. 
+
+This function adds the nvbench plugin for the current implementation. 
+
+\label{doc-variable-members}
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ac68732283f0ac63e0b36ff8c6345b2c8}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!fn@{fn}}
+\index{fn@{fn}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{fn}{fn}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ac68732283f0ac63e0b36ff8c6345b2c8} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::fn}
+
+
+
+The user-\/provided function implementing the operation. 
+
+This function must match the signature defined by {\ttfamily \doxylink{classcomppare_1_1_input_context_1_1_output_context_a43c2cb7c5ed9fcaeab2de6c677ef8db9}{Func}}, taking all input arguments by const reference, and all output arguments by non-\/const reference. \Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a1715e67cb0da765057eff5d884801aab}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!inputs\_ptr@{inputs\_ptr}}
+\index{inputs\_ptr@{inputs\_ptr}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{inputs\_ptr}{inputs\_ptr}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_a1715e67cb0da765057eff5d884801aab} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_abf0f9033961bfa302c86cc72191d5d2b}{In\+Tup}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::inputs\+\_\+ptr}
+
+
+
+Pointer to the input tuple {\ttfamily inputs\+\_\+}. 
+
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_aa759dca77c451182e117c656548c458b}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!name@{name}}
+\index{name@{name}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_aa759dca77c451182e117c656548c458b} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+std\+::string \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::name}
+
+
+
+Name of the implementation. 
+
+This is used to identify the implementation in logs and reports. \Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_af630add7f3910fb7fa31f66693d8f855}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!parent\_ctx@{parent\_ctx}}
+\index{parent\_ctx@{parent\_ctx}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{parent\_ctx}{parent\_ctx}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_af630add7f3910fb7fa31f66693d8f855} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::parent\+\_\+ctx}
+
+
+
+Reference to the owning {\ttfamily \doxylink{classcomppare_1_1_input_context_1_1_output_context}{Output\+Context}}. This allows the implementation to register plugins. 
+
+\Hypertarget{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae622d35ab1b62b5185a6563ff50ce5bb}\index{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}!plugin\_output@{plugin\_output}}
+\index{plugin\_output@{plugin\_output}!comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl@{comppare::InputContext$<$ Inputs $>$::OutputContext$<$ Specs $>$::Impl}}
+\doxysubsubsection{\texorpdfstring{plugin\_output}{plugin\_output}}
+{\footnotesize\ttfamily \label{structcomppare_1_1_input_context_1_1_output_context_1_1_impl_ae622d35ab1b62b5185a6563ff50ce5bb} 
+template$<$typename... Inputs$>$ \\
+template$<$Out\+Spec... Specs$>$ \\
+std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_afcc86ea79fae5a48f889541870116bba}{Out\+Tup}}$>$ \mbox{\hyperlink{classcomppare_1_1_input_context}{comppare\+::\+Input\+Context}}$<$ Inputs $>$\mbox{\hyperlink{classcomppare_1_1_input_context_1_1_output_context_a970d7755318a31ff7cbc04a9f2e3bc36}{\+::\+Output\+Context}}$<$ Specs $>$\+::\+Impl\+::plugin\+\_\+output = nullptr}
+
+
+
+Unique pointer to the output tuple for plugin runs. 
+
+This allows the implementation to provide a separate output instance for plugins, avoiding interference with the main output. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/comppare/\mbox{\hyperlink{comppare_8hpp}{comppare.\+hpp}}\end{DoxyCompactItemize}
