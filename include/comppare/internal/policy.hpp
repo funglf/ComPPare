@@ -373,8 +373,8 @@ namespace comppare::internal::policy
             T total_error_ = T(0);
             std::size_t elem_cnt_ = 0;
 
-            bool fail_{false};
-            bool valid_{true};
+            bool fail_{false};  /** < @brief Indicates if the current error state is a failure. */
+            bool valid_{true};  /** < @brief Indicates if the current error state is valid. */
             std::string err_msg_;
 
             T tolerance_;
@@ -434,17 +434,26 @@ namespace comppare::internal::policy
                 }
             }
 
+            /**
+             * @brief Checks if the current error state is a failure.
+             * 
+             * @return true if the error state is a failure, false otherwise.
+             * if the error state is invalid, it returns false.
+             */
             bool is_fail() const
             {
-                if (!valid_)
+                if (valid_)
                     return fail_;
+                else
+                    return false;
             }
 
             void compute_error(const R &a, const R &b)
             {
                 if (std::ranges::size(a) != std::ranges::size(b))
                 {
-                    valid_ = false;
+                    // invalid if sizes are different
+                    valid_ = false; 
                     err_msg_ = "Size mismatch";
                     elem_cnt_ = 0;
                     return;
@@ -462,6 +471,7 @@ namespace comppare::internal::policy
                             total_error_ = std::numeric_limits<T>::quiet_NaN();
                             elem_cnt_ = 0;
 
+                            // invalid if any element is NAN/INF
                             valid_ = false;
                             err_msg_ = "NAN/INF";
                             return;
