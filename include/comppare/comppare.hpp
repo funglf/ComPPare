@@ -849,6 +849,27 @@ namespace comppare
             } /* run */
         }; /* OutputContext */
     }; /* InputContext */
+
+    /**
+     * @brief Helper function to create a comppare object.
+     * 
+     * This function simplifies the creation of a comppare object by deducing the input types.
+     * It takes input arguments and returns an `OutputContext` object that can be used to add implementations and run comparisons.
+     * The output types must be specified explicitly as template parameters, while the input types are deduced from the function arguments.
+     * The function arguments are perfectly forwarded to instantiate the `OutputContext` object.
+     * 
+     * @tparam Outputs The types of the output specifications.
+     * @tparam Inputs The types of the input specifications -- deduced from function arguments.
+     * @param ins The input arguments.
+     * @return typename InputContext<Inputs...>::OutputContext<Outputs...>
+     */
+    template <typename... Outputs, typename... Inputs>
+    auto make_comppare(Inputs&&... ins) {
+        return typename InputContext<std::decay_t<Inputs>...>::template 
+            OutputContext<std::decay_t<Outputs>...>(
+            std::forward<Inputs>(ins)...
+        );
+    }
 } // namespace comppare
 
 /**
