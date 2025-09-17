@@ -57,7 +57,7 @@ SOFTWARE.
 
 #if defined(HAVE_GOOGLE_BENCHMARK)
 #include "comppare/plugin/google_benchmark/google_benchmark.hpp"
-#endif 
+#endif
 
 #if defined(HAVE_NV_BENCH)
 #include "comppare/plugin/nvbench/nvbench.hpp"
@@ -75,15 +75,15 @@ namespace comppare
     Reference:
     CppCon 2015: Chandler Carruth "Tuning C++: Benchmarks, and CPUs, and Compilers! Oh My!"
     Google Benchmark: https://github.com/google/benchmark
-    
+
     Copyright 2015 Google Inc. All rights reserved.
-    
+
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-    
+
         http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -148,40 +148,130 @@ namespace comppare
         std::atomic_signal_fence(std::memory_order_acq_rel);
     }
 
+    /**
+     * @brief Specification struct for pairing an output type with an error policy.
+     *
+     * The `outspec` struct represents an output type together with its error policy.
+     * Inside the framework, every argument passed to `OutputContext` is normalized
+     * into some form of `outspec<Value, Policy>`.
+     *
+     * ### How `OutputContext` normalizes output types
+     * - **Raw types**
+     *   If the user passes a bare type (e.g. `double`), it is automatically
+     *   wrapped as `outspec<double, void>`.
+     *   The `void` signals that the framework should deduce the policy
+     *   via `AutoPolicy_t<double>`.
+     *   This case is handled by the specialization `outspec<Value, void>`.
+     *
+     * - **Explicit policies**
+     *   If the user passes `set_policy<T, P>`, it is an alias for `outspec<T, P>`.
+     *   Within `OutputContext`, this is first normalized as `outspec<outspec<T, P>, void>`,
+     *   in the same way raw types are normalized.
+     *   This case is handled by the specialization `outspec<outspec<Value, Policy>, void>`.
+     *
+     * ### Why the double-wrapping
+     * Consider a mix of raw types and explicit policies in `OutputContext`:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<outspec<T0, P0>, T1>
+     * ```
+     * Here:
+     * - `T1` is normalized as `outspec<T1, void>` (auto policy).
+     * - `outspec<T0, P0>` is normalized as `outspec<outspec<T0, P0>, void>`.
+     *
+     * *All arguments are first treated as `outspec<..., void>`*.
+     * Without this mechanism, users would have to explicitly write:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<outspec<T0, P0>, outspec<T1, void>>
+     * ```
+     * which is less convenient, since most users do not need custom policies.
+     *
+     * @tparam Value  The output value type.
+     * @tparam Policy The error policy type. Defaults to `void` for auto-selection.
+     */
     template <typename Value, typename Policy = void>
-    struct spec;
+    struct outspec;
 
+    /**
+     * @brief Partial specialization of outspec for automatic error policy selection.
+     * 
+     * This specialization is used when the user provides only a value type:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<double, std::string>
+     * ```
+     * 
+     * Therefore, the framework normalises each output type to a `outspec<Value, void>`:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<outspec<double, void>, outspec<std::string, void>>
+     * ```
+     * 
+     * This specialization matches `outspec<Value, void>` and uses `AutoPolicy_t<Value>` to
+     * deduce the error policy for the given value type.
+     *
+     * @note See documentation of `outspec` for greater overview on the design choices.
+     * @see outspec for greater overview on the design choices.
+     * @tparam Value
+     */
     template <typename Value>
         requires internal::policy::autopolicy::SupportedByAutoPolicy<Value>
-    struct spec<Value, void>
+    struct outspec<Value, void>
     {
-        using value_t = Value;
+        using outtype_t = std::decay_t<Value>;
         using policy_t = internal::policy::autopolicy::AutoPolicy_t<Value>;
     };
 
+    /**
+     * @brief Partial specialization of outspec for user-defined error policy selection.
+     * 
+     * This specialization is used when the user provides both a value type and an explicit policy:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<outspec<double, MyDoublePolicy>, outspec<std::string, MyStringPolicy>>
+     * ```
+     * Therefore, the framework normalises each output type to a `outspec<outspec<Value, Policy>, void>`:
+     * ```cpp
+     * comppare::InputContext<>::OutputContext<outspec<outspec<double, MyDoublePolicy>, void>, outspec<outspec<std::string, MyStringPolicy>, void>>
+     * ```
+     * This specialization matches `outspec<outspec<Value, Policy>, void>` and extracts the user-provided
+     * value and policy types.
+     * 
+     * @note See documentation of `outspec` for for greater overview on the design choices.
+     * @see outspec for greater overview on the design choices.
+     * @tparam Value
+     * @tparam Policy
+     */
     template <typename Value, typename Policy>
-    struct spec<spec<Value, Policy>, void>
+    struct outspec<outspec<Value, Policy>, void>
     {
-        using value_t = Value;
+        using outtype_t = std::decay_t<Value>;
         using policy_t = Policy;
     };
 
+    /**
+     * @brief Partial specialization of outspec for user-defined error policy selection.
+     * 
+     * @note This specialisation is not strictly required in this context as `outspec<outspec<T, P>, void>` would be sufficient.
+     * However, it is included for clarity and to explicitly handle the case where both Value and Policy are provided.
+     * @see outspec
+     * @tparam Value
+     * @tparam Policy
+     */
     template <typename Value, typename Policy>
         requires comppare::internal::policy::ErrorPolicy<Value, Policy>
-    struct spec<Value, Policy>
+    struct outspec<Value, Policy>
     {
-        using value_t = Value;
+        using outtype_t = std::decay_t<Value>;
         using policy_t = Policy;
     };
 
+    /** @brief Alias for setting the error policy for a type. */
     template <typename Value, typename Policy>
-    using set_policy = spec<Value, Policy>;
+    using set_policy = outspec<Value, Policy>;
 
+    /** @brief Concept for output specifications being pair of type and policy. */
     template <typename T>
     concept OutSpec =
         comppare::internal::policy::ErrorPolicy<
-            typename spec<T>::value_t,
-            typename spec<T>::policy_t>;
+            typename outspec<T>::outtype_t,
+            typename outspec<T>::policy_t>;
 
     /**
      * @brief InputContext class template to hold input parameters for the comparison framework.
@@ -195,24 +285,24 @@ namespace comppare
         /**
          * @brief OutputContext class template to hold output parameters and manage implementations.
          *
-         * @tparam Specs
+         * @tparam OutputSpecs
          */
-        template <OutSpec... Specs>
+        template <OutSpec... OutputSpecs>
         class OutputContext
         {
         private:
             /**
-             * @tparam S The output spec type.
-             * @brief Extracts the value type from a spec.
+             * @tparam S The output outspec type.
+             * @brief Extracts the value type from a outspec.
              */
             template <typename S>
-            using val_t = typename spec<S>::value_t;
+            using outtype_t = typename outspec<S>::outtype_t;
             /**
-             * @tparam S The output spec type.
-             * @brief Extracts the policy type from a spec.
+             * @tparam S The output outspec type.
+             * @brief Extracts the policy type from a outspec.
              */
             template <typename S>
-            using pol_t = typename spec<S>::policy_t;
+            using pol_t = typename outspec<S>::policy_t;
 
             /**
              * @brief Alias for the function signature of a user-provided implementation.
@@ -226,20 +316,20 @@ namespace comppare
              * void f(const In1&, const In2&, ..., Out1&, Out2&...);
              * @endcode
              */
-            using Func = std::function<void(const Inputs &..., val_t<Specs> &...)>;
+            using Func = std::function<void(const std::decay_t<Inputs> &..., outtype_t<OutputSpecs> &...)>;
 
             /**
              * @brief Tuple type holding all input arguments.
              */
-            using InTup = std::tuple<Inputs...>;
+            using InTup = std::tuple<std::decay_t<Inputs>...>;
             /**
-             * @brief Tuple type holding all output values (one element per spec).
+             * @brief Tuple type holding all output values (one element per outspec).
              */
-            using OutTup = std::tuple<val_t<Specs>...>;
+            using OutTup = std::tuple<outtype_t<OutputSpecs>...>;
             /**
-             * @brief Tuple type holding the error/policy object associated with each output spec.
+             * @brief Tuple type holding the error/policy object associated with each output outspec.
              */
-            using PolicyTup = std::tuple<pol_t<Specs>...>;
+            using PolicyTup = std::tuple<pol_t<OutputSpecs>...>;
 
             /**
              * @brief Shared pointer to an output tuple.
@@ -270,10 +360,10 @@ namespace comppare
              * @brief Number of output specifications.
              *
              * This is equal to the number of outputs of a function.
-             * 
+             *
              * @see https://en.cppreference.com/w/cpp/language/sizeof....html
              */
-            static constexpr size_t NUM_OUT = sizeof...(Specs);
+            static constexpr size_t NUM_OUT = sizeof...(OutputSpecs);
 
             /**
              * @brief Shared pointer to the plugin instance.
@@ -377,7 +467,7 @@ namespace comppare
                  *
                  * @tparam Plugin The plugin type to attach.
                  * @return The return of the plugin's `register_impl` method.
-                 * 
+                 *
                  * @note decltype(auto) is used to preserve the return type of the plugin's register_impl method.
                  * When using `auto`, the return type would remove its reference-ness and const-ness; while decltype(auto) preserves it.
                  * Reference: Effective Modern C++ Item 3: Understand decltype
@@ -431,7 +521,7 @@ namespace comppare
 
             /**
              * @brief Print the header for the output table.
-             * 
+             *
              * This includes the framework title, number of implementations,
              * warmup iterations, and benchmark iterations.
              * It also prints the column headers for the output table.
@@ -477,7 +567,7 @@ namespace comppare
                 // lambda to call print metric header across each metric by unpacking I
                 [&]<std::size_t... I>(std::index_sequence<I...>)
                 {
-                    // .template is a disambiguator as 
+                    // .template is a disambiguator as
                     // if using _print_metric_header<I>(),
                     // the compiler will treat `<` as an operator
                     (_print_metric_header.template operator()<I>(), ...);
@@ -587,7 +677,7 @@ namespace comppare
              * @param outtup The output tuple to unpack.
              * @param outs The output pointers to fill.
              */
-            void unpack_output_(const OutTup &outtup, val_t<Specs> *...outs) const
+            void unpack_output_(const OutTup &outtup, outtype_t<OutputSpecs> *...outs) const
             {
                 std::apply(
                     [&](auto &...outtup_elem)
@@ -598,10 +688,6 @@ namespace comppare
             }
 
         public:
-            // Constructor to initialize the OutputContext with inputs
-            // This is used to hold and pass the same input arguments/data for all implementations
-            // The inputs are perfectly forwarded -- for instance taking ownership when moving
-
             /**
              * @brief Construct a new OutputContext
              *
@@ -636,7 +722,7 @@ namespace comppare
              * The reference implementation is always the first one added and is used as the baseline for comparison.
              */
             template <typename F>
-                requires std::invocable<F, const Inputs &..., val_t<Specs> &...>
+                requires std::invocable<F, const std::decay_t<Inputs> &..., outtype_t<OutputSpecs> &...>
             Impl &set_reference(std::string name, F &&f)
             {
                 impls_.insert(impls_.begin(), {std::move(name), Func(std::forward<F>(f)), &inputs_, this});
@@ -655,7 +741,7 @@ namespace comppare
              * The function will be run and compared against the reference implementation.
              */
             template <typename F>
-                requires std::invocable<F, const Inputs &..., val_t<Specs> &...>
+                requires std::invocable<F, const std::decay_t<Inputs> &..., outtype_t<OutputSpecs> &...>
             Impl &add(std::string name, F &&f)
             {
                 impls_.push_back({std::move(name), Func(std::forward<F>(f)), &inputs_, this});
@@ -715,8 +801,8 @@ namespace comppare
              * and unpacks its elements into the provided pointers. This allows
              * callers to access values without dealing with `std::tuple` directly.
              */
-            void get_reference_output(val_t<Specs> *...outs) const
-                requires(sizeof...(Specs) > 0)
+            void get_reference_output(outtype_t<OutputSpecs> *...outs) const
+                requires(sizeof...(OutputSpecs) > 0)
             {
                 const auto &outtup = *get_output_by_index_(0);
                 unpack_output_(outtup, outs...);
@@ -734,8 +820,8 @@ namespace comppare
              * and unpacks its elements into the provided pointers. This allows
              * callers to access values without dealing with `std::tuple` directly.
              */
-            void get_output(const size_t idx, val_t<Specs> *...outs) const
-                requires(sizeof...(Specs) > 0)
+            void get_output(const size_t idx, outtype_t<OutputSpecs> *...outs) const
+                requires(sizeof...(OutputSpecs) > 0)
             {
                 const auto &outtup = *get_output_by_index_(idx);
                 unpack_output_(outtup, outs...);
@@ -753,8 +839,8 @@ namespace comppare
              * and unpacks its elements into the provided pointers. This allows
              * callers to access values without dealing with `std::tuple` directly.
              */
-            void get_output(const std::string_view name, val_t<Specs> *...outs) const
-                requires(sizeof...(Specs) > 0)
+            void get_output(const std::string_view name, outtype_t<OutputSpecs> *...outs) const
+                requires(sizeof...(OutputSpecs) > 0)
             {
                 const auto &outtup = *get_output_by_name_(name);
                 unpack_output_(outtup, outs...);
@@ -852,23 +938,22 @@ namespace comppare
 
     /**
      * @brief Helper function to create a comppare object.
-     * 
+     *
      * This function simplifies the creation of a comppare object by deducing the input types.
      * It takes input arguments and returns an `OutputContext` object that can be used to add implementations and run comparisons.
      * The output types must be specified explicitly as template parameters, while the input types are deduced from the function arguments.
      * The function arguments are perfectly forwarded to instantiate the `OutputContext` object.
-     * 
+     *
      * @tparam Outputs The types of the output specifications.
      * @tparam Inputs The types of the input specifications -- deduced from function arguments.
      * @param ins The input arguments.
      * @return typename InputContext<Inputs...>::OutputContext<Outputs...>
      */
     template <typename... Outputs, typename... Inputs>
-    auto make_comppare(Inputs&&... ins) {
-        return typename InputContext<std::decay_t<Inputs>...>::template 
-            OutputContext<std::decay_t<Outputs>...>(
-            std::forward<Inputs>(ins)...
-        );
+    auto make_comppare(Inputs &&...ins)
+    {
+        return typename InputContext<std::decay_t<Inputs>...>::template OutputContext<std::decay_t<Outputs>...>(
+            std::forward<Inputs>(ins)...);
     }
 } // namespace comppare
 
@@ -957,9 +1042,9 @@ namespace comppare
 #endif
 
 #if defined(__CUDACC__)
-    #define GPU_PREFIX cuda
+#define GPU_PREFIX cuda
 #elif defined(__HIPCC__)
-    #define GPU_PREFIX hip
+#define GPU_PREFIX hip
 #endif
 
 #if defined(GPU_PREFIX)
@@ -978,36 +1063,37 @@ namespace comppare
 #define GPU_HOTLOOPSTART \
     auto &&hotloop_body = [&]() { /* start of lambda */
 
-/** 
+/**
  * @brief Internal macro to perform the warm-up and timed benchmarking loops.
  * This macro is used within the `GPU_HOTLOOPEND` macro to execute the benchmarking process.
  */
 #define GPU_COMPPARE_HOTLOOP_BENCH                                     \
     /* Warm-up */                                                      \
-    CONCAT(GPU_PREFIX, Event_t) start_, stop_;                                 \
-    CONCAT(GPU_PREFIX, EventCreate)(&start_);                                  \
-    CONCAT(GPU_PREFIX, EventCreate)(&stop_);                                   \
-    CONCAT(GPU_PREFIX, EventRecord)(start_);                                   \
+    CONCAT(GPU_PREFIX, Event_t)                                        \
+    start_, stop_;                                                     \
+    CONCAT(GPU_PREFIX, EventCreate)(&start_);                          \
+    CONCAT(GPU_PREFIX, EventCreate)(&stop_);                           \
+    CONCAT(GPU_PREFIX, EventRecord)(start_);                           \
     for (std::size_t i = 0; i < comppare::config::warmup_iters(); ++i) \
         hotloop_body();                                                \
-    CONCAT(GPU_PREFIX, EventRecord)(stop_);                                    \
-    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                               \
+    CONCAT(GPU_PREFIX, EventRecord)(stop_);                            \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                       \
     float ms_warmup_;                                                  \
-    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_warmup_, start_, stop_);          \
+    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_warmup_, start_, stop_);  \
     comppare::config::set_warmup_us(1e3 * ms_warmup_);                 \
                                                                        \
     /* Timed */                                                        \
     comppare::config::reset_roi_us();                                  \
-    CONCAT(GPU_PREFIX, EventRecord)(start_);                                   \
+    CONCAT(GPU_PREFIX, EventRecord)(start_);                           \
     for (std::size_t i = 0; i < comppare::config::bench_iters(); ++i)  \
         hotloop_body();                                                \
-    CONCAT(GPU_PREFIX, EventRecord)(stop_);                                    \
-    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                               \
+    CONCAT(GPU_PREFIX, EventRecord)(stop_);                            \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_);                       \
     float ms_;                                                         \
-    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_, start_, stop_);                 \
+    CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_, start_, stop_);         \
     if (comppare::config::get_roi_us() == double(0.0))                 \
         comppare::config::set_roi_us(1e3 * ms_);                       \
-    CONCAT(GPU_PREFIX, EventDestroy)(start_);                                  \
+    CONCAT(GPU_PREFIX, EventDestroy)(start_);                          \
     CONCAT(GPU_PREFIX, EventDestroy)(stop_);
 
 #if defined(GPU_PLUGIN_HOTLOOP_BENCH)
@@ -1036,22 +1122,23 @@ namespace comppare
  * @brief Macro to start a manual timer for benchmarking.
  * This macro initializes GPU events and records the start time.
  */
-#define GPU_MANUAL_TIMER_START                                 \
-    CONCAT(GPU_PREFIX, Event_t) start_manual_timer, stop_manual_timer; \
-    CONCAT(GPU_PREFIX, EventCreate)(&start_manual_timer);              \
-    CONCAT(GPU_PREFIX, EventCreate)(&stop_manual_timer);               \
+#define GPU_MANUAL_TIMER_START                            \
+    CONCAT(GPU_PREFIX, Event_t)                           \
+    start_manual_timer, stop_manual_timer;                \
+    CONCAT(GPU_PREFIX, EventCreate)(&start_manual_timer); \
+    CONCAT(GPU_PREFIX, EventCreate)(&stop_manual_timer);  \
     CONCAT(GPU_PREFIX, EventRecord)(start_manual_timer);
 
 /**
  * @brief Macro to stop a manual timer for benchmarking.
  * This macro records the stop time and synchronizes the GPU events.
  */
-#define GPU_MANUAL_TIMER_END                                                         \
+#define GPU_MANUAL_TIMER_END                                                                 \
     CONCAT(GPU_PREFIX, EventRecord)(stop_manual_timer);                                      \
-    CONCAT(GPU_PREFIX, EventSynchronize)(stop_manual_timer);                               \
-    float ms_manual;                                                                 \
+    CONCAT(GPU_PREFIX, EventSynchronize)(stop_manual_timer);                                 \
+    float ms_manual;                                                                         \
     CONCAT(GPU_PREFIX, EventElapsedTime)(&ms_manual, start_manual_timer, stop_manual_timer); \
-    SET_ITERATION_TIME(1e3 * ms_manual);                                             \
+    SET_ITERATION_TIME(1e3 * ms_manual);                                                     \
     CONCAT(GPU_PREFIX, EventDestroy)(start_manual_timer);                                    \
     CONCAT(GPU_PREFIX, EventDestroy)(stop_manual_timer);
 
