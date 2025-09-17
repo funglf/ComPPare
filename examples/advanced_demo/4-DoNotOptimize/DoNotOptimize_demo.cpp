@@ -36,10 +36,7 @@ int main(int argc, char **argv)
     std::iota(x, x + N, 1.0f);
     std::iota(y, y + N, 1.0f);
 
-    comppare::
-        InputContext<const float, const float*, const float*>::
-            OutputContext<>
-                compare(a, x, y);
+    auto compare = comppare::make_comppare<>(a, x, y);
 
 #ifdef HAVE_GOOGLE_BENCHMARK
     compare.set_reference("SAXPY", SAXPY).google_benchmark();

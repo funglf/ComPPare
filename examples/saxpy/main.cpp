@@ -14,14 +14,9 @@ int main(int argc, char **argv)
     SaxpyConfig cfg = init_saxpy(argc, argv);
     comppare::config::set_fp_tolerance(float(1.0f));
 
-    // Define the input and output types for the comparison framework instance
-    using ScalarType = float;
-    using VectorType = std::vector<float>;
-
-    comppare::
-        InputContext<ScalarType, VectorType, VectorType>::
-            OutputContext<VectorType>
-                compare(cfg.a, cfg.x, cfg.y);
+    // Using make_comppare helper to create a comppare instance
+    // comppare::make_comppare<output_types>(input_args);
+    auto compare = comppare::make_comppare<std::vector<float>>(cfg.a, cfg.x, cfg.y);
 
     // Set reference implementation
     compare.set_reference("cpu serial", cpu_std);

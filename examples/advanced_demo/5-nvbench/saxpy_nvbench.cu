@@ -50,10 +50,10 @@ int main(int argc, char **argv)
     std::vector<float> x(n, 2.2f);
     std::vector<float> y(n, 3.3f);
 
-    comppare::InputContext<float, std::vector<float>, std::vector<float>>::OutputContext<std::vector<float>> cmp(a, x, y);
+    auto compare = comppare::make_comppare<std::vector<float>>(a, x, y);
 
-    cmp.add("saxpy gpu", saxpy_gpu).nvbench();
-    cmp.add("saxpy cpu", saxpy_cpu).nvbench().set_is_cpu_only(true);
+    compare.add("saxpy gpu", saxpy_gpu).nvbench();
+    compare.add("saxpy cpu", saxpy_cpu).nvbench().set_is_cpu_only(true);
 
-    cmp.run(argc, argv);
+    compare.run(argc, argv);
 }

@@ -40,10 +40,7 @@ void car3(car &c)
 
 int main(int argc, char **argv)
 {
-    comppare::
-        InputContext<>::
-            OutputContext<comppare::set_policy<car, IsSameBrand>>
-                compare;
+    auto compare = comppare::make_comppare<comppare::set_policy<car, IsSameBrand>>();
 
     compare.set_reference("Toyota Prius", car1);
     compare.add("Toyota Corolla", car2);

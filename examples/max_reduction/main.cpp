@@ -12,11 +12,10 @@ int main(int argc, char **argv)
     // Initialize configuration
     MaxConfig cfg = init_max(argc, argv);
 
-    // Define the input and output types for the comparison framework instance
-    comppare::
-        InputContext<std::span<const float>>::
-            OutputContext<float>
-                compare(cfg.data);
+    // Using make_comppare helper to create a comppare instance
+    // comppare::make_comppare<output_types>(input_args);
+    // equivalent to comppare::InputContext<std::span<const float>>::OutputContext<float>
+    auto compare = comppare::make_comppare<float>(cfg.data);
 
     // Set reference implementation
     compare.set_reference("cpu serial", cpu_max_serial);

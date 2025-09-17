@@ -45,10 +45,7 @@ int main(int argc, char **argv)
     std::iota(input.begin(), input.end(), 1);
 
     // Create an instance of the ComPPare framework
-    comppare::
-        InputContext<std::vector<int>>::
-            OutputContext<std::vector<int>>
-                compare(input);
+    auto compare = comppare::make_comppare<std::vector<int>>(input);
 
     // Register the implementations 
     // Add .google_benchmark() to enable Google Benchmark for the particular implementation

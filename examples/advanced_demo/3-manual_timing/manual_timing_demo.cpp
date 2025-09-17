@@ -93,7 +93,7 @@ static void bench_clear_square(std::vector<int> &v)
 
 int main(int argc, char **argv)
 {
-    comppare::InputContext<>::OutputContext<std::vector<int>> compare;
+    auto compare = comppare::make_comppare<std::vector<int>>();
 
     compare.set_reference("All", bench_all).google_benchmark()
                                             ->Unit(benchmark::kMicrosecond);
