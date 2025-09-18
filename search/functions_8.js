@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['nvbench_0',['nvbench',['../structcomppare_1_1InputContext_1_1OutputContext_1_1Impl.html#a337b3313281a17d79fed72e3248cd87a',1,'comppare::InputContext::OutputContext::Impl']]],
+  ['nvbench_5fmanager_1',['nvbench_manager',['../classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbench__manager.html#a14750150ee43890c6109bab1b69ee0fe',1,'comppare::plugin::nvbenchplugin::nvbench_manager']]],
+  ['nvbenchcallable_2',['nvbenchcallable',['../structcomppare_1_1plugin_1_1nvbenchplugin_1_1NvbenchCallable.html#a16214615f5196b73c0c5ccdeaef0d1b2',1,'comppare::plugin::nvbenchplugin::NvbenchCallable::NvbenchCallable(F _f)'],['../structcomppare_1_1plugin_1_1nvbenchplugin_1_1NvbenchCallable.html#ad7cc236aae265eef8c489ed33901064b',1,'comppare::plugin::nvbenchplugin::NvbenchCallable::NvbenchCallable(const NvbenchCallable &amp;other)=default'],['../structcomppare_1_1plugin_1_1nvbenchplugin_1_1NvbenchCallable.html#af939b803628dba8dc3c6c5bba217422e',1,'comppare::plugin::nvbenchplugin::NvbenchCallable::NvbenchCallable(NvbenchCallable &amp;&amp;other)=default']]],
+  ['nvbenchplugin_3',['nvbenchplugin',['../classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbenchPlugin.html#a5e6b7c0d857f014c88d0f3122b0cc01c',1,'comppare::plugin::nvbenchplugin::nvbenchPlugin::nvbenchPlugin()=default'],['../classcomppare_1_1plugin_1_1nvbenchplugin_1_1nvbenchPlugin.html#acba3ccad44a321fb716531b1d2461e10',1,'comppare::plugin::nvbenchplugin::nvbenchPlugin::nvbenchPlugin(const nvbenchPlugin &amp;)=delete']]]
+];

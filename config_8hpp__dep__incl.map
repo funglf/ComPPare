@@ -1,0 +1,8 @@
+<map id="include/comppare/internal/config.hpp" name="include/comppare/internal/config.hpp">
+<area shape="rect" id="Node000001" title="This file contains configuration settings for the ComPPare library." alt="" coords="27,5,219,45"/>
+<area shape="rect" id="Node000002" href="$comppare_8hpp.html" title="This file is the main include file for the ComPPare framework." alt="" coords="5,181,240,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,58,84,94,80,113,84,132,97,159,113,179,109,183,93,161,79,134,75,113,79,92,97,56"/>
+<area shape="rect" id="Node000003" href="$helper_8hpp.html" title=" " alt="" coords="93,93,285,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,55,177,91,172,95,144,58"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="166,146,135,183,131,179,162,142"/>
+</map>

@@ -1,0 +1,40 @@
+<map id="include/comppare/internal/policy.hpp" name="include/comppare/internal/policy.hpp">
+<area shape="rect" id="Node000001" title="This file contains error policies for comparing values in the ComPPare library." alt="" coords="596,5,788,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="123,240,203,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="596,37,405,59,316,76,253,96,227,110,209,124,194,142,180,168,170,197,166,226,160,226,164,196,175,166,190,139,205,120,224,106,251,91,314,71,404,54,595,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,240,72,265"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="596,36,381,57,279,74,238,84,208,96,160,125,118,161,83,199,57,230,53,227,79,195,114,158,157,121,206,91,237,79,278,69,380,52,595,30"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="287,240,345,265"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="596,41,483,59,359,87,302,104,253,123,214,144,190,168,185,181,187,192,194,202,206,211,238,228,274,239,273,244,236,233,203,216,190,206,182,194,180,180,186,165,211,140,251,118,301,99,358,81,482,54,595,36"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="843,93,941,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="741,43,851,86,849,91,739,48"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="670,240,762,265"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="729,43,755,64,776,92,786,119,789,142,785,166,776,193,762,215,745,233,741,230,758,212,771,191,780,164,784,142,781,120,771,95,751,68,726,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="558,167,618,192"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="681,47,606,157,602,154,677,44"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="965,93,1024,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="768,43,953,91,952,96,766,48"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="482,240,558,265"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="708,44,725,75,740,114,745,155,741,175,731,194,706,212,665,226,572,247,571,241,663,221,703,207,727,190,736,173,740,155,735,115,720,77,703,47"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="643,167,717,192"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="693,46,685,153,679,153,688,46"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1049,93,1117,119"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="789,41,1036,91,1035,96,788,47"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="1141,93,1227,119"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="789,37,1128,90,1127,96,788,42"/>
+<area shape="rect" id="Node000013" href="$concepts_8hpp.html" title="This file contains commonly used concepts internally within the ComPPare library." alt="" coords="201,167,431,192"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="596,36,547,43,495,55,442,72,393,96,358,125,333,157,328,153,355,121,391,91,440,67,493,50,546,38,596,30"/>
+<area shape="rect" id="Node000014" href="$ansi_8hpp.html" title="This file contains utilities for applying ANSI styles and colors to console output." alt="" coords="404,93,604,119"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="648,48,545,90,543,85,646,43"/>
+<area shape="poly" id="edge13_Node000013_Node000002" title=" " alt="" coords="292,194,201,237,199,232,290,190"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="272,195,86,242,85,237,271,189"/>
+<area shape="poly" id="edge16_Node000013_Node000004" title=" " alt="" coords="319,192,319,226,313,226,313,192"/>
+<area shape="poly" id="edge14_Node000013_Node000006" title=" " alt="" coords="381,189,657,238,656,243,380,195"/>
+<area shape="poly" id="edge17_Node000013_Node000009" title=" " alt="" coords="350,190,475,233,473,238,348,195"/>
+<area shape="poly" id="edge22_Node000014_Node000002" title=" " alt="" coords="404,118,278,136,225,150,190,169,180,181,173,196,166,226,161,225,168,194,175,178,186,165,223,145,277,131,404,112"/>
+<area shape="poly" id="edge21_Node000014_Node000004" title=" " alt="" coords="500,121,478,156,444,194,402,221,359,240,357,235,400,217,441,190,474,153,496,118"/>
+<area shape="poly" id="edge23_Node000014_Node000007" title=" " alt="" coords="519,117,565,155,562,160,516,121"/>
+<area shape="poly" id="edge19_Node000014_Node000009" title=" " alt="" coords="508,119,520,226,515,227,503,119"/>
+<area shape="poly" id="edge20_Node000014_Node000010" title=" " alt="" coords="533,116,639,159,637,164,531,121"/>
+<area shape="poly" id="edge24_Node000014_Node000013" title=" " alt="" coords="475,121,360,164,359,159,473,116"/>
+</map>

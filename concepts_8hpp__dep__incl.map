@@ -1,0 +1,14 @@
+<map id="include/comppare/internal/concepts.hpp" name="include/comppare/internal/concepts.hpp">
+<area shape="rect" id="Node000001" title="This file contains commonly used concepts internally within the ComPPare library." alt="" coords="140,5,332,45"/>
+<area shape="rect" id="Node000002" href="$ansi_8hpp.html" title="This file contains utilities for applying ANSI styles and colors to console output." alt="" coords="74,93,266,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,58,187,95,182,91,211,55"/>
+<area shape="rect" id="Node000004" href="$policy_8hpp.html" title="This file contains error policies for comparing values in the ComPPare library." alt="" coords="251,189,443,229"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="258,56,280,92,338,187,333,190,275,95,253,59"/>
+<area shape="rect" id="Node000003" href="$comppare_8hpp.html" title="This file is the main include file for the ComPPare framework." alt="" coords="10,284,244,309"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,141,40,159,17,183,10,196,8,208,10,221,17,235,30,251,47,264,84,282,81,286,44,268,26,254,13,237,5,222,3,208,5,195,13,180,37,154,67,136"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,137,312,186,310,191,217,142"/>
+<area shape="rect" id="Node000005" href="$google__benchmark_8hpp.html" title="This file contains the Google Benchmark plugin for the ComPPare framework." alt="" coords="28,181,226,236"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="158,147,142,182,137,180,153,145"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="287,236,157,286,155,281,285,231"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="130,250,130,284,124,284,124,250"/>
+</map>

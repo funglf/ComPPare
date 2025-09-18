@@ -1,0 +1,9 @@
+<map id="comppare::plugin::google_benchmark::GoogleBenchmarkPlugin&lt; InTup, OutTup &gt;" name="comppare::plugin::google_benchmark::GoogleBenchmarkPlugin&lt; InTup, OutTup &gt;">
+<area shape="rect" id="Node000001" title="Google Benchmark plugin for the ComPPare framework." alt="" coords="653,34,924,89"/>
+<area shape="rect" id="Node000002" href="$classcomppare_1_1plugin_1_1Plugin.html" title="Base class for plugins in the ComPPare framework." alt="" coords="369,5,551,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="565,34,653,44,653,49,565,39"/>
+<area shape="rect" id="Node000003" href="$classcomppare_1_1plugin_1_1google__benchmark_1_1google__benchmark__manager.html" title="Manager class for Google Benchmark integration." alt="" coords="343,70,577,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="591,80,653,73,654,79,591,86"/>
+<area shape="rect" id="Node000004" href="$classcomppare_1_1plugin_1_1PluginArgParser.html" title="Argument parser for plugin command&#45;line arguments." alt="" coords="5,77,188,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="201,95,343,95,343,100,201,100"/>
+</map>

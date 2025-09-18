@@ -1,0 +1,27 @@
+<map id="include/comppare/plugin/nvbench/nvbench.hpp" name="include/comppare/plugin/nvbench/nvbench.hpp">
+<area shape="rect" id="Node000001" title="This file contains the NVBench plugin for the ComPPare framework." alt="" coords="463,5,645,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="102,93,265,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="466,48,251,93,250,88,465,43"/>
+<area shape="rect" id="Node000003" href="$plugin_8hpp.html" title="This file contains the base Plugin class and concept of a valid Plugin class for the ComPPare framewo..." alt="" coords="289,93,491,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="516,48,427,90,425,85,514,43"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="491,167,566,192"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="553,46,535,153,530,153,548,45"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="590,167,649,192"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="565,45,611,153,606,155,560,47"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="617,93,694,119"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="580,43,631,82,628,87,577,48"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="719,93,805,119"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="605,43,720,86,718,91,603,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="387,167,467,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="399,118,417,153,413,156,394,120"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,167,65,192"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="323,121,80,169,79,164,322,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="90,167,165,192"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="348,121,179,167,177,162,347,116"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="189,167,276,192"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="366,121,272,163,270,159,364,116"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="413,116,495,158,493,163,411,121"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="428,116,578,162,576,167,426,121"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="300,167,363,192"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="382,121,351,158,347,155,378,117"/>
+</map>
