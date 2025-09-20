@@ -120,8 +120,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="fragment"><div class="line">git clone https://github.com/funglf/ComPPare.git --recursive</div>
 </div><!-- fragment --> <h3>If submodules like google benchmark/ nvbench is not needed:</h3>
 <div class="fragment"><div class="line">git clone https://github.com/funglf/ComPPare.git</div>
-</div><!-- fragment --><h2>2. (Optional) Build Google Benchmark</h2>
+</div><!-- fragment --><h2>2. (Optional) Build Google Benchmark and nvbench</h2>
 <p>See <a href="https://github.com/google/benchmark/blob/b20cea674170b2ba45da0dfaf03953cdea473d0d/README.md">Google Benchmark Instructions</a></p>
+<p>See <a href="https://github.com/NVIDIA/nvbench/blob/b88a45f4170af4e907e69af22a55af67859d3b49/README.md">nvbench Intructions</a></p>
 <h2>3. Include ComPPare</h2>
 <p>In your C++ code, simply include the comppare header file by: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="comppare_8hpp.html">comppare/comppare.hpp</a>&gt;</span></div>
 <div class="ttc" id="acomppare_8hpp_html"><div class="ttname"><a href="comppare_8hpp.html">comppare.hpp</a></div><div class="ttdoc">This file is the main include file for the ComPPare framework.</div></div>
@@ -163,31 +164,17 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">               std::vector&lt;float&gt; &amp;y_out)</div>
 </div><!-- fragment --><h2>2. Create a comparison object</h2>
 <ol type="1">
-<li><b>Describe the types</b> — list the <em>input</em> types first, then the <em>output</em> types:</li>
+<li><b>Describe the output types</b> as template argument</li>
+<li><b>Pass the input data</b> — constructs framework object with input data that will be reused for every implementation</li>
 </ol>
-<div class="fragment"><div class="line"><span class="keyword">using </span>Cmp = </div>
-<div class="line">    <a class="code hl_namespace" href="namespacecomppare.html">comppare</a>::</div>
-<div class="line">        <span class="comment">/*Define Input Pack Types same as the function*/</span></div>
-<div class="line">        InputContext&lt;</div>
-<div class="line">            float,  <span class="comment">/*float a*/</span></div>
-<div class="line">            std::vector&lt;float&gt;, <span class="comment">/*std::vector&lt;float&gt; x*/</span></div>
-<div class="line">            std::vector&lt;float&gt;  <span class="comment">/*std::vector&lt;float&gt; y*/</span></div>
-<div class="line">            &gt;::</div>
-<div class="line">                <span class="comment">/*Define Output Pack types same as the function*/</span></div>
-<div class="line">                OutputContext&lt;</div>
-<div class="line">                std::vector&lt;float&gt;  <span class="comment">/*std::vector&lt;float&gt; y_out*/</span></div>
-<div class="line">                &gt;;</div>
-<div class="ttc" id="anamespacecomppare_html"><div class="ttname"><a href="namespacecomppare.html">comppare</a></div><div class="ttdoc">ComPPare framework main namespace.</div></div>
-</div><!-- fragment --><ol type="1">
-<li><b>Pass the input data</b> — constructs framework object with input data that will be reused for every implementation:</li>
-</ol>
-<div class="fragment"><div class="line">Cmp cmp(a, x, y);   <span class="comment">// a: float, x: input vector x, y: input vector y</span></div>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> Cmp = <a class="code hl_function" href="namespacecomppare.html#adad8650973b76e6af52067ca7487f042">comppare::make_comppare</a>&lt;<span class="comment">/*Output Types*/</span>std::vector&lt;float&gt;&gt;(a, x, y); <span class="comment">// a: float, x: input vector x, y: input vector y</span></div>
+<div class="ttc" id="anamespacecomppare_html_adad8650973b76e6af52067ca7487f042"><div class="ttname"><a href="namespacecomppare.html#adad8650973b76e6af52067ca7487f042">comppare::make_comppare</a></div><div class="ttdeci">auto make_comppare(Inputs &amp;&amp;...ins)</div><div class="ttdoc">Helper function to create a comppare object.</div><div class="ttdef"><b>Definition</b> comppare.hpp:953</div></div>
 </div><!-- fragment --> <blockquote class="doxtable">
 <p>&zwj;Note: you can use move semantics here. All inputs are perfectly forwarded. eg. <code>Cmp cmp(a, std::move(x), std::move(y));</code> </p>
 </blockquote>
 <h2>3. Register implementations</h2>
-<div class="fragment"><div class="line">cmp.set_reference(<span class="stringliteral">&quot;cpu serial&quot;</span>, saxpy_cpu);  <span class="comment">// setting reference</span></div>
-<div class="line">cmp.add(<span class="stringliteral">&quot;gpu kernel&quot;</span>,  saxpy_gpu);           <span class="comment">// any number of additional functions</span></div>
+<div class="fragment"><div class="line">cmp.set_reference(<span class="stringliteral">&quot;saxpy reference&quot;</span>, saxpy_cpu);  <span class="comment">// setting reference</span></div>
+<div class="line">cmp.add(<span class="stringliteral">&quot;saxpy gpu&quot;</span>,  saxpy_gpu);           <span class="comment">// any number of additional functions</span></div>
 </div><!-- fragment --><h2>4. Run and inspect</h2>
 <div class="fragment"><div class="line">cmp.run(argc, argv);</div>
 </div><!-- fragment --><h3>Sample report:</h3>
@@ -195,14 +182,14 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">============ ComPPare Framework ============</div>
 <div class="line">=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*</div>
 <div class="line"> </div>
-<div class="line">Number of implementations:             3</div>
+<div class="line">Number of implementations:             4</div>
 <div class="line">Warmup iterations:                   100</div>
 <div class="line">Benchmark iterations:                100</div>
 <div class="line">=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*</div>
 <div class="line"> </div>
-<div class="line">Implementation                  Func µs             ROI µs            Ovhd µs         Max|err|[0]        Mean|err|[0]       Total|err|[0]</div>
-<div class="line">cpu serial                         38.01               15.97               22.05            0.00e+00            0.00e+00            0.00e+00</div>
-<div class="line">gpu kernel                      73151.41                1.07            73150.34            3.30e+06            1.66e+06            1.70e+09  &lt;-- FAIL</div>
+<div class="line">Implementation              ROI µs/Iter            Func µs            Ovhd µs         Max|err|[0]        Mean|err|[0]       Total|err|[0]</div>
+<div class="line">saxpy reference                     0.28               33.67                5.63            0.00e+00            0.00e+00            0.00e+00                                   </div>
+<div class="line">saxpy gpu                          10.89           137828.11           136739.02            5.75e+06            2.85e+06            2.92e+09            &lt;-- FAIL         </div>
 </div><!-- fragment --> <h2>Complete example with SAXPY</h2>
 <p>(See SAXPY Full Example)</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -238,26 +225,18 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">    std::vector&lt;float&gt; x(1000, 2.2); <span class="comment">// Vector of size 1000 filled with 2.2</span></div>
 <div class="line">    std::vector&lt;float&gt; y(1000, 3.3); <span class="comment">// Vector of size 1000 filled with 3.3</span></div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">using </span>Cmp = </div>
-<div class="line">    <a class="code hl_namespace" href="namespacecomppare.html">comppare</a>::</div>
-<div class="line">        <span class="comment">/*Define Input Pack Types same as the function*/</span></div>
-<div class="line">            InputContext&lt;float, </div>
-<div class="line">                std::vector&lt;float&gt;, </div>
-<div class="line">                std::vector&lt;float&gt;&gt;::</div>
-<div class="line">                    <span class="comment">/*Define Output Pack types same as the function*/</span></div>
-<div class="line">                    OutputContext&lt;std::vector&lt;float&gt;&gt;;</div>
 <div class="line">    <span class="comment">/*</span></div>
 <div class="line"><span class="comment">    Create Instance of the comparison framework with input data</span></div>
 <div class="line"><span class="comment">    a -- float</span></div>
 <div class="line"><span class="comment">    x -- std::vector&lt;float&gt;</span></div>
 <div class="line"><span class="comment">    y -- std::vector&lt;float&gt;</span></div>
 <div class="line"><span class="comment">    */</span></div>
-<div class="line">    Cmp cmp(a, x, y); <span class="comment">// cmp is the instance</span></div>
+<div class="line">    <span class="keyword">auto</span> Cmp = <a class="code hl_function" href="namespacecomppare.html#adad8650973b76e6af52067ca7487f042">comppare::make_comppare</a>&lt;<span class="comment">/*Output Types*/</span>std::vector&lt;float&gt;&gt;(a, x, y);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Set reference implementation</span></div>
-<div class="line">    cmp.set_reference(<span class="stringliteral">&quot;cpu serial&quot;</span>, <span class="comment">/*Function*/</span> saxpy_cpu);</div>
+<div class="line">    cmp.set_reference(<span class="stringliteral">&quot;saxpy reference&quot;</span>, <span class="comment">/*Function*/</span> saxpy_cpu);</div>
 <div class="line">    <span class="comment">// Add implementations to compare</span></div>
-<div class="line">    cmp.add(<span class="stringliteral">&quot;gpu kernel&quot;</span>, <span class="comment">/*Function*/</span> saxpy_gpu);</div>
+<div class="line">    cmp.add(<span class="stringliteral">&quot;saxpy gpu&quot;</span>, <span class="comment">/*Function*/</span> saxpy_gpu);</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Run the comparison with specified iterations and tolerance</span></div>
 <div class="line">    cmp.run(argc, argv);</div>
